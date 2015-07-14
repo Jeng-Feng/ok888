@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<styleSheet>
+		<background>
+			<stage graphicUrl="" bgColor="#fffdf9" shadow="0" />
+			<album graphicUrl="" bgColor="#f1eceb" shadow="0" />
+			<titleWindow graphicUrl="" bgColor="#f2f2f2" shadow="0" />
+		</background>
+		<page selectionColor="#660000" thickness="10"></page>
+	</styleSheet>
+	<componentSettings>
+		<accordionBar bgColor="#231d1b" bgAlpha="1" maxWidth="160" maxHeight="500" defaultIconUrl="" graphicUrl="">
+			<application enable="1" sort="1" label="挑選照片" titleColor="#fffdf9" labelColor="#120702" labelSize="14" bgAlpha="1" itemIcon="assets/lbStyle/icons/accordion_item_icon_01.png" activeIcon="" packageName="components.toolPanel.accordionClass">
+				<photoManager label="選擇照片來源" sort="1" icon="assets/lbStyle/icons/panel_globals.png" enable="1" className="MethodCollection">
+					<command sort="1"  label="硬碟、USB" icon="assets/lbStyle/icons/methodIcon.png" functionName="importPhoto_LocalDisk"/>
+					<command sort="2" label="網路相簿" icon="assets/lbStyle/icons/methodIcon.png" functionName="importPhoto_CloudAlbum"/>
+					<!--<command sort="3" label="名家相簿" icon="assets/lbStyle/icons/methodIcon.png" functionName="importPhoto_CloudShareAlbum"/>-->	
+					<command sort="4" label="總覽照片" icon="assets/lbStyle/icons/methodIcon.png" functionName="browseAlbum"/>
+					<command sort="5" label="自動編排照片" icon="assets/lbStyle/icons/methodIcon.png" functionName="autoFillPhotos"/>
+				</photoManager>
+			</application>
+			<layout enable="1" sort="2" label="變更版面" titleColor="#fffdf9" labelColor="#120702" labelSize="14" bgAlpha="1" itemIcon="assets/lbStyle/icons/accordion_item_icon_02.png" activeIcon="assets/lbStyle/icons/maximize.png" />
+			<text enable="1" sort="3" label="插入文字" titleColor="#fffdf9" labelColor="#120702" labelSize="14" bgAlpha="1" itemIcon="assets/lbStyle/icons/accordion_item_icon_03.png" activeIcon="assets/lbStyle/icons/addText.png" />
+			<clip enable="1" sort="4" label="新增插圖" titleColor="#fffdf9" labelColor="#120702" labelSize="14" bgAlpha="1" itemIcon="assets/lbStyle/icons/accordion_item_icon_04.png" activeIcon="assets/lbStyle/icons/maximize.png" />
+			<background enable="1" sort="5" label="套用背景" titleColor="#fffdf9" labelColor="#120702" labelSize="14" bgAlpha="1" itemIcon="assets/lbStyle/icons/accordion_item_icon_05.png" activeIcon="assets/lbStyle/icons/maximize.png" />
+			<application enable="1" sort="6" label="頁數管理" titleColor="#fffdf9" labelColor="#120702" labelSize="14" bgAlpha="1" itemIcon="assets/lbStyle/icons/accordion_item_icon_06.png" activeIcon="" packageName="components.toolPanel.accordionClass">
+				<pageManager label="增、減、調整頁數" sort="1" icon="assets/lbStyle/icons/panel_admin.png" enable="1" className="MethodCollection">
+					<command sort="1" label="增加頁數" icon="assets/lbStyle/icons/methodIcon.png" functionName="addPages"/>
+					<command sort="2" label="刪除加頁" icon="assets/lbStyle/icons/methodIcon.png" functionName="deletePages"/>
+					<command sort="3" label="調整頁次" icon="assets/lbStyle/icons/methodIcon.png" functionName="reorderPages"/>
+				</pageManager>
+			</application>
+			<application enable="1" sort="7" label="校訂作品" titleColor="#fffdf9" labelColor="#120702" labelSize="14" bgAlpha="1" itemIcon="assets/lbStyle/icons/accordion_item_icon_07.png" activeIcon="" packageName="components.toolPanel.accordionClass">
+				<editManager label="編輯輔助" sort="1" icon="assets/lbStyle/icons/panel_FlashGet.png" enable="1" className="MethodCollection">
+					<command sort="1" label="近距離檢視" icon="assets/lbStyle/icons/methodIcon.png" functionName="magnifier"/>
+					<command sort="2" label="BOOKID資訊" icon="assets/lbStyle/icons/methodIcon.png" functionName="getInfomation"/>
+				</editManager>
+				<methodManager label="操作指令" sort="2" icon="assets/lbStyle/icons/panel_TotalCommander.png" enable="1" className="MethodCollection">
+					<command sort="1" label="儲存作品" icon="assets/lbStyle/icons/methodIcon.png" functionName="saveData"/>
+					<command sort="2" label="訂購下單" icon="assets/lbStyle/icons/methodIcon.png" functionName="getOrder"/>
+					<command sort="3" label="離開編輯器" icon="assets/lbStyle/icons/methodIcon.png" functionName="quit"/>
+				</methodManager>
+			</application>
+		</accordionBar>
+		<pageScroller graphicUrl="" bgAlpha="0.1" bgColor="#231d1b" selectionColor="#cc6600">
+			<toggle windowStyle="0" pageButton="1" hideAble="0" addIconArea="0" />
+			<layout paddingLeft="161" paddingRight="0" touchPadWidth="80" iconAreaWidth="0" boderHeight="20" boderWidth="20" boderAlpha="1" boderColor="#231d1b"/>
+			<scrollBar height="18" frontColor="#f1eceb" bgColor="#231d1b" />
+		</pageScroller>
+		<floatPanel defaultPanel="pageEditPanel" panelHeight="90" packageName="components.toolPanel.floatPanelMethods">
+			<backgroundPanel roundRect="1" bgColor="#FFFFFF" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="20" className="BackgroundMethods" extendName="">
+				<button id="changeColor" label="顏色背景" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="" control="ColorPicker" iconWidth="45" iconHeight="45" extendName="" onClick="" available="1" enabled="1" />
+				<button id="insertBackground" label="圖畫背景" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="assets/lbStyle/icons/insertBackground.png" iconWidth="45" iconHeight="45" extendName="" onClick="insertBackground" available="1" enabled="1" />
+				<button id="editBackground" label="編輯背景" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="assets/lbStyle/icons/editBackground.png" iconWidth="45" iconHeight="45" extendName="" onClick="editExistBackground" available="0" enabled="1" />
+				<button id="removeBackground" label="移除背景" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="assets/lbStyle/icons/deleteTarget.png" iconWidth="45" iconHeight="45" extendName="" onClick="removeCurrentBackground" available="0" enabled="1" />
+			</backgroundPanel>
+			
+			<coverPanel roundRect="1" bgColor="#FFFFFF" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="20" className="BackgroundMethods" extendName="">
+				<button id="editBackground" label="編輯封面封底" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="assets/lbStyle/icons/editBackground.png" iconWidth="45" iconHeight="45" extendName="" onClick="editExistBackground" available="0" enabled="1" />
+				<button id="removeBackground" label="移除封面封底" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="assets/lbStyle/icons/deleteTarget.png" iconWidth="45" iconHeight="45" extendName="" onClick="removeCurrentBackground" available="0" enabled="1" />
+			</coverPanel>
+			
+			<pageEditPanel roundRect="1" bgColor="#FFFFFF" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="20" className="PageManagerMethods" extendName="">
+				<button id="resortPage" label="調整頁次" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="" iconWidth="45" iconHeight="45" extendName="" onClick="resortAllPages" available="1" enabled="1" />
+				<button id="addPages" label="增加頁數" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="" iconWidth="45" iconHeight="45" extendName="" onClick="addMultiPages" available="0" enabled="1" />
+				<button id="deletePages" label="刪除加頁" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="22" icon="" iconWidth="45" iconHeight="45" extendName="" onClick="deleteMultiPages" available="0" enabled="1" />
+			</pageEditPanel>
+			
+			<lockedFramePanel roundRect="1" bgColor="#FFFFFF" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="20" className="LockedFrameMethods" extendName="">
+				<button id="replacePhoto" label="更換照片" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/insertImage.png" iconWidth="45" iconHeight="45" extendName="" onClick="reImportPhoto" available="1" enabled="1" />
+				<button id="deletePhoto" label="刪除圖片" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/deleteImage.png" iconWidth="45" iconHeight="45" extendName="" onClick="deletePhoto" available="0" enabled="1" />
+				<button id="moveFrame" label="編輯圖框" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/frameunitTransform.png" iconWidth="45" iconHeight="45" extendName="" onClick="moveFrame" available="0" enabled="1" />				
+			</lockedFramePanel>
+			
+			<picframeEditPanel roundRect="1" bgColor="#FFFFFF" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="20" className="PicframeMethods" extendName="">
+				<button id="rotationPhoto" label="旋轉照片" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/frameunitRotate.png" iconWidth="45" iconHeight="45" extendName="" onClick="rotationPhoto" available="1" enabled="1" />
+				<button id="deletePhoto" label="刪除照片" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/deleteTarget.png" iconWidth="45" iconHeight="45" extendName="" onClick="deletePhoto" available="0" enabled="1" />
+				<button id="moveFrame" label="編輯圖框" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/frameunitTransform.png" iconWidth="45" iconHeight="45" extendName="" onClick="moveFrame" available="0" enabled="1" />
+				<button id="perfectClear" label="色彩最佳化" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/perfectclear.png" iconWidth="45" iconHeight="45" extendName="" onClick="perfectClear" available="1" enabled="1" />
+				<button id="deperfectClear" label="取消最佳化" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/deperfectclear.png" iconWidth="45" iconHeight="45" extendName="" onClick="cancelPerfectClear" available="1" enabled="1" />
+				<button id="previewEffect" label="預覽最佳化" labelColor="#331e14" labelSize="14" labelWidth="80" labelHeight="22" icon="assets/lbStyle/icons/perfectClearPreview.png" iconWidth="45" iconHeight="45" extendName="" onClick="previewEffect" available="0" enabled="1" />
+			</picframeEditPanel>
+			
+			<frameModePanel roundRect="1" bgColor="#FFFFFF" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="FrameModeMethods" extendName="">
+				<button id="scaleFrame" label="完成" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/apply.png" iconWidth="32" iconHeight="32" extendName="" onClick="applyEdits" available="1" enabled="1" />
+				<button id="revertFrame" label="復原" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/revertClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="revertFrame" available="0" enabled="1" />
+				<button id="layerUpFrame" label="移至上層" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/levelUp.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerUpFrame" available="0" enabled="1" />
+				<button id="layerDownFrame" label="移至下層" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/levelDown.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerDownFrame" available="1" enabled="1" />
+				<button id="removeFrame" label="刪除圖框" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/removeFrame.png" iconWidth="32" iconHeight="32" extendName="" onClick="removeFrame" available="1" enabled="1" />
+			</frameModePanel>
+			
+			<clipEditPanel roundRect="1" bgColor="#FFFFFF" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="ClipMethods" extendName="">
+				<button id="deleteClip" label="刪除插圖" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/deleteClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="deleteClip" available="1" enabled="1" />
+				<button id="revertClip" label="復原" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/revertClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="revertClip" available="0" enabled="1" />
+				<button id="layerUpClip" label="移至上層" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/levelUp.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerUpClip" available="0" enabled="1" />
+				<button id="layerDownClip" label="移至下層" labelColor="#331e14" labelSize="14" labelWidth="70" labelHeight="20" icon="assets/lbStyle/icons/levelDown.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerDownClip" available="1" enabled="1" />
+			</clipEditPanel>
+		</floatPanel>
+	</componentSettings>	
+</data>

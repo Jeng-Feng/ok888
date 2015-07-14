@@ -1,0 +1,251 @@
+Client : 121.254.88.70 access. 
+scan input : 2e1e82abea52cc5777955458062d01bf_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 2e1e82abea52cc5777955458062d01bf_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 2e1e82abea52cc5777955458062d01bf_s_p.jpg done. 
+1 done. 
+Client : 121.254.88.70 access. 
+scan input : 2e1e82abea52cc5777955458062d01bf_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 2e1e82abea52cc5777955458062d01bf_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 2e1e82abea52cc5777955458062d01bf_s_p.jpg done. 
+1 done. 
+Client : 121.254.88.70 access. 
+scan input : 980cb7b52d1bd4fce2b458ef100cfa61_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 980cb7b52d1bd4fce2b458ef100cfa61_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 980cb7b52d1bd4fce2b458ef100cfa61_s_p.jpg done. 
+1 done. 
+Client : 121.254.88.70 access. 
+scan input : 4b83e5a5e7a5a5b579e3ad2eaaccf019_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 4b83e5a5e7a5a5b579e3ad2eaaccf019_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 4b83e5a5e7a5a5b579e3ad2eaaccf019_s_p.jpg done. 
+1 done. 
+Client : 121.254.88.70 access. 
+scan input : 6a34b02735ea05aeed9f1d0ed4ba2ce7_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 6a34b02735ea05aeed9f1d0ed4ba2ce7_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 6a34b02735ea05aeed9f1d0ed4ba2ce7_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : ddf33b0412746e19292978e41b528b57_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : ddf33b0412746e19292978e41b528b57_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : ddf33b0412746e19292978e41b528b57_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : 3852222e891befad7bb80b49605f0fcb_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 3852222e891befad7bb80b49605f0fcb_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 3852222e891befad7bb80b49605f0fcb_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : 33ccb5bfc2b1a66494f3f5bb835cb4ad_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 33ccb5bfc2b1a66494f3f5bb835cb4ad_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 33ccb5bfc2b1a66494f3f5bb835cb4ad_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : 33ccb5bfc2b1a66494f3f5bb835cb4ad_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 33ccb5bfc2b1a66494f3f5bb835cb4ad_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 33ccb5bfc2b1a66494f3f5bb835cb4ad_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : 33ccb5bfc2b1a66494f3f5bb835cb4ad_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 33ccb5bfc2b1a66494f3f5bb835cb4ad_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 33ccb5bfc2b1a66494f3f5bb835cb4ad_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : ed5228b96f1981a764c749d57b1958ed_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : ed5228b96f1981a764c749d57b1958ed_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : ed5228b96f1981a764c749d57b1958ed_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : 919b7a96019dce9dfb1604d19adfc5c4_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 919b7a96019dce9dfb1604d19adfc5c4_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 919b7a96019dce9dfb1604d19adfc5c4_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : 919b7a96019dce9dfb1604d19adfc5c4_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 919b7a96019dce9dfb1604d19adfc5c4_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 919b7a96019dce9dfb1604d19adfc5c4_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : 919b7a96019dce9dfb1604d19adfc5c4_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 919b7a96019dce9dfb1604d19adfc5c4_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 919b7a96019dce9dfb1604d19adfc5c4_s_p.jpg done. 
+1 done. 
+Client : 122.147.84.114 access. 
+scan input : 344b647cf6ae7e18c2ad7283f7ab54fc_m.jpg
+Remote Server doPclear done. 
+callRemotePclear -> output file : 344b647cf6ae7e18c2ad7283f7ab54fc_m_p.jpg done. 
+Remote Server doPclear done. 
+callRemotePclear -> output file : 344b647cf6ae7e18c2ad7283f7ab54fc_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.250 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.75 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.75 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.75 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.75 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.75 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.75 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.250 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.75 access. 
+scan input : 15b856f558cb7118cd99055acc39af60_m.jpg
+file not found : 15b856f558cb7118cd99055acc39af60_m.jpg. 
+3 done. 
+Client : 192.168.11.75 access. 
+scan input : 960d4d8e15c6d4b40fc68b0163379460_m.jpg
+callLocalPClear -> output file : 960d4d8e15c6d4b40fc68b0163379460_m_p.jpg done. 
+callLocalPClear -> output file : 960d4d8e15c6d4b40fc68b0163379460_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.250 access. 
+scan input : 960d4d8e15c6d4b40fc68b0163379460_m.jpg
+callLocalPClear -> output file : 960d4d8e15c6d4b40fc68b0163379460_m_p.jpg done. 
+callLocalPClear -> output file : 960d4d8e15c6d4b40fc68b0163379460_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : 960d4d8e15c6d4b40fc68b0163379460_m.jpg
+callLocalPClear -> output file : 960d4d8e15c6d4b40fc68b0163379460_m_p.jpg done. 
+callLocalPClear -> output file : 960d4d8e15c6d4b40fc68b0163379460_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : 960d4d8e15c6d4b40fc68b0163379460_m.jpg
+callLocalPClear -> output file : 960d4d8e15c6d4b40fc68b0163379460_m_p.jpg done. 
+callLocalPClear -> output file : 960d4d8e15c6d4b40fc68b0163379460_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : bab88fb39edf7c235d427397122eb8e5_m.jpg
+callLocalPClear -> output file : bab88fb39edf7c235d427397122eb8e5_m_p.jpg done. 
+callLocalPClear -> output file : bab88fb39edf7c235d427397122eb8e5_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : 7dbc4a1239ce8f3ed2d9c0a836680bd2_m.jpg
+callLocalPClear -> output file : 7dbc4a1239ce8f3ed2d9c0a836680bd2_m_p.jpg done. 
+callLocalPClear -> output file : 7dbc4a1239ce8f3ed2d9c0a836680bd2_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : e735e741ec1669c6d4d0cfb19c0f0220_m.jpg
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_m_p.jpg done. 
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : e735e741ec1669c6d4d0cfb19c0f0220_m.jpg
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_m_p.jpg done. 
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : e735e741ec1669c6d4d0cfb19c0f0220_m.jpg
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_m_p.jpg done. 
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : e735e741ec1669c6d4d0cfb19c0f0220_m.jpg
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_m_p.jpg done. 
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : e735e741ec1669c6d4d0cfb19c0f0220_m.jpg
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_m_p.jpg done. 
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : e735e741ec1669c6d4d0cfb19c0f0220_m.jpg
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_m_p.jpg done. 
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : fdbde9d38687003d09fe39000d6b747c_m.jpg
+callLocalPClear -> output file : fdbde9d38687003d09fe39000d6b747c_m_p.jpg done. 
+callLocalPClear -> output file : fdbde9d38687003d09fe39000d6b747c_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : fdbde9d38687003d09fe39000d6b747c_m.jpg
+callLocalPClear -> output file : fdbde9d38687003d09fe39000d6b747c_m_p.jpg done. 
+callLocalPClear -> output file : fdbde9d38687003d09fe39000d6b747c_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.250 access. 
+scan input : fdbde9d38687003d09fe39000d6b747c_m.jpg
+callLocalPClear -> output file : fdbde9d38687003d09fe39000d6b747c_m_p.jpg done. 
+callLocalPClear -> output file : fdbde9d38687003d09fe39000d6b747c_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.75 access. 
+scan input : e735e741ec1669c6d4d0cfb19c0f0220_m.jpg
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_m_p.jpg done. 
+callLocalPClear -> output file : e735e741ec1669c6d4d0cfb19c0f0220_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.250 access. 
+scan input : f1fedd5a8378d9cb343da40ca00aafdc_m.jpg
+callLocalPClear -> output file : f1fedd5a8378d9cb343da40ca00aafdc_m_p.jpg done. 
+callLocalPClear -> output file : f1fedd5a8378d9cb343da40ca00aafdc_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.250 access. 
+scan input : 1071d19ae7b703b72565a3d3da31ea3a_m.jpg
+callLocalPClear -> output file : 1071d19ae7b703b72565a3d3da31ea3a_m_p.jpg done. 
+callLocalPClear -> output file : 1071d19ae7b703b72565a3d3da31ea3a_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.250 access. 
+scan input : 580bb2c0e149ec3bc8ee5fccffe7d6a7_m.jpg
+callLocalPClear -> output file : 580bb2c0e149ec3bc8ee5fccffe7d6a7_m_p.jpg done. 
+callLocalPClear -> output file : 580bb2c0e149ec3bc8ee5fccffe7d6a7_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.51 access. 
+scan input : ff92f1bffcc22af467ad6faf0f892a52_m.jpg
+callLocalPClear -> output file : ff92f1bffcc22af467ad6faf0f892a52_m_p.jpg done. 
+callLocalPClear -> output file : ff92f1bffcc22af467ad6faf0f892a52_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.250 access. 
+scan input : 7a4a5907e6ea66ce87017efc8b83687d_m.jpg
+callLocalPClear -> output file : 7a4a5907e6ea66ce87017efc8b83687d_m_p.jpg done. 
+callLocalPClear -> output file : 7a4a5907e6ea66ce87017efc8b83687d_s_p.jpg done. 
+1 done. 
+Client : 192.168.11.250 access. 
+scan input : 8ea0d3eaf54393f80f1d37fc89289546_m.jpg
+callLocalPClear -> output file : 8ea0d3eaf54393f80f1d37fc89289546_m_p.jpg done. 
+callLocalPClear -> output file : 8ea0d3eaf54393f80f1d37fc89289546_s_p.jpg done. 
+1 done. 

@@ -1,0 +1,620 @@
+﻿.sticky-navigation-c .navbar-nav > li > a {
+	font-size: 17px;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #CCC;
+}
+
+.navbar-inverse-r {
+	background-color: #222;
+	border-color: #080808;
+	background: url(../images/bg-image-11.jpg) no-repeat center top fixed;
+	-moz-box-shadow: 0px 1px 3px rgba(128,092,128,0.5),
+	 inset 0px 0px 2px rgba(255,255,255,0.7);
+	-webkit-box-shadow: 0px 1px 3px rgba(128,092,128,0.5),
+	 inset 0px 0px 2px rgba(255,255,255,0.7);
+	box-shadow: 0px 1px 3px rgba(128,092,128,0.5),
+	 inset 0px 0px 2px rgba(255,255,255,0.7);
+}
+
+.sticky-navigation-c {
+	min-height: 75px;
+	-webkit-backface-visibility: hidden;
+	border: 0;
+}
+
+.php_productarea .php_ptitle {
+	color: #333;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.canClick{
+	cursor:pointer;
+}
+
+.delorder{
+	color:rgb(139, 36, 36);
+}
+
+.php_productarea .php_pprice {
+	color: #f00;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.alert-primary {
+	background-color: #428bca;
+	border-color: #428bca;
+	color: #fff;
+}
+
+.order-fee{
+	border-bottom: 1px solid #729EA2;
+}
+
+.order2-form-row{
+	margin-bottom:10px
+}
+
+/* mobile screen*/
+@media(max-width:767px){
+	.php_productarea .php_pcpli .php_pgettemplate {
+		clear: both;
+		display: block;
+		overflow: hidden;
+		text-indent: -999px;
+		background: transparent url("../images/products/button/botton_3.png") no-repeat center center;
+	}
+	
+	.php_productarea .php_showallproduct {
+		margin: 10px 0px;
+		clear: both;
+		display: block;
+		overflow: hidden;
+		height: 30px;
+		line-height: 30px;
+		background: transparent url("../images/step2_re.png") no-repeat center center;
+		cursor: pointer;
+		color: #267bb1;
+		font-size: 12px;
+		padding-right: 20px;
+	}
+}
+
+@media(min-width:768px){
+	.php_productarea .php_pcpli .php_pgettemplate {
+		clear: both;
+		display: block;
+		overflow: hidden;
+		text-indent: -999px;
+		background: transparent url("../images/products/button/botton_3.png") no-repeat
+	}
+	
+	.php_productarea .php_showallproduct {
+		margin: 10px 0px;
+		clear: both;
+		display: block;
+		overflow: hidden;
+		width: 122px;
+		height: 30px;
+		line-height: 30px;
+		background: transparent url("../images/step2_re.png") no-repeat center center;
+		cursor: pointer;
+		/*color: #267bb1;*/
+		font-size: 12px;
+		padding-right: 20px;
+	}
+	
+	.featured-box{
+		box-shadow: 0 0 8px #888;
+		-moz-box-shadow: 0 0 8px #888;
+		-webkit-box-shadow: 0 0 8px #888;
+		border-radius: 8px;
+		-moz-border-radius: 8px;
+		-webkit-border-radius: 8px;
+		box-shadow: 0 0 12px #777;
+		-moz-box-shadow: 0 0 12px #777;
+		-webkit-box-shadow: 0 0 12px #777;
+	}
+	
+	#input_postcard_b #input_postcard_b_inner{
+		margin-left:-200px;
+	}
+}
+
+.php_templatearea .php_showpreview {
+	display: block;
+	margin: 0px auto;
+	margin-top: 10px;
+	width: 100px;
+	height: 20px;
+	line-height: 20px;
+	padding-left: 20px;
+	color: #900;
+	background: transparent url("../images/pv.gif") no-repeat 0px 3px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.featured-box .booklist-header{
+	height:100px;
+}
+
+.featured-box .booklist-footer{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.container .step-title {
+	margin:30px 0px;
+}
+
+.container .step1subtitle {
+	margin:20px 0px;
+}
+
+.container .step1subtitle .step1subtitle-img {
+	margin-right:10px;
+}
+
+.container .step1 {
+	margin-bottom:20px;
+}
+
+.container .step1 .step1-warning {
+	padding-left:10px;
+	border-left:3px solid #f00;
+	display:block;
+	color:#f00;
+}
+
+/* 網路相簿相關 [Start] ------------------------------------------------------------------------------ */
+.php-album-box{
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+	margin:0 auto;
+	min-height:600px;
+	height:auto !important;
+	height:600px;
+}
+
+.php-album-entry{
+	position:relative;
+	min-height:200px;
+	height:auto !important;
+	height:200px;
+	cursor:pointer;
+	border:1px solid #eee;
+}
+
+.php-album-entry a{
+	color:#111;
+}
+
+.php-album-entry-imgbox{
+	height:200px;
+	margin-top:4px;
+}
+
+.php-album-entry-txtbox{
+	margin:0 auto;
+	width:100%;
+	height:40px;
+	position:relative;
+	bottom:0;
+	left:0;
+}
+
+.php-album-entry-txtbox-top{
+	color:#004ea0;
+	position:absolute;
+	top:0;
+	left:3px;
+	width:96%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-align:left;
+}
+
+.php-album-entry-txtbox-bottom{
+	position:absolute;
+	bottom:0;
+	left:3px;
+	width:96%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-align:left;
+}
+
+.php-album-entry-txtbox-bottom b{
+	color:#ff5555;
+}
+
+.php-album-entry-txtbox-icon{
+	position:absolute;
+	right:-14px;
+	bottom:1px;
+	z-index:99;
+	border-color:#ddd !important;
+}
+
+.php-album-entry-txtbox-date{
+	font-size:8px;
+	margin-left:-2px;
+}
+
+.php-album-entry-txtbox-description{display:none;}
+
+.php-album-search-box{
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+	text-align:left;
+	margin-bottom:10px;
+}
+
+.php-album-search-box .btn{
+	border:solid #ddd 1px;
+	margin-right:4px;
+	background-color:#eee;
+}
+
+.php-album-search-box .btn:hover{
+	border:solid #eee 1px;
+}
+
+.php-album-search-box input[type=text]{
+	line-height:17px;
+}
+
+.php-album-search-box input[type=button]{
+	line-height:19px;
+}
+
+#php-album-tools,#jqContextMenu{
+	display:none;
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+	text-align:left;
+}
+
+#fallr-wrapper{
+	text-align:left;
+}
+
+.php-photo-already-pclear{
+	position:absolute;
+	width:54px;
+	height:58px;
+	top:0;
+	left:1px;
+	background-image:url('../images/album/already-pclear.png');
+}
+
+.php-album-photo-preview{
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+	text-align:left;
+	color:#111;
+}
+
+.php-album-photo-preview-tools{
+	margin:0 auto;
+	margin-top:2px;
+	border:solid #ccc 1px;
+	text-align:center;
+}
+
+.php-album-photo-preview-tools-title{
+	text-align:center;
+	background-color:#eee;
+	color:#111;
+	font-weight:bold;
+	border-bottom:solid #ccc 1px;
+}
+
+.php-album-photo-preview-tools-content{
+	border-bottom:solid #ccc 1px;
+	padding:5px 5px 10px 5px;
+	font-size:8px;
+}
+.php-album-photo-preview-tools-content label{
+	margin-bottom:-3px;
+	vertical-align:middle;
+}
+.php-album-photo-preview-tools-content input[type=checkbox]{
+	vertical-align:middle;
+}
+.php-album-photo-preview-tools-content-last{
+	border-bottom:none;
+	min-height:48px;
+	height:auto !important;
+	height:48px;
+	text-align:left;
+}
+/* 網路相簿相關 [End] ------------------------------------------------------------------------------ */
+
+/* uploadResult(訂購) [Start] ------------------------------------------------------------------------------ */
+.dropcap {
+	display: block;
+	float: left;
+	font-size: 23px;
+	font-weight: bold;
+	line-height: 36px;
+	width: 36px;
+	height: 36px;
+	text-align: center;
+	margin: 0 7px 0 0;
+	-webkit-border-radius: 40px;
+	-moz-border-radius: 40px;
+	border-radius: 40px;
+	color: white;
+	background: #484848;
+}
+/* uploadResult(訂購) [End] ------------------------------------------------------------------------------ */
+
+/* orderhistory(訂購記錄) [Start] ------------------------------------------------------------------------------ */
+.php-orderhistory{
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+	text-align:left;
+	margin-top:-60px;
+}
+.php-orderhistory input[type=text].hasDatepicker{
+	line-height:16px;
+	width:84px;
+	padding:0 2px 0 2px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.php-orderhistory-search-btnbox input[type=button]{
+	font-size:13px;
+	line-height:13px;
+	margin:0 auto;
+}
+
+#ui-datepicker-div{
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+	font-size:13px;
+}
+#ui-datepicker-div select{color:#111;}
+
+.ui-widget-header{
+	background-color:#ccc !important;
+	background-image:none !important;
+	border:solid #999 1px !important;
+}
+
+.php-orderhistory-title{
+	color:#eee;
+	background-color:#444;
+	border:solid #999 1px;
+	text-shadow:none;
+	margin-top:10px;
+}
+
+.pageulcss td a{
+	padding:2px 5px 2px 5px;
+	background-color:#eee;
+	margin:0 0 0 2px;
+}
+
+.quickselectpage{
+	padding:5px;
+}
+
+.quickselectpage select{
+	margin-left:5px;
+}
+
+/* orderhistory(訂購記錄) [End] -------------------------------------------------------------------------------- */
+
+/* booklists(製作紀錄) [Start] ------------------------------------------------------------------------------ */
+.php-booklists-img-area{
+	min-height: 120px;
+	max-height: 120px;
+}
+
+.php-booklists-img{
+	max-height: 120px;
+	max-width: 120px;
+}
+
+.php-booklists-panel .panel-heading{
+	overflow:hidden;
+	max-height: 46px;
+}
+
+.php-booklists-panel{
+	min-height: 450px;
+	max-height: 450px;
+}
+
+.php-booklists-button{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+.php-booklists-prodtag{
+	margin: 5px;
+}
+
+.php-booklists-editorbutton{
+	margin: 3px;
+}
+
+.php-booklists-orderstar{
+	margin: 3px;
+}
+
+/* booklists(製作紀錄) [End] -------------------------------------------------------------------------------- */
+
+/* memeberregister(會員註冊) [Start] ------------------------------------------------------------------------------ */
+.php-memberregister{
+	font-family:微軟正黑體;
+	font-size:14px;
+	text-shadow: 1px 1px 1px #ccc;
+	text-align:left;
+	margin-top:-60px;
+}
+.php-memeberregister-account-row{
+	margin-bottom:0;
+}
+#member_message{text-align:center;}
+/* memeberregister(會員註冊) [End] -------------------------------------------------------------------------------- */
+
+#shoppingcar{
+	margin:10px 0 0 0;
+}
+
+/* verifyedit(驗證編輯密碼) [Start] ------------------------------------------------------------------------------ */
+.php-verifyedit #verid,.php-verifyedit #status{
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+}
+/* verifyedit(驗證編輯密碼) [End] ------------------------------------------------------------------------------ */
+
+/* customprods (自訂商品列表) [Start] ------------------------------------------------------------------------------ */
+.php-custom-prod-content{
+	margin-top:30px;
+}
+.php-custom-prod-grid{
+	border:solid #eee 1px;
+	padding:5px;
+	text-align:center;
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+	margin-top:5px;
+	position:relative;
+}
+
+.php-custom-prod-addcart{
+	text-align:center;
+}
+
+.php-custom-prod-imgbox{
+	text-align:center;
+	overflow:hidden;
+	white-space:nowrap;
+	height:150px;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+.php-custom-prod-imgbox img{
+	margin:0 auto;
+}
+
+.php-custom-prod-text{
+	text-align:left;
+}
+
+.php-custom-prod-name{
+	font-size:14px;
+	font-weight:bold;
+}
+.php-custom-prod-desc-box{
+	margin-top:5px;
+}
+
+.php-custom-prod-list-price{
+	text-align:right;
+	color:#178951;
+}
+
+.php-custom-prod-line{
+	border-top:dashed #ccc 1px;
+	margin-bottom:6px;
+}
+
+#php-custom-prod-menu li{
+	text-align:center;
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+	line-height: 10px;
+	background-color:#eee;
+	border:solid #ccc 1px;
+}
+
+#php-custom-prod-menu li a{
+	color:#111;
+}
+
+.php-custom-prod-page-content{
+	font-family:微軟正黑體;
+	font-size:13px;
+	text-shadow: 1px 1px 1px #ccc;
+}
+
+.php-custom-prod-info{
+	margin-top:10px;
+	text-align:left;
+}
+
+.php-custom-prod-templates{
+	height:200px;
+}
+
+.php-custom-prod-text{text-align:left;}
+/* customprods (自訂商品列表) [End] -------------------------------------------------------------------------------- */
+
+.nav-tabs.nav-justified>li>a {
+	border-radius: 4px 4px 0 0;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+	text-decoration: none;
+	background-color: #eee;
+}
+.navbar-inverse .navbar-toggle {
+	border-color: #333;
+	background: #bbb;
+}
+input.input-field {
+	width: 100%;
+	margin-bottom: 2%;
+}
+input#btnContact {
+	margin-top: 2%;
+}
+#bootstrap_content {
+	min-height: 350px;
+}
+
+.php_productarea .php_showallproduct {
+	text-align:center;
+}
+input.btn.btn-primary {
+  margin-right: 1%;
+}
+.hiline{
+	margin-bottom:1%!important;
+}
+button#cancel {
+	margin-right:1%!important;
+}
+label.form-control {
+  display: table!important;
+}
+@media(max-width:480px) {
+.sm-title{
+	text-align:center;
+}
+.pi-context{
+	text-align:center;
+}
+.pi-title{
+	text-align:center;
+}
+}

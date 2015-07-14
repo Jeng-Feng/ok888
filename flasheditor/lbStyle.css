@@ -1,0 +1,947 @@
+/* 編輯器左邊選單列設定 */
+#applicationBar_save:hover{
+	background-color:#fffdf9;
+	color:#5e2408;
+}
+.applicationBar_save{
+	background-color:#f1eceb;
+	color:#331e14;		
+}
+#applicationBar_goMenu:hover{
+	background-color:#fffaf2;
+	color:#5e2408;
+}
+.applicationBar_goMenu{
+	background-color:#dbd2ce;
+	color:#331e14;
+}		
+#applicationBar_purchase:hover{
+	background-color:#fff7e8;
+	color:#5e2408;
+}
+.applicationBar_purchase{
+	background-color:#c3b4ad;
+	color:#331e14;
+}
+#applicationBar_helps:hover{
+	background-color:#fff4dd;
+	color:#5e2408;
+}
+.applicationBar_helps{
+	background-color:#a89289;
+	color:#331e14;		
+}
+.bts_vhost{
+	margin-top:15px;
+}
+/* <STRAT> 頁面基礎設定 */
+html, body { height:100%; background-color: #FFFFFF;}
+body {
+	margin:0;
+	padding:0;
+	background-color: #FFFFFF;
+	/*font-size: 12px;*/
+	color:#777;
+}
+p,span,div{
+	/*font-family: 微軟正黑體,Microsoft JhengHei,Arial, Helvetica, sans-serif;*/
+}
+a,a:link,span,p {
+	/*font-family:"Microsoft JhengHei", "微軟正黑體", Arial, Helvetica, sans-serif;*/
+	text-decoration: none;
+ 	font-weight: bold;
+}
+/* <END> 頁面基礎設定 */
+
+.php_onlinephoto_css_maintab_contain {
+	width:100%;
+	height:100%;
+	display:none;
+}
+.php_onlinephoto_css_maintab_contain iframe{
+	width:100%;
+	height: 200%;
+	overflow-x:hidden;
+}
+.current-tab{
+	font-weight:bold;
+}
+
+#fallr-wrapper {
+	left: 50% !important;
+	top: 50% !important;
+	margin-left: -350px !important;
+	margin-top: -100px !important;
+}
+
+/* <START> BANNER區塊 (名家相簿、網路相簿、FB相簿)  */
+	/* 基礎設置 */
+	#php_onlinephoto_css_nav{
+		width:95%;
+		border:0px solid #fff000;
+		margin:0;
+	}
+		/* Tabs 基本狀態 */
+		#php_onlinephoto_css_nav li {
+			display: inline-block;
+			list-style-type: none;
+			width:19%;
+			border:0px solid red;
+			*display:inline;
+			zoom: 1;
+		}
+		#php_onlinephoto_css_nav li a:link{
+			color: #777;
+		}
+		/* Tabs 選擇狀態 */
+		.current-tab a:link {
+			text-decoration: none;
+		}
+	/* 相簿 TABS 圖區 */
+	.php_onlinephoto_banner{
+		background-repeat:no-repeat;	
+		cursor:pointer;
+		display: block;
+		width: 80px;
+		height: 80px;
+	}
+	/*  名家相簿 */
+	.php_onlinephoto_celebrity_icon {
+		background-image:url('../assets/lbStyle/cssCelebrity.png');
+	}
+		.php_onlinephoto_celebrity_icon:hover {
+			background-image:url('../assets/lbStyle/cssCelebrity-hover.png');
+		}
+		.php_onlinephoto_celebrity_icon-active {
+			background-image:url('../assets/lbStyle/cssCelebrity-active.png');
+		}
+	/*  網路相簿 */
+	.php_onlinephoto_local_icon {
+		background-image:url('../assets/lbStyle/cssalbum.png');
+	}
+		.php_onlinephoto_local_icon:hover {
+			background-image:url('../assets/lbStyle/cssalbum-hover.png');
+		}
+		.php_onlinephoto_local_icon-active {
+			background-image:url('../assets/lbStyle/cssalbum-active.png');
+		}
+	/*  FB相簿 */
+	.php_onlinephoto_facebook_icon {
+		background-image:url('../assets/lbStyle/cssfacebook.png');
+	}
+		.php_onlinephoto_facebook_icon:hover {
+			background-image:url('../assets/lbStyle/cssfacebook-hover.png');
+		}
+		.php_onlinephoto_facebook_icon-active {
+			background-image:url('../assets/lbStyle/cssfacebook-active.png');
+		}
+/* <END> BANNER區塊 (名家相簿、網路相簿、FB相簿)  */
+
+/* <START> 主要內容區塊 */
+#php_onlinephoto_css_main{
+	width:100%;	
+	height:100%!important;
+	min-height:400px!important;
+	padding:0;
+	overflow:hidden;
+}	
+	/* 列表區塊 用於 [相簿列表區塊] */
+	#php_onlinephoto_css_menu {
+		width: 19%; 	
+		position:absolute;
+		margin-left: 0.5%;
+		padding: 5px;
+		overflow-x:hidden;
+		overflow-y:auto;
+	}	
+	/* 內容區塊 用於 [相片上傳]、[匯入片區塊] */
+	#php_onlinephoto_css_content {
+		width: 78%; 
+		margin-left: 21%; 
+		margin-right: 0.5%; 
+		margin-top: 8px; 
+		position:absolute;
+	}	
+/* <END> 主要內容區塊 */
+
+/* <START> 不分區 全域設定 */
+	/* Title Bar:用於所有標題列 */
+	.php_onlinephoto_css_title{
+
+	}
+		/* 行內文字 */
+		.php_onlinephoto_css_title span{
+			position: absolute;
+			margin-top: -20px;
+			text-align: center;
+			color: #fff;
+			width: 10%;
+		}
+	/* Button:用於所有按鈕 */
+	.php_onlinephoto_css_btn {
+		display: inline-block;	
+		margin: 0;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		/*font-family: '微軟正黑體';*/
+		line-height:150%;
+		word-wrap: break-word;	
+	}
+	/* Loading:用於請稍後圖示 */
+	.php_onlinephoto_css_loading{
+	}
+		.php_onlinephoto_css_loading div{
+			display:inline-block;
+			vertical-align: top;
+			padding-top:10px;
+		}
+		.php_onlinephoto_css_loading img{
+			border:0;
+			text-align:center;
+		}
+		
+	/* 上傳進度條 */
+	.ui-progressbar .ui-progressbar-value { background-image: url(../assets/lbStyle/csspbar-ani.gif); }
+	
+/* <END> 不分區 全域設定 */	
+
+
+/* Public Normal Setting */
+	/* ButtonStyle:DarkRed 用於：新增相簿、新增圖片 */
+	.php_onlinephoto_css_DarkRed {
+		color: #ffffff;
+		border: 5px solid #00A99D;
+		width: 95%;
+		margin-bottom: 1px;
+		background-color:#4D4D4D;
+		padding: 0.1em 0.2em 0 0;
+		/*font-size: 1.2em;*/
+		font-size: large;
+		height: 30px;
+ 	}
+		/* 滑鼠移過 */
+		.php_onlinephoto_css_DarkRed:hover {
+			color: #00A99D;
+			background-color:#E6E6E6;
+
+		}
+		/* 滑鼠按下 */
+		.php_onlinephoto_css_DarkRed:active {
+			color: #777;
+		}	
+		
+	/* 小按鈕 ex.新增相簿、全部選擇、全部取消、*/
+	.php_onlinephoto_css_medium-s {
+		/*font-family: 微軟正黑體,Microsoft JhengHei,Arial, Helvetica, sans-serif;*/
+	}
+	
+	/* 上一頁、下一頁 無法使用時的樣式 */
+	.php_onlinephoto_css_pagedisable {
+		color: #8B0000;
+		background-image: url(../assets/lbStyle/csspage-btn-disable.png);
+		background-repeat: no-repeat;  
+	}
+	/* 切頁按鈕 ex.上一頁、下一頁 */
+	.php_onlinephoto_css_medium-page {
+		/*font-size: 12px;*/
+		padding: .48em 2.2em .8em;
+	}
+	/* 按鈕風格 */
+		/* 全部選擇、全部取消、上一頁、下一頁 */
+		.php_onlinephoto_css_lightgray {
+			color: #fff;
+			padding: 5px 10px 5px 10px;
+			background-color: #999999;
+		}
+		.php_onlinephoto_css_lightgray:hover {
+			color: #fff;
+			top: 1px;
+			background-color: #00A99D;
+		}
+		.php_onlinephoto_css_lightgray:active {
+			color: #fff;
+
+		}
+		/* 匯入整本相簿、匯入已勾選的圖片 */
+		.php_onlinephoto_css_darkredlong {
+			color: #ffffff;
+			margin: 10px;
+			background-color: #00A99D;
+		}
+		.php_onlinephoto_css_darkredlong:hover {
+			color: #fff;
+			top: 1px;
+			background-color:#4D4D4D;
+			border: 5px solid #00A99D;
+			margin: 5px;
+		}
+		.php_onlinephoto_css_darkredlong:active {
+			color: #777;
+
+
+		}
+		/* blue */
+		.php_onlinephoto_css_blue{
+			padding: 2px 10px 1px 18px;
+			color: #fff;
+			background: #4D4D4D;
+			/*font-size: 0.7em;*/
+			font-size: small;
+		}
+		.php_onlinephoto_css_blue a{
+			background: #4D4D4D;
+		}
+
+		.php_onlinephoto_css_blue:hover {
+			background: #F8B62D;
+		}
+		.php_onlinephoto_css_blue:active {
+			background: #CCCCCC;
+		}
+		/* 匯入已勾選圖片 */
+		.php_onlinephoto_css_medium-l {
+			/*font-size: 1.2em;*/
+			font-size: large;
+			padding: 6px 25px 6px 25px;
+		}
+		/* 匯入整本相簿、*/
+		.php_onlinephoto_css_medium-r{
+			/*font-size: 12px;*/
+			padding: .48em 3.5em .5em;
+		}
+/* /Public Normal Setting */
+	
+	
+/* <STRAT> 相簿區域 */
+	/* Title BAR 選擇相簿 標題 獨立設定 */	
+	.php_onlinephoto_css_album-list-title {
+		border-left: 30px solid transparent !important;
+		border-right: 30px solid transparent !important;
+		border-bottom: 25px solid rgb(170, 170, 170) !important;
+		width: 78%!important;
+		height: 0!important;
+		margin-bottom: -2px!important;
+		margin-left: 2px!important;
+	}
+		/* 行內文字 */
+		.php_onlinephoto_css_album-list-title span {
+			position: absolute;
+			margin-top: 5px;
+			color: #fff;
+			text-align: center;
+			width: 80%;
+		}
+	/* 新增相簿 按鈕 */
+	.php_onlinephoto_css_list-row-addButton {
+		*display:inline;
+		margin-top:-5px;
+		vertical-align:middle;
+	}		
+		/* 滑鼠移過 */
+		.php_onlinephoto_css_list-row-addButton .img a:hover {
+			background-image:url("../assets/lbStyle/cssadd-album-icon-over.png");
+		}
+		/* 前置的小圖 */
+		.php_onlinephoto_css_list-row-addButton .img {
+			*magin-right:500px;
+			background-image:url("../assets/lbStyle/cssadd-album-icon.png");
+			background-size: 18px 15px;
+			width: 18px;
+			height: 15px;
+			display:inline-block;
+			margin-top: 5px;
+		}		
+		/* 行內文字 */
+		.php_onlinephoto_css_list-row-addButton span {
+			display:inline-block;
+		}
+		
+	/* 相簿列 全部 */
+	.php_onlinephoto_css_list-row{	
+		margin: 3px;
+		/*font-family: 微軟正黑體;*/
+		text-align: center;
+		cursor: pointer;
+		width: 95%;
+		height: 30px;
+		line-height: 30px;
+		overflow: hidden;
+		vertical-align: middle;
+		border: 4px solid #BCBEC0 !important;
+	}	
+		/* 滑鼠移過 */
+		.php_onlinephoto_css_list-row:Hover {
+			background-color: #00A99D !important;
+			color:#fff!important;
+		}
+		/* 被選擇到 */
+		.php_onlinephoto_css_list-row-active {
+			border: 4px solid #BCBEC0 !important;
+			background-color: #BCBEC0 !important;
+			color:#fff!important;
+		}
+/* <END> 相簿區域 */
+
+/* <START> 網路相簿內容 分頁選單 (相片上傳/從相簿匯入) */
+	/* 分頁選單 基本設定 選單列 */		
+	ul.php_onlinephoto_css_tabs {
+		padding: 8px 0 8px;
+		margin:0;
+		/*font-size: 0;*/
+		list-style-type: none;
+		text-align: left; /*set to left, center, or right to align the tabs as desired*/
+	}	
+	ul.php_onlinephoto_css_tabs li {
+		display: inline;
+		margin: 0;
+		margin-right: 1px;/*distance between tabs*/
+		/*font: normal 12px '微軟正黑體';*/
+	}	
+	/* 分頁選單 基本設定 內容區塊 */		
+	.php_onlinephoto_css_tabcontents {
+		width:100%;
+		position:absolute;			
+		overflow-x:hidden;	
+		margin:0;
+		padding: 1px;
+		border: 3px solid #D3D3D3;
+		background-color:#FFF;
+		border-radius: 0 0 2px 2px;
+	}
+	/* 設定全部分頁選單按鈕  */					
+		ul.php_onlinephoto_css_tabs li a {
+			text-decoration: none;
+			position: relative;
+			color: #000;
+			outline:none;
+			z-index: 99;
+			cursor:pointer;
+		}			
+			/* 行內文字 */
+			ul.php_onlinephoto_css_tabs li a span {
+				padding-left:28px;
+				/*font: bold 1.2em '微軟正黑體';*/
+				font-size: bold large;
+				color: #fff;
+				cursor: pointer;
+			}	
+			/* OlinePhoto main->content->tabs ul->li->a 列表 單獨文字設定 [滑過狀態] */
+			ul.php_onlinephoto_css_tabs li a:hover {
+				text-decoration: none;
+				color: #000;
+			}
+				/* 取消個瀏覽瀏覽器 自行添加的文字設定 */
+				ul.php_onlinephoto_css_tabs li.selected a:hover, ul.tabs li.selected a:hover {
+					text-decoration: none;					
+				}
+			/* OlinePhoto main->content->tabs ul->li->a 列表 單獨文字設定 [選擇狀態] */
+			ul.php_onlinephoto_css_tabs li.selected a {
+				position: relative;
+				top: 0px;
+				font-weight:bold;
+				/*background: #fff5ee;*/
+				background: #fff;
+				color: #000;
+			}
+			/* OlinePhoto main->content->tabs ul->li->a->img 全部列表 內縮圖設定 */
+			ul.php_onlinephoto_css_tabs li a .img {
+				*position :absolute;
+				*top:12px;
+				*left:12px;
+				border:none;
+				bottom:5px;
+				position:absolute;
+				background-size: 16px 16px;
+				background-repeat:no-repeat;
+				width:16px;
+				height:16px;
+				margin-left:30px;
+				margin-bottom: 7px;
+			}			
+	/* <END> 設定全部 分頁選單 按鈕 */			
+	/* <START> 分頁選單 按鈕 */
+		/* <START> 共同設定 相片上傳按鈕 從相簿匯入按鈕 */
+			.php_onlinephoto_css_view a{
+				background-color:#4D4D4D;	
+				border: 5px solid #4D4D4D;	
+				padding:7px;	
+			}
+			.php_onlinephoto_css_view a:hover {		
+				background-color:#00A99D;
+				border: 5px solid #4D4D4D;
+			}
+			.php_onlinephoto_css_view-active a{
+				background-color:#00A99D;
+				border: 5px solid #D3D3D3;	
+				padding:7px;	
+			}
+		/* <END> 共同設定 相片上傳按鈕 從相簿匯入按鈕 */		
+		/* <START> 單獨設定 */		
+			/* <START> 相片上傳按鈕 */		
+				/* 前置圖案 */			
+				#php_onlinephoto_css_v1 a .img{
+					background-image:url("../assets/lbStyle/cssupload-taps-icon.png");
+					margin-left: 15px;
+					margin-bottom: 2px;
+				}
+				/* 行內文字 */
+				#php_onlinephoto_css_v1 a span{
+				
+				}
+			/* <END> 相片上傳按鈕 */
+			
+			/* <START> 從相簿匯入按鈕 */
+				/* 前置圖案 */
+				#php_onlinephoto_css_v2 a .img{
+					background-image:url("../assets/lbStyle/cssimport-taps-icon.png");			
+					margin-left: 15px;
+					margin-bottom: 2px;
+				}			
+				/* 行內文字 */
+				#php_onlinephoto_css_v2 a span{
+				
+				}
+
+			/* <END> 從相簿匯入按鈕 */
+			
+			/* <START> 進階上傳按鈕 */
+				/* 前置圖案 */
+				#php_onlinephoto_css_v3 a .img{
+					background-image:url("../assets/lbStyle/cssprofessinal-taps-icon.png");			
+					margin-left: 15px;
+					margin-bottom: 2px;
+				}			
+				/* 行內文字 */
+				#php_onlinephoto_css_v2 a span{
+				
+				}
+
+			/* <END> 進階上傳按鈕 */
+		/*  <END> 單獨設定 */		
+	/* <END> 分頁選單 按鈕 */
+/* <END> 網路相簿內容 分頁選單 (相片上傳/從相簿匯入) */
+
+	#php_Pro-upload_Pick-Files {
+		border:none;
+		margin-top:-3px;
+		margin-left: 7px;
+		vertical-align:middle;
+		background-color: #F8B62D;	
+		text-shadow: none;
+		color: #FFF;
+		border: 4px solid #fff;
+		background-position: -10px -9px;
+	}
+	#php_Pro-upload_Pick-Files .img {
+		border: none;
+		width: 18px;
+		height: 14px;
+		background-image: url("../assets/lbStyle/cssnew-photos-icon.png");
+		background-repeat: no-repeat;
+		background-size: 18px 14px;
+		display: inline-block;
+		margin-bottom: -3px;
+	}
+	/* PL-Upload 拖拉區區塊設定 */
+	#php_Pro-upload_drap-element {
+		background-color:#F5F5F5;
+	}	
+	
+	/* PL-Upload 拖拉區提示文字 */
+	#php_Pro-upload_drag-hint{
+		margin: 8px;
+		/*font-size: 20px;*/
+		font-size: larger;
+		border: 1px dashed #00A99D;
+		line-height: 100px;
+	}
+	
+	/* PL-Upload 接受圖片格式 */
+	#php_Pro-upload_drap_hint-only-accept-jpg {
+		color: #F8B62D;
+		margin: 5px 0 10px 0;
+		text-align: center;
+	}
+		/* 前置圖案 */
+			#php_Pro-upload_drap_hint-only-accept-jpg  .before_img{ display:inline-block; }
+			#php_Pro-upload_drap_hint-only-accept-jpg  .before_img:BEFORE{ content:"★"; }
+		/* 後置圖案 */
+			#php_Pro-upload_drap_hint-only-accept-jpg  .after_img{ display:inline-block; }
+			#php_Pro-upload_drap_hint-only-accept-jpg  .after_img:BEFORE{ content:"★"; }	
+/* <START> 相片上傳 */
+	/* PL-Upload 新增圖片按鈕 */
+	#php_plupload_Pick-Files {
+		border:none;
+		margin-top:-3px;
+		margin-left: 7px;
+		vertical-align:middle;
+		background-color: #F8B62D;	
+		text-shadow: none;
+		color: #FFF;
+		border: 4px solid #fff;
+		background-position: -10px -9px;
+	}
+		/* 行內文字 */
+		#php_plupload_Pick-Files span {
+			display:inline-block;	
+		}
+		/* 前置縮圖 */
+		#php_plupload_Pick-Files .img {	
+			border:none;
+			width:18px;
+			height:14px;
+			background-image:url("../assets/lbStyle/cssnew-photos-icon.png");
+			background-repeat:no-repeat;
+			background-size: 18px 14px;
+			display:inline-block;
+			margin-bottom: -3px;
+		}
+		/* 滑鼠移過 */
+		#php_plupload_Pick-Files:hover{
+			background-color: #666666;
+			border: 4px solid #F8B62D;
+		}
+	/* PL-Upload 接受圖片格式 */
+	#php_plupload_drap_hint-only-accept-jpg {
+		color: #F8B62D;
+		margin: 5px 0 10px 0;
+		text-align: center;
+	}
+		/* 前置圖案 */
+			#php_plupload_drap_hint-only-accept-jpg  .before_img{ display:inline-block; }
+			#php_plupload_drap_hint-only-accept-jpg  .before_img:BEFORE{ content:"★"; }
+		/* 後置圖案 */
+			#php_plupload_drap_hint-only-accept-jpg  .after_img{ display:inline-block; }
+			#php_plupload_drap_hint-only-accept-jpg  .after_img:BEFORE{ content:"★"; }		
+			
+	/* PL-Upload 拖拉區區塊設定 */
+	#php_plupload_drap-element {
+		background-color:#F5F5F5;
+	}	
+	
+	/* PL-Upload 拖拉區提示文字 */
+	#php_plupload_drag-hint{
+		margin: 8px;
+		/*font-size: 20px;*/
+		font-size: larger;
+		border: 1px dashed #00A99D;
+		line-height: 100px;
+	}
+	/* PL-Upload 影像最佳化  */	
+	.php_onlinephoto_pclear {
+		position:absolute;
+		cursor:pointer;
+		line-height: 65px;
+	}
+		/* 勾取按鈕 */
+		#perfectlyclear {
+			margin-left:80px;
+			margin-top:-1px;
+			vertical-align:middle;
+		}
+		/* 前置圖案 */		
+		.pclearimg {
+			background-image:url("../assets/lbStyle/css01.png");
+			background-repeat:no-repeat;
+			background-size: 80px 60px;
+			width: 800px;
+			height: 60px;
+			display: inline-block;
+			position: absolute;
+
+		}
+	/* PL-Upload 按鈕 基礎大小 */
+	.php_plupload_medium {
+		/*font-size: 12px;*/
+		padding: .48em 1.6em .5em;
+	}
+	/* PL-Upload 按紐 基礎設置 */
+	.php_plupload_button {
+		display: inline-block;
+		zoom: 1;
+		vertical-align: baseline;
+		margin: 0 2px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		/*font-family: '微軟正黑體';*/
+		text-shadow: 0 1px 1px 
+		rgba(0, 0, 0, .3);
+	}
+	/* PL-Upload 上傳檔案列 */
+	.page_prev_box {
+		margin-left: 5px;
+		margin-right: 20px;
+	}
+		/* 標題列 */
+		.php_plupload_list-title{
+			width: 100%;
+			background: #DFDFDF;
+			color: #42454A;
+			border-bottom: 1px solid #CDCDCD;
+			height:30px;
+			line-height:30px;
+			text-align:center;
+		}
+		/* 檔案列 */
+		.php_plupload_list-row{
+			text-align: center; 
+			cursor: pointer;
+			width: 100%;
+			border: 1px solid #DDD;
+			height:30px;
+			line-height:30px;
+			overflow: hidden;
+			vertical-align: middle;
+		}
+			/* 檔名 */
+			.php_plupload_list-filename{
+				width: 25%;
+				float: left;
+				overflow:hidden;
+			}
+			/* 大小 */
+			.php_plupload_list-size{
+				width: 25%;
+				float:right;
+				overflow:hidden;
+			}
+			/* 狀態 */
+			.php_plupload_list-status{
+				width: 38%;
+				float:right;
+			}
+			/* 上傳 (沒再用了) */
+			.php_plupload_list-uploaded-row{
+				width: 100%;
+				color: #42454A;
+				border-bottom: 1px solid #DDD;
+			}
+			/* 取消 */
+			.php_plupload_list-delete{
+				width: 10%;
+				float:right;
+			}
+	/* 全部上傳 (沒再用了) */
+	.php_plupload_list-uploaded-item{
+		width: 25%;
+		float: left;
+		overflow:hidden;
+	}
+/* <END> 相片上傳 */
+	
+
+/* <START> 從相簿匯入圖片 */
+	/* <START> 匯入區塊 上方工具列 */
+	#php_import-UI-TopBlock{
+		width:100%;
+		padding:10px;
+		border-bottom:1px solid #DDD;
+		margin-bottom:5px;
+	}
+		/* 匯入整本相簿 按鈕 文字 */
+		#php_import-UI_importalbumallphoto span {
+			display:inline-block;
+		}
+		/* 匯入整本相簿 按鈕圖設定 */
+		#importalbumallphoto{
+			position:absolute;
+		}
+		#php_import-UI_importalbumallphoto .img {
+			border:none;
+			margin-top:-2px;
+			margin-left:-10px;
+			vertical-align:middle;
+			width:14px;
+			height:9px;
+			background-image:url("../assets/lbStyle/cssall-photo-icon.png");
+			background-repeat:no-repeat;
+			background-size: 14px 9px;
+			display:inline-block;
+		}
+		
+		/* 匯入以已勾選圖片 按鈕 文字 */
+		#php_import-UI_importfiles span {
+			display:inline-block;
+		}
+		/* 匯入以已勾選圖片 按鈕 縮圖 */
+		#php_import-UI_importfiles .img {
+			border:none;
+			margin-top:-2px;
+			margin-left:-10px;
+			vertical-align:middle;
+			width:18px;
+			height:14px;
+			background-image:url("../assets/lbStyle/cssimport-photos-icon.png");
+			background-repeat:no-repeat;
+			background-size: 18px 14px;
+			display:inline-block;
+		}
+		/* 已選擇照片張數 */
+			/* 文字 */
+			#php_onlinephoto_css_hint-selected-already-label{
+				float:left;
+				margin-left: 20px;
+				/*font-size:1.2em;*/
+				font-size: large;
+			}
+			/* 數字  */
+			#php_onlinephoto_css_hint-selected-already-number{
+				color:#00A99D;
+			}
+			#php_onlinephoto_css_hint-total-number{
+				color:#00A99D;
+			}
+		/* 每頁照片張數 */
+			#php_onlinephoto_css_selected-prepage{
+				float:right;
+				margin-right: 20px;
+				/*font-size:14px;*/
+			}
+		/*  全部 選擇 or 取消 區塊 */
+		#php_import-UI_hint-all-selected {
+			margin:10px 0px 15px 0px;
+			/*font-size:14px;*/
+		}		
+		#php_import-UI_deselectAll {
+			margin-left: -11px;
+		}
+		#php_import-UI_selectAll .img{
+			background-image: url(../assets/lbStyle/cssall0.png);
+			background-repeat: no-repeat;
+			height: 12px;
+			width: 17px;
+			background-size: 17px 12px;	
+			display: inline-block;
+			margin-bottom: -1px;
+		}
+		#php_import-UI_deselectAll .img{
+			background-image: url(../assets/lbStyle/cssallx.png)!important;
+			background-repeat: no-repeat;
+			height: 12px;
+			width: 14px;
+			background-size: 14px 12px;	
+			display: inline-block;
+			margin-bottom: -1px;
+		}
+	/* <END> 匯入區塊 上方工具列 */
+	/* <START> 相片區塊 */
+		.php_onlinephoto_css_inline-show{
+			position:relative;
+			display:inline-block;
+			*display:inline;
+			zoom: 1;	
+		}
+		/* <STRAT> 照片標籤 新上傳、已匯入 */
+			.php_onlinephoto_css_phototag {	
+				width:35px;
+				margin-left:-5px;
+				margin-top:-5px;
+				position:absolute;
+				z-index:100;
+			}
+			/* 已匯入 tag*/
+				.php_onlinephoto_css_already_import {
+					background-image:url('../assets/lbStyle/cssalready_upload.png');
+					background-repeat:no-repeat;
+					background-size: 35px 35px;	
+					width:35px;
+					height:35px;	
+				}
+		/* <END> 照片標籤 新上傳、已匯入 */
+		/* <STRAT> 單張照片 基礎設置 */
+			.php_onlinephoto_css_import-photo {
+				width:100px;
+				border:5px solid #FFFFFF;
+				cursor:pointer;
+				margin:0 15px 0px 0;
+				opacity:0.5;
+				filter:alpha(opacity=50);
+			}
+				/* 滑鼠移過 */
+				.php_onlinephoto_css_import-photo:hover{
+					opacity:1;
+					filter:alpha(opacity=100);
+					border:5px solid #00A99D;
+				}
+				/* 滑鼠被選取 (建議加上 !important;) */
+				.php_onlinephoto_css_import-photo-active {
+					opacity: 1 !important;
+					border: 4px solid #999 !important;
+					background-color: #fff !important;
+					padding: 1px !important;
+				}
+		/* <END> 單張照片 基礎設置 */
+		
+		/*被選取的照片 下面的加號小圖 */
+			.php_onlinephoto_css_photoconfirm{
+				border:0;
+				visibility:hidden;
+				width:24px;
+				height:24px
+			}		
+		/* 切頁按鈕區塊 */
+			.php_import-UI_paging {
+				margin:15px 0px 15px 0px;
+				text-align:center;
+				position:relative;
+				display:inline-block;
+				*display:inline;
+			}
+			/* 下一頁 按鈕 */
+			#php_import-UI_paging-next .img {
+				width:100px;
+				height:100px;
+				background-image:url('../assets/lbStyle/csspage_next.png');
+				background-repeat:no-repeat;
+				background-size: 100px 100px;	
+				cursor:pointer;
+			 }
+			 /* 滑鼠移過 */
+				#php_import-UI_paging-next .img:hover {
+					background-image:url('../assets/lbStyle/csspage_next-hover.png') !important;
+				}
+			/* 上一頁 按鈕 */
+			#php_import-UI_paging-prev .img {
+				width:100px;
+				height:100px;
+				background-image:url('../assets/lbStyle/csspage_prev.png')!important;
+				background-repeat:no-repeat;
+				background-size: 100px 100px;	
+				cursor:pointer;
+			 }
+			 /* 滑鼠移過 */			 
+				#php_import-UI_paging-prev .img:hover {
+					background-image:url('../assets/lbStyle/csspage_prev-hover.png')!important;
+				}
+	/* <END> 相片區塊 */
+	
+	/* <STRAT> 匯入區塊 下方工具列 */
+	#php_import-UI-BottomBlock{
+		width:100%;
+		padding:10px;
+		border-top:1px solid #DDD;
+		margin-top:5px;
+	}
+		/* 底邊的匯入按鈕 文字*/
+		 #php_import-UI-BottomBlock span {
+			display:inline-block;
+		}
+		/* 底邊的匯入按鈕 縮圖*/
+		#php_import-UI-BottomBlock .img{
+			 border:none;
+			 margin-top:-5px;
+			 margin-left:-10px;
+			 vertical-align:middle;
+			width:15px;
+			height:15px;
+			background-image:url("../assets/lbStyle/cssimport-photos-icon.png");
+			background-repeat:no-repeat;
+			background-size: 15px 15px;
+			display:inline-block;			 
+		}
+	/* <END> 匯入區塊 下方工具列 */
+/* <END> 從相簿匯入圖片 */

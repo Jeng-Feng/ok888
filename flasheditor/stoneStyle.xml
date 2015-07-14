@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<styleSheet>
+		<background>
+			<stage graphicUrl="assets/stoneStyle/texture/stage.jpg" bgColor="#FFFFFF" shadow="1" />
+			<album graphicUrl="assets/stoneStyle/texture/thumbnailController.jpg" bgColor="#FFFFFF" shadow="0" />
+			<titleWindow graphicUrl="assets/stoneStyle/texture/window.jpg" bgColor="#B4DBDE" shadow="1" />
+		</background>
+		<page selectionColor="#FF0000" thickness="4"></page>
+	</styleSheet>
+	<componentSettings>
+		<accordionBar bgColor="#333333" bgAlpha="1" maxWidth="160" maxHeight="500" defaultIconUrl="" graphicUrl="assets/stoneStyle/texture/stage.jpg">
+			<application enable="1" sort="1" label="功能操作" titleColor="#333333" labelColor="#002F2F" labelSize="15" bgAlpha="1" itemIcon="assets/stoneStyle/icons/accordion_item_icon_01.png" activeIcon="" packageName="components.toolPanel.accordionClass">
+				<photoManager label="匯入圖片" sort="1" icon="assets/stoneStyle/icons/panel_globals.png" enable="1" className="MethodCollection">
+					<command sort="1"  label="本地磁碟" icon="assets/stoneStyle/icons/methodIcon.png" functionName="importPhoto_LocalDisk"/>
+					<command sort="2" label="網路相簿" icon="assets/stoneStyle/icons/methodIcon.png" functionName="importPhoto_CloudAlbum"/>
+					<command sort="3" label="名家相簿" icon="assets/stoneStyle/icons/methodIcon.png" functionName="importPhoto_CloudShareAlbum"/>
+					<command sort="4" label="照片總覽" icon="assets/stoneStyle/icons/methodIcon.png" functionName="browseAlbum"/>
+				</photoManager>
+				<editManager label="編輯輔助" sort="2" icon="assets/stoneStyle/icons/panel_FlashGet.png" enable="1" className="MethodCollection">
+					<command sort="1" label="自動編排" icon="assets/stoneStyle/icons/methodIcon.png" functionName="autoFillPhotos"/>
+					<command sort="2" label="放大檢視" icon="assets/stoneStyle/icons/methodIcon.png" functionName="magnifier"/>
+					<command sort="3" label="作品資訊" icon="assets/stoneStyle/icons/methodIcon.png" functionName="getInfomation"/>
+					<command sort="4" label="編輯模式切換" icon="assets/stoneStyle/icons/methodIcon.png" functionName="changeEditMode"/>
+				</editManager>
+				<pageManager label="頁面管理" sort="3" icon="assets/stoneStyle/icons/panel_admin.png" enable="1" className="MethodCollection">
+					<command sort="1" label="調整頁次" icon="assets/stoneStyle/icons/methodIcon.png" functionName="reorderPages"/>
+					<command sort="2" label="新增頁面" icon="assets/stoneStyle/icons/methodIcon.png" functionName="addPages"/>
+					<command sort="3" label="刪除多頁" icon="assets/stoneStyle/icons/methodIcon.png" functionName="deletePages"/>
+				</pageManager>
+				<methodManager label="操作指令" sort="4" icon="assets/stoneStyle/icons/panel_TotalCommander.png" enable="1" className="MethodCollection">
+					<command sort="1" label="儲存編輯" icon="assets/stoneStyle/icons/methodIcon.png" functionName="saveData"/>
+					<command sort="2" label="訂購下單" icon="assets/stoneStyle/icons/methodIcon.png" functionName="getOrder"/>
+					<command sort="3" label="回到選單" icon="assets/stoneStyle/icons/methodIcon.png" functionName="quit"/>
+				</methodManager>
+			</application>
+			<text enable="1" sort="2" label="新增文字" titleColor="#666666" labelColor="#002F2F" labelSize="15" bgAlpha="1" itemIcon="assets/stoneStyle/icons/accordion_item_icon_02.png" activeIcon="assets/stoneStyle/icons/addText.png" />
+			<clip enable="1" sort="3" label="新增插圖" titleColor="#666666" labelColor="#002F2F" labelSize="15" bgAlpha="1" itemIcon="assets/stoneStyle/icons/accordion_item_icon_03.png" activeIcon="assets/stoneStyle/icons/maximize.png" />
+			<layout enable="1" sort="4" label="套用樣式" titleColor="#666666" labelColor="#002F2F" labelSize="15" bgAlpha="1" itemIcon="assets/stoneStyle/icons/accordion_item_icon_04.png" activeIcon="assets/stoneStyle/icons/maximize.png" />
+			<background enable="1" sort="5" label="套用背景" titleColor="#666666" labelColor="#002F2F" labelSize="15" bgAlpha="1" itemIcon="assets/stoneStyle/icons/accordion_item_icon_05.png" activeIcon="assets/stoneStyle/icons/maximize.png" />
+		</accordionBar>
+		<pageScroller graphicUrl="" bgAlpha="0.1" bgColor="#333333" selectionColor="#FF0000">
+			<toggle windowStyle="0" pageButton="1" hideAble="0" addIconArea="0" />
+			<layout paddingLeft="161" paddingRight="0" touchPadWidth="80" iconAreaWidth="0" boderHeight="20" boderWidth="20" boderAlpha="1" boderColor="#333333"/>
+			<scrollBar height="18" frontColor="#FF0000" bgColor="#333333" />
+		</pageScroller>
+		<floatPanel defaultPanel="pageEditPanel" panelHeight="70" packageName="components.toolPanel.floatPanelMethods">
+			<backgroundPanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="BackgroundMethods" extendName="">
+				<button id="changeColor" label="背景顏色" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="" control="ColorPicker" iconWidth="32" iconHeight="32" extendName="" onClick="" available="1" enabled="1" />
+				<button id="insertBackground" label="插入背景" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/Wallpaper.png" iconWidth="32" iconHeight="32" extendName="" onClick="insertBackground" available="1" enabled="1" />
+				<button id="editBackground" label="編輯背景" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/Wallpaper_edit.png" iconWidth="32" iconHeight="32" extendName="" onClick="editExistBackground" available="0" enabled="1" />
+				<button id="removeBackground" label="移除背景" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/deleteTarget.png" iconWidth="32" iconHeight="32" extendName="" onClick="removeCurrentBackground" available="0" enabled="1" />
+			</backgroundPanel>
+			
+			<coverPanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="BackgroundMethods" extendName="">
+				<button id="editBackground" label="編輯封面封底" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/Wallpaper_edit.png" iconWidth="32" iconHeight="32" extendName="" onClick="editExistBackground" available="0" enabled="1" />
+				<button id="removeBackground" label="移除封面封底" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/deleteTarget.png" iconWidth="32" iconHeight="32" extendName="" onClick="removeCurrentBackground" available="0" enabled="1" />
+			</coverPanel>
+			
+			<pageEditPanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="PageManagerMethods" extendName="">
+				<button id="resortPage" label="調整頁次" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="" iconWidth="32" iconHeight="32" extendName="" onClick="resortAllPages" available="1" enabled="1" />
+				<button id="addPages" label="新增頁面" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="" iconWidth="32" iconHeight="32" extendName="" onClick="addMultiPages" available="0" enabled="1" />
+				<button id="deletePages" label="刪除多頁" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="" iconWidth="32" iconHeight="32" extendName="" onClick="deleteMultiPages" available="0" enabled="1" />
+			</pageEditPanel>
+			
+			<lockedFramePanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="20" className="LockedFrameMethods" extendName="">
+				<button id="replacePhoto" label="重新匯入" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/insertImage.png" iconWidth="32" iconHeight="32" extendName="" onClick="reImportPhoto" available="1" enabled="1" />
+				<button id="deletePhoto" label="刪除圖片" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/deleteImage.png" iconWidth="32" iconHeight="32" extendName="" onClick="deletePhoto" available="0" enabled="1" />
+				<button id="moveFrame" label="編輯圖框" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/frameunitTransform.png" iconWidth="32" iconHeight="32" extendName="" onClick="moveFrame" available="0" enabled="1" />				
+			</lockedFramePanel>
+			
+			<picframeEditPanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="PicframeMethods" extendName="">
+				<button id="rotationPhoto" label="旋轉圖片" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/frameunitRotate.png" iconWidth="32" iconHeight="32" extendName="" onClick="rotationPhoto" available="1" enabled="1" />
+				<button id="deletePhoto" label="刪除圖片" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/deleteFramePhoto.png" iconWidth="32" iconHeight="32" extendName="" onClick="deletePhoto" available="0" enabled="1" />
+				<button id="moveFrame" label="編輯圖框" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/frameunitTransform.png" iconWidth="32" iconHeight="32" extendName="" onClick="moveFrame" available="0" enabled="1" />
+				<button id="perfectClear" label="啟用最佳化" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/perfectclear.png" iconWidth="32" iconHeight="32" extendName="" onClick="perfectClear" available="1" enabled="1" />
+				<button id="deperfectClear" label="取消最佳化" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/deperfectclear.png" iconWidth="32" iconHeight="32" extendName="" onClick="cancelPerfectClear" available="1" enabled="1" />
+				<button id="previewEffect" label="預覽效果" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/perfectClearPreview.png" iconWidth="32" iconHeight="32" extendName="" onClick="previewEffect" available="0" enabled="1" />
+			</picframeEditPanel>
+			
+			<frameModePanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="FrameModeMethods" extendName="">
+				<button id="scaleFrame" label="完成" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/apply.png" iconWidth="32" iconHeight="32" extendName="" onClick="applyEdits" available="1" enabled="1" />
+				<button id="revertFrame" label="復原" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/revertClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="revertFrame" available="0" enabled="1" />
+				<button id="layerUpFrame" label="移至上層" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/levelUp.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerUpFrame" available="0" enabled="1" />
+				<button id="layerDownFrame" label="移至下層" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/levelDown.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerDownFrame" available="1" enabled="1" />
+			</frameModePanel>
+			
+			<clipEditPanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="ClipMethods" extendName="">
+				<button id="deleteClip" label="刪除插圖" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/deleteClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="deleteClip" available="1" enabled="1" />
+				<button id="revertClip" label="復原" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/revertClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="revertClip" available="0" enabled="1" />
+				<button id="layerUpClip" label="移至上層" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/levelUp.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerUpClip" available="0" enabled="1" />
+				<button id="layerDownClip" label="移至下層" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/stoneStyle/icons/levelDown.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerDownClip" available="1" enabled="1" />
+			</clipEditPanel>
+		</floatPanel>
+	</componentSettings>	
+</data>

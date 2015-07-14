@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	
+	<!-- styleSheet說明: 此區為編輯器主要的外觀貼圖設定區，包含了背景、照片存放區、跳出式視窗等風格設定。-->
+	<styleSheet>
+		<background>
+			
+			<!-- 以下的參數值設定說明:
+				#graphicUrl -- 想要以圖形來填充舞台背景或是原件外觀時，請指定位於XML檔案的相對路徑。
+				#bgColor -- 當graphicUrl為空值時，此參數即會啟用，請以#開頭的色碼標註。
+				#shadow -- 是否套用陰影效果，是的話請設"1"，否則為"0"。
+			-->
+			
+			<!-- 舞台背景設定 -->
+			<stage graphicUrl="assets/blueStyle/texture/BlueWallpaper.jpg" bgColor="#FFFFFF" shadow="1" />
+			
+			<!-- 照片存放區的背景設定 -->
+			<album graphicUrl="assets/blueStyle/texture/water.jpg" bgColor="#FFFFFF" shadow="0" />
+			
+			<!-- 跳出式視窗的背景設定 -->
+			<titleWindow graphicUrl="assets/blueStyle/texture/window.jpg" bgColor="#B4DBDE" shadow="1" />
+			
+		</background>
+		
+		<!-- 以下設定當User對頁面有選取動作時的反應		
+			#selectionColor = 選取頁面時，所顯示的選取框顏色
+			#thickness = 選取頁面時，所顯示的選取框寬度
+		-->
+		<page selectionColor="#2693FF" thickness="10"></page>
+		
+	</styleSheet>
+	
+	<!-- componentSettings說明: 此區為編輯器用來定義工具組件的樣式、功能、以及尺寸等設定 -->
+	<componentSettings>
+	
+		<!-- 編輯工具箱，可透過手動拖移的方式插入文字、插圖、背景和頁面風格的集成物件盒子 
+			#enable = 是否啟用 (預設值為1，不啟用設為0，沒有參數時視為預設值)
+			#bgColor = 背景顏色
+			#bgAlpha = 背景透明度
+			#maxWidth = 組件的最大寬度 (實際的寬度)
+			#maxHeight = 組件的最大高度 (暫無作用)
+			#defaultIconUrl = 預設的子項目圖示檔案路徑
+			#graphicUrl = 子項目的title區塊要使用貼圖的影像路徑			
+		-->
+		<accordionBar enable="1" bgColor="#333333" bgAlpha="1" maxWidth="171" maxHeight="500" defaultIconUrl="" graphicUrl="assets/blueStyle/texture/water.jpg">
+		
+			<!-- 含有動作指令集的編輯工具項 
+				#enable = 開啟或關閉的選項，要開啟的話請設"1"，關閉設為"0"。
+				#sort = 排序的位置。
+				#label = 要顯示的類別名稱。
+				#titleColor = 顯示名稱區塊的底色，當accordionBar的graphicUrl為空值時才會起作用。
+				#labelColor = 類別名稱文字的顏色
+				#labelSize = 類別名稱文字的大小
+				#bgAlpha = 背景透明度
+				#itemIcon = 類別所代表的圖示之影像路徑。
+				#activeIcon = 此類別項目中，唯一的快捷按鈕圖示之影像路徑 (在application中無作用)。
+				#packageName = 此項目中，包含指令列使用的功能的封裝套件的程式位置(請勿更改或刪除)。				
+			-->
+			<application enable="1" sort="1" label="功能操作" titleColor="#333333" labelColor="#FFFFFF" labelSize="12" bgAlpha="1" itemIcon="assets/blueStyle/icons/methods.png" activeIcon="" packageName="components.toolPanel.accordionClass">				
+				
+				<!-- editManager、pageManager、methodManager、photoManager皆適用...
+					#label = 要顯示的次類別名稱。
+					#sort = 排序的位置。
+					#icon = 次類別所代表的圖示之影像路徑(預設icon最大寬高皆為32像素，超過或不足都會自動縮放到32pixel)。
+					#enable = 開啟或關閉的選項，要開啟的話請設"1"，關閉設為"0"。
+					#className = 此項目中所有指令程式類的class名稱(請勿更改或刪除)。
+					
+					<command>
+						#label、sort、icon等設定功能同上(預設icon最大寬高皆為16像素，超過或不足都會自動縮放到16pixel)。
+						#functionName = 指令程式類的函式名稱(請勿更改或刪除)。
+				-->
+				<editManager label="編輯輔助" sort="2" icon="assets/blueStyle/icons/editHelp.png" enable="1" className="MethodCollection">
+					<command sort="1" label="自動編排" icon="assets/blueStyle/icons/methodIcon.png" functionName="autoFillPhotos"/>
+					<command sort="2" label="放大檢視" icon="assets/blueStyle/icons/methodIcon.png" functionName="magnifier"/>
+					<command sort="3" label="作品資訊" icon="assets/blueStyle/icons/methodIcon.png" functionName="getInfomation"/>
+					<command sort="4" label="編輯模式切換" icon="assets/blueStyle/icons/methodIcon.png" functionName="changeEditMode"/>
+				</editManager>				
+				<pageManager label="頁面管理" sort="3" icon="assets/blueStyle/icons/pageManager.png" enable="1" className="MethodCollection">
+					<command sort="1" label="調整頁次" icon="assets/blueStyle/icons/methodIcon.png" functionName="reorderPages"/>
+					<command sort="2" label="新增頁面" icon="assets/blueStyle/icons/methodIcon.png" functionName="addPages"/>
+					<command sort="3" label="刪除多頁" icon="assets/blueStyle/icons/methodIcon.png" functionName="deletePages"/>
+				</pageManager>
+				<methodManager label="操作指令" sort="4" icon="assets/blueStyle/icons/commander.png" enable="1" className="MethodCollection">
+					<command sort="1" label="儲存編輯" icon="assets/blueStyle/icons/methodIcon.png" functionName="saveData"/>
+					<command sort="2" label="訂購下單" icon="assets/blueStyle/icons/methodIcon.png" functionName="getOrder"/>
+					<command sort="3" label="回到選單" icon="assets/blueStyle/icons/methodIcon.png" functionName="quit"/>
+				</methodManager>
+			</application>
+			
+			<!-- 當有重複的application區段設定時，代表此區的操作功能需要被拉至外層，以提高曝光的效果
+				#各參數設定如第一段application的說明
+			-->
+			<application enable="1" sort="2" label="匯入圖片" titleColor="#333333" labelColor="#FFFFFF" labelSize="12" bgAlpha="1" itemIcon="assets/blueStyle/icons/add.png" activeIcon="" packageName="components.toolPanel.accordionClass">
+				<photoManager label="選擇圖片來源" sort="1" icon="assets/blueStyle/icons/insertPhotos.png" enable="1" className="MethodCollection">
+					<command sort="1"  label="本地磁碟" icon="assets/blueStyle/icons/methodIcon.png" functionName="importPhoto_LocalDisk"/>
+					<command sort="2" label="網路相簿" icon="assets/blueStyle/icons/methodIcon.png" functionName="importPhoto_CloudAlbum"/>
+					<command sort="3" label="名家相簿" icon="assets/blueStyle/icons/methodIcon.png" functionName="importPhoto_CloudShareAlbum"/>
+					<command sort="4" label="照片總覽" icon="assets/blueStyle/icons/methodIcon.png" functionName="browseAlbum"/>
+				</photoManager>
+			</application>
+			
+			<!--  插入文字工具模組
+				#enable = 需要使用字型清單時請設為"1"，反之請設為"0"。
+				#其他設定請參照上面第一個application參數設定說明。	
+			-->
+			<text enable="1" sort="3" label="新增文字" titleColor="#666666" labelColor="#FFFFFF" labelSize="12" bgAlpha="1" itemIcon="assets/blueStyle/icons/newTexts.png" activeIcon="assets/blueStyle/icons/addText.png" />
+			
+			<!--  插入插圖工具模組
+				#enable = 需要使用插圖清單時請設為"1"，反之請設為"0"。
+				#其他設定請參照上面第一個application參數設定說明。	
+			-->
+			<clip enable="1" sort="4" label="新增插圖" titleColor="#666666" labelColor="#FFFFFF" labelSize="12" bgAlpha="1" itemIcon="assets/blueStyle/icons/newClips.png" activeIcon="assets/blueStyle/icons/maximize.png" />
+			
+			<!--  頁面版型風格模組
+				#enable = 需要使用頁面版型清單時請設為"1"，反之請設為"0"。
+				#其他設定請參照上面第一個application參數設定說明。	
+			-->
+			<layout enable="1" sort="5" label="套用樣式" titleColor="#666666" labelColor="#FFFFFF" labelSize="12" bgAlpha="1" itemIcon="assets/blueStyle/icons/applyTemplates.png" activeIcon="assets/blueStyle/icons/maximize.png" />
+			
+			<!--  背景套用模組
+				#enable = 需要使用背景清單時請設為"1"，反之請設為"0"。
+				#其他設定請參照上面第一個application參數設定說明。	
+			-->
+			<background enable="1" sort="5" label="套用背景" titleColor="#666666" labelColor="#FFFFFF" labelSize="12" bgAlpha="1" itemIcon="assets/blueStyle/icons/applyBackgrounds.png" activeIcon="assets/blueStyle/icons/maximize.png" />
+			
+		</accordionBar>	
+			
+		<!--  pageScroller頁面縮圖清單模組
+			#graphicUrl = 子項目的title區塊要使用貼圖的影像路徑。
+			#bgColor = 背景顏色。
+			#bgAlpha = 背景透明度。
+			#selectionColor = 當頁面縮圖為當前顯示的頁面時，選區框將會顯示的顏色。
+		-->
+		<pageScroller graphicUrl="" bgAlpha="1" bgColor="#00468C" selectionColor="#2693FF">
+			
+			<!-- 開關設定
+				#windowStyle = 是否開啟為灰色的window色階模式，預設為"0":關閉。
+				#pageButton = 除了ScrollBar以外，是否要增加左右兩側的換頁按鈕，預設為"1":開啟。
+				#hideAble = 是否可被隱藏，預設為"0"，目前經銷商無須設定此項目，請維持為預設値即可。
+				#addIconArea = 是否增加圖標ICON的置放區，預設為"0"，目前經銷商無須設定此項目，請維持為預設値即可。				
+			-->
+			<toggle windowStyle="0" pageButton="1" hideAble="0" addIconArea="0" />
+			
+			<!-- pageScroller的風格設定
+				#paddingLeft = 從編輯畫面最左邊算起內縮的距離(pixels)。
+				#paddingRight = 從編輯畫面最右邊算起內縮的距離(pixels)。
+				#touchPadWidth = 模組左右側的滑鼠感應區寬幅(感應後自動微調縮圖清單的位置)。
+			-->
+			<layout paddingLeft="172" paddingRight="0" touchPadWidth="80" iconAreaWidth="0" boderHeight="20" boderWidth="20" boderAlpha="1" boderColor="#333333"/>
+			
+			<!-- 
+				#height = 拖曳滑動的拉Bar寬度(pixels)。
+				#frontColor = 拉Bar顏色。
+				#bgColor = 拉Bar的背景顏色。
+			-->
+			<scrollBar height="18" frontColor="#2693FF" bgColor="#00468C" />
+		</pageScroller>
+		
+		<!-- 浮動編輯用面板模組設定
+			#浮動編輯面版如不使用時，請用Block Comment包起來，編輯器會用舊版的浮動面板替代。
+			#defaultPanel = 預設第一個被指定的面板種類，目前只要維持當前的設定即可。
+			#panelHeight = 浮動面板的預設高度(pixels)。
+			#packageName = 此項目中，包含指令列使用的功能的封裝套件的程式位置(請勿更改或刪除)。
+		-->
+		<floatPanel defaultPanel="pageEditPanel" panelHeight="70" packageName="components.toolPanel.floatPanelMethods">
+			
+			<!-- 背景編輯浮動面板
+				#roundRect = 是否要顯示為圓角(倒角)矩形，是的話請設為"1"，否則設為"0"。
+				#bgColor = 面板背景顏色。
+				#bgAlpha = 面板的透明度，最大為1，可設為小數點，最小為0。
+				#dropShadow = 是否要建立陰影，是的話請設為"1"，否則設為"0" (現在尚未實作效果)。
+				#interGlow = 是否要建立內部陰影，是的話請設為"1"，否則設為"0" (現在尚未實作效果)。
+				#iconSpacing = ICON按鈕之間的間距(pixels)。
+				#className = 此項目中所有指令程式類的class名稱(請勿更改或刪除)。
+				#extendName = 延伸用以繼承的屬性類別(目前尚無實際運作，請勿更改或刪除)。
+			-->				
+			<backgroundPanel roundRect="0" bgColor="#009999" bgAlpha="0.8" dropShadow="1" interGlow="0" iconSpacing="10" className="BackgroundMethods" extendName="">							
+				
+				<!-- button 面板按鈕參數設定
+					#id = 不重複的識別名稱命名。
+					#label = 按鈕要顯示的名稱，如設為簡體中文時，將不會有英文、日文的對照翻譯，但是可以正常顯示簡體中文。
+					#labelColor = 名稱的文字顏色。
+					#labelWidth = 文字欄位的寬度，(建議勿更動此數值)。
+					#labelHeight = 文字欄位的高度，(建議勿更動此數值)。
+					#icon = 按鈕實際的圖示影像路徑(相對路徑)。
+					#control = 按鈕不設定時，將以組件方式替代按鈕(請勿更改或刪除)。
+					#iconWidth = 按鈕圖示的預設寬度。
+					#iconHeight = 按鈕圖示的預設高度。
+					#extendName = 延伸用以繼承的屬性類別(目前尚無實際運作，請勿更改或刪除)。
+					#onClick = 當按鈕單擊滑鼠鍵的時候，要執行的程式指令(請勿更改或刪除)。
+					#available = 按鈕初始設定有無作用，設為"1"為有作用，設為"0"為無作用，目前尚未對此參數實作。
+					#enabled = 是否要顯示此按鈕，設"1"時會顯示，設"0"時將不顯示按鈕，目前尚未對此參數實作。
+				-->
+				<button id="changeColor" label="背景顏色" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="" control="ColorPicker" iconWidth="45" iconHeight="45" extendName="" onClick="" available="1" enabled="1" />
+				<button id="insertBackground" label="插入背景" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="assets/blueStyle/icons/insertBackground.png" iconWidth="45" iconHeight="45" extendName="" onClick="insertBackground" available="1" enabled="1" />
+				<button id="editBackground" label="編輯背景" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="assets/blueStyle/icons/fixTool.png" iconWidth="45" iconHeight="45" extendName="" onClick="editExistBackground" available="0" enabled="1" />
+				<button id="removeBackground" label="移除背景" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="assets/blueStyle/icons/deleteBackground.png" iconWidth="45" iconHeight="45" extendName="" onClick="removeCurrentBackground" available="0" enabled="1" />
+			</backgroundPanel>
+			
+			<!-- coverPanel編輯自設封面封底的浮動面板
+				#參數設定方法請參考上面的backgroundPanel設定
+			-->
+			<coverPanel roundRect="0" bgColor="#009999" bgAlpha="0.8" dropShadow="1" interGlow="0" iconSpacing="10" className="BackgroundMethods" extendName="">
+				<!-- button 面板按鈕參數設定
+					#請參考上面backgroundPanel button區段的設定
+				-->
+				<button id="editBackground" label="編輯封面封底" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="assets/blueStyle/icons/fixTool.png" iconWidth="45" iconHeight="45" extendName="" onClick="editExistBackground" available="0" enabled="1" />
+				<button id="removeBackground" label="移除封面封底" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="assets/blueStyle/icons/deleteTarget.png" iconWidth="45" iconHeight="45" extendName="" onClick="removeCurrentBackground" available="0" enabled="1" />
+			</coverPanel>
+			
+			<!-- pageEditPanel加減頁的獨立操作面板
+				#參數設定方法請參考上面的backgroundPanel設定
+				#此面板目前尚無應用實例
+			-->
+			<pageEditPanel roundRect="0" bgColor="#009999" bgAlpha="0.8" dropShadow="1" interGlow="0" iconSpacing="10" className="PageManagerMethods" extendName="">
+				<!-- button 面板按鈕參數設定
+					#請參考上面backgroundPanel button區段的設定
+				-->
+				<button id="resortPage" label="調整頁次" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="" iconWidth="45" iconHeight="45" extendName="" onClick="resortAllPages" available="1" enabled="1" />
+				<button id="addPages" label="新增頁面" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="" iconWidth="45" iconHeight="45" extendName="" onClick="addMultiPages" available="0" enabled="1" />
+				<button id="deletePages" label="刪除多頁" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="22" icon="" iconWidth="45" iconHeight="45" extendName="" onClick="deleteMultiPages" available="0" enabled="1" />
+			</pageEditPanel>
+						
+			<!-- lockedFramePanel針對已限制編輯功能的相片(frameUnit)專用浮動面板
+				#參數設定方法請參考上面的backgroundPanel設定
+			-->
+			<lockedFramePanel roundRect="0" bgColor="#009999" bgAlpha="0.8" dropShadow="1" interGlow="0" iconSpacing="10" className="LockedFrameMethods" extendName="">
+				<!-- button 面板按鈕參數設定
+					#請參考上面backgroundPanel button區段的設定
+				-->
+				<button id="replacePhoto" label="重新匯入" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/insertImage.png" iconWidth="45" iconHeight="45" extendName="" onClick="reImportPhoto" available="1" enabled="1" />
+				<button id="deletePhoto" label="刪除圖片" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/deleteImage.png" iconWidth="45" iconHeight="45" extendName="" onClick="deletePhoto" available="0" enabled="1" />
+				<button id="moveFrame" label="編輯圖框" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/frameunitTransform.png" iconWidth="45" iconHeight="45" extendName="" onClick="moveFrame" available="0" enabled="1" />				
+			</lockedFramePanel>
+			
+			<!-- picframeEditPanel針對未限制編輯功能的相片(frameUnit)專用浮動面板
+				#參數設定方法請參考上面的backgroundPanel設定
+			-->
+			<picframeEditPanel roundRect="0" bgColor="#009999" bgAlpha="0.8" dropShadow="1" interGlow="0" iconSpacing="10" className="PicframeMethods" extendName="">
+				<!-- button 面板按鈕參數設定
+					#請參考上面backgroundPanel button區段的設定
+				-->
+				<button id="rotationPhoto" label="旋轉圖片" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/frameunitRotate.png" iconWidth="45" iconHeight="45" extendName="" onClick="rotationPhoto" available="1" enabled="1" />
+				<button id="deletePhoto" label="刪除圖片" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/deleteTarget.png" iconWidth="45" iconHeight="45" extendName="" onClick="deletePhoto" available="0" enabled="1" />
+				<button id="moveFrame" label="編輯圖框" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/frameunitTransform.png" iconWidth="45" iconHeight="45" extendName="" onClick="moveFrame" available="0" enabled="1" />
+				<button id="perfectClear" label="啟用最佳化" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/perfectclear.png" iconWidth="45" iconHeight="45" extendName="" onClick="perfectClear" available="1" enabled="1" />
+				<button id="deperfectClear" label="取消最佳化" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/deperfectclear.png" iconWidth="45" iconHeight="45" extendName="" onClick="cancelPerfectClear" available="1" enabled="1" />
+				<button id="previewEffect" label="預覽效果" labelColor="#FFFFFF" labelSize="12" labelWidth="80" labelHeight="22" icon="assets/blueStyle/icons/perfectClearPreview.png" iconWidth="45" iconHeight="45" extendName="" onClick="previewEffect" available="0" enabled="1" />
+			</picframeEditPanel>
+			
+			<!-- frameModePanel縮放圖框時專用浮動面板
+				#參數設定方法請參考上面的backgroundPanel設定
+			-->
+			<frameModePanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="FrameModeMethods" extendName="">
+				<!-- button 面板按鈕參數設定
+					#請參考上面backgroundPanel button區段的設定
+				-->
+				<button id="scaleFrame" label="完成" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/apply.png" iconWidth="32" iconHeight="32" extendName="" onClick="applyEdits" available="1" enabled="1" />
+				<button id="revertFrame" label="復原" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/revertClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="revertFrame" available="0" enabled="1" />
+				<button id="layerUpFrame" label="移至上層" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/levelUp.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerUpFrame" available="0" enabled="1" />
+				<button id="layerDownFrame" label="移至下層" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/levelDown.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerDownFrame" available="1" enabled="1" />
+				<button id="removeFrame" label="刪除圖框" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/removeFrame.png" iconWidth="32" iconHeight="32" extendName="" onClick="removeFrame" available="1" enabled="1" />
+			</frameModePanel>
+			
+			<!-- clipEditPanel 插圖編輯用的專用浮動面板
+				#參數設定方法請參考上面的backgroundPanel設定
+			-->
+			<clipEditPanel roundRect="1" bgColor="#333333" bgAlpha="1" dropShadow="1" interGlow="1" iconSpacing="6" className="ClipMethods" extendName="">
+				<!-- button 面板按鈕參數設定
+					#請參考上面backgroundPanel button區段的設定
+				-->
+				<button id="deleteClip" label="刪除插圖" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/deleteClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="deleteClip" available="1" enabled="1" />
+				<button id="revertClip" label="復原" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/revertClip.png" iconWidth="32" iconHeight="32" extendName="" onClick="revertClip" available="0" enabled="1" />
+				<button id="layerUpClip" label="移至上層" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/levelUp.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerUpClip" available="0" enabled="1" />
+				<button id="layerDownClip" label="移至下層" labelColor="#FFFFFF" labelSize="12" labelWidth="70" labelHeight="20" icon="assets/blueStyle/icons/levelDown.png" iconWidth="32" iconHeight="32" extendName="" onClick="layerDownClip" available="1" enabled="1" />
+			</clipEditPanel>
+			
+		</floatPanel>
+	</componentSettings>	
+	
+	<!-- tipImages 提示視窗所使用的影像檔案，包含四種語言版本：繁中(filename-TW)、簡中(filename-CN)、日文(filename-JP)、英文(filename-EN)
+		#如有未指定的 image'id'，將會以編輯器內預設的影像作為提示圖片
+		#預設的提示影像ID列表:
+			01- uploadHint / 壓縮上傳的進度視窗所顯示的提示說明
+			02- overrideHint / 提示經裁剪並壓縮上傳後的相片無法再次被編輯的提示圖
+			03- insertPhotos / 匯入影像的提示圖片
+			04- finishedHint / 編輯完成的提示圖片(預設的圖是ok的手勢)
+			05- dragPhotoHint / 拖拉圖片至圖框的提示圖
+			06- deletePageHint / 刪除頁面的操作提示圖
+			07- lowerDpiAlert / 影像解析度過小的警告提示圖標
+			08- readOnlyHint / 當編輯器作為唯讀狀態時的提示圖
+			09- scrollLeftArrow / 在ScrollerBar滑鼠往左移時的提示箭頭
+			10- scrollRightArrow / 在ScrollerBar滑鼠往右移時的提示箭頭
+			11- viewAbleHint / 文字即將超出頁面範圍時的提示圖
+	-->
+	<tipImages>
+		<!-- image區段屬性設定說明
+			#id = 驗證資料的識別文字碼，命名不可重複。
+			#folderUrl = 影像存放的相對路徑，只需指定到資料夾目的地。
+			#filename-TW = 影像內為繁體中文內容的圖檔名稱。
+			#filename-CN = 影像內為簡體中文內容的圖檔名稱。
+			#filename-JP = 影像內為日文內容的圖檔名稱。
+			#filename-EN = 影像內為英文內容的圗檔名稱。
+			#width = 無論原始檔案大小，指定匯入後要縮放的實際圖片寬度(單位:pixels)，如未指定則以原始寬度顯示。
+			#height = 無論原始檔案大小，指定匯入後要縮放的實際圖片高度(單位:pixels)，如未指定則以原始高度顯示。
+			#loadBeforeRunning = 是否需要在程式執行前預先載入到記憶體(請依照原設定值，擅自更改設定可能導致顯示不正確)。
+		-->
+		
+		<!-- uploadHint 壓縮上傳的進度視窗所顯示的提示說明-->
+		<image id="uploadHint" folderUrl="assets/blueStyle/hints/" filename_TW="uploadHint_tw.png" filename_CN="uploadHint_cn.png" filename_JP="uploadHint_jp.png" filename_EN="uploadHint_en.png" width="360" height="150" loadBeforeRunning="0" />
+		
+		<!-- overrideHint 提示經裁剪並壓縮上傳後的相片無法再次被編輯的提示圖 -->
+		<image id="overrideHint" folderUrl="assets/blueStyle/hints/" filename_TW="overrideHint_tw.png" filename_CN="overrideHint_cn.png" filename_JP="overrideHint_jp.png" filename_EN="overrideHint_en.png" width="404" height="288" loadBeforeRunning="0" />
+		
+		<!-- insertPhotos 匯入影像的提示圖片 -->
+		<image id="insertPhotos" folderUrl="assets/blueStyle/hints/" filename_TW="insertPhotos_tw.png" filename_CN="insertPhotos_cn.png" filename_JP="insertPhotos_jp.png" filename_EN="insertPhotos_en.png" width="430" height="267" loadBeforeRunning="1" />
+		
+		<!-- finishedHint 編輯完成的提示圖片(預設的圖是ok的手勢) -->
+		<image id="finishedHint" folderUrl="assets/blueStyle/hints/" filename_TW="welldone_tw.png" filename_CN="welldone_cn.png" filename_JP="welldone_jp.png" filename_EN="welldone_en.png" width="350" height="263" loadBeforeRunning="0" />
+		
+		<!-- dragPhotoHint 拖拉圖片至圖框的提示圖 -->
+		<image id="dragPhotoHint" folderUrl="assets/blueStyle/hints/" filename_TW="dragingDown_tw.png" filename_CN="dragingDown_cn.png" filename_JP="dragingDown_jp.png" filename_EN="dragingDown_en.png" width="300" height="227" loadBeforeRunning="1" />
+		
+		<!-- deletePageHint 刪除頁面的操作提示圖 -->
+		<image id="deletePageHint" folderUrl="assets/blueStyle/hints/" filename_TW="howToDeletePages_tw.png" filename_CN="howToDeletePages_cn.png" filename_JP="howToDeletePages_jp.png" filename_EN="howToDeletePages_en.png" width="" height="" loadBeforeRunning="0" />
+		
+		<!-- lowerDpiAlert 影像解析度過小的警告提示圖標 -->
+		<image id="lowerDpiAlert" folderUrl="assets/blueStyle/hints/" filename_TW="lowerDpiAlert_tw.png" filename_CN="lowerDpiAlert_cn.png" filename_JP="lowerDpiAlert_jp.png" filename_EN="lowerDpiAlert_en.png" width="48" height="48" loadBeforeRunning="0" />
+		
+		<!-- readOnlyHint 當編輯器作為唯讀狀態時的提示圖 -->
+		<image id="readOnlyHint" folderUrl="assets/blueStyle/hints/" filename_TW="readOnlyHint_tw.png" filename_CN="readOnlyHint_cn.png" filename_JP="readOnlyHint_jp.png" filename_EN="readOnlyHint_en.png" width="400" height="240" loadBeforeRunning="1" />
+		
+		<!-- scrollLeftArrow 在ScrollerBar滑鼠往左移時的提示箭頭 -->
+		<image id="scrollLeftArrow" folderUrl="assets/blueStyle/hints/" filename_TW="scrollLeft.png" filename_CN="scrollLeft.png" filename_JP="scrollLeft.png" filename_EN="scrollLeft.png" width="45" height="45" loadBeforeRunning="0" />
+		
+		<!-- scrollRightArrow 在ScrollerBar滑鼠往右移時的提示箭頭 -->
+		<image id="scrollRightArrow" folderUrl="assets/blueStyle/hints/" filename_TW="scrollRight.png" filename_CN="scrollRight.png" filename_JP="scrollRight.png" filename_EN="scrollRight.png" width="45" height="45" loadBeforeRunning="0" />
+		
+		<!-- viewAbleHint 文字即將超出頁面範圍時的提示圖 -->
+		<image id="viewAbleHint" folderUrl="assets/blueStyle/hints/" filename_TW="textAreaRange.png" filename_CN="textAreaRange.png" filename_JP="textAreaRange.png" filename_EN="textAreaRange.png" width="399" height="202" loadBeforeRunning="0" />
+		
+		<!-- detectedHint 自動編排時臉部辨識選項提示圖 -->
+		<image id="detectedHint" folderUrl="assets/blueStyle/hints/" filename_TW="detectedHint.png" filename_CN="detectedHint.png" filename_JP="detectedHint.png" filename_EN="detectedHint.png" width="400" height="297" loadBeforeRunning="0" />
+			
+		<!-- previewHint 預覽畫面提示圖 -->
+		<image id="previewHint" folderUrl="assets/blueStyle/hints/" filename_TW="previewHint_tw.png" filename_CN="previewHint_tw.png" filename_JP="previewHint_tw.png" filename_EN="previewHint_tw.png" width="400" height="297" loadBeforeRunning="0" />
+	
+	</tipImages>
+</data>

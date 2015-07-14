@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<!-- Basic Page Needs
+	================================================== -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="<?=$getmetadescription?>">
+<meta name="keywords" content="<?=$getmetakeyword?>">
+<!-- TemplateBeginEditable name="doctitle" -->
+<title></title>
+<!-- TemplateEndEditable -->
+<meta name="author" content="Little NEKO">
+<!-- Mobile Specific Metas================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- CSS================================================== -->
+<!-- Bootstrap  -->
+<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+<!-- plugin css  -->
+<link rel="stylesheet" type="text/css" href="../vjs/animation-framework/animate.css" />
+<!-- isotope -->
+<link type="text/css" rel="stylesheet" href="../vjs/isotope/css/style.css">
+<!-- icon fonts -->
+<link type="text/css" rel="stylesheet" href="../css/font-icons/custom-icons/css/custom-icons.css">
+<!-- Custom css -->
+<link type="text/css" rel="stylesheet" href="../css/layout.css">
+<link type="text/css" id="colors" rel="stylesheet" href="../css/colors.css">
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+<script src="../vjs/modernizr-2.6.1.min.js"></script>
+<link rel="shortcut icon" href="../images/favicon.ico">
+<!-- MAXM -->
+<script src="js/jquery-1.9.0.min.js"></script>
+<script src="Scripts/jquery-migrate-1.1.0.min.js"></script>
+<link rel="stylesheet" href="../css/jquery-fallr-1.0.css" type="text/css" />
+<script src="Scripts/mylibs/jquery-fallr-1.2.js"></script>
+<link rel="stylesheet" href="../css/shoppingcart.css">
+<? require_once($config['global_library'].'/shoppingcart.php'); ?>
+<? require_once($config['global_library']."/js_common.php"); ?>
+<link rel="stylesheet" href="../css/vsite.css">
+<link rel="stylesheet" href="../css/yours.css">
+<!-- END MAXM -->
+<!-- TemplateBeginEditable name="custom javascript" -->
+<!-- TemplateEndEditable -->
+</head>
+<body>
+<!-- Primary Page Layout 
+	================================================== --> 
+<!-- globalWrapper -->
+<div id="globalWrapper">
+  <header class="navbar-fixed-top"> 
+    <!-- pre header -->
+    <div id="preHeader" class="hidden-xs">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <ul class="quickMenu">
+              <li><a href="../template-site-map.html" class="linkLeft">Site map</a></li>
+              <li><a href="../template-about.html">About us</a></li>
+              <li><a href="../template-team.html">Our team</a></li>
+              <li><a href="../template-contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-6">
+            <div id="contactBloc" class="clearfix"> 
+              <!-- social icons -->
+              <ul class="socialNetwork">
+                <li><a href="#" class="tips" title="follow me on Facebook"> <i class="icon-facebook-1"></i></a></li>
+                <li> <a href="#" class="tips" title="follow me on Twitter"> <i class="icon-twitter-bird"></i> </a> </li>
+                <li> <a href="#" class="tips" title="follow me on Google+"> <i class="icon-gplus-1"></i> </a> </li>
+                <li> <a href="#" class="tips" title="follow me on Linkedin"> <i class="icon-linkedin-1"></i> </a> </li>
+                <li> <a href="#" class="tips" title="follow me on Dribble"> <i class="icon-dribbble"></i> </a> </li>
+                <!-- social icons -->
+              </ul>
+              <!-- phone --> 
+              <span class="contactPhone"><i class="icon-mobile"></i>615.987.1234</span> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- pre header --> 
+    <!-- header -->
+    <div id="mainHeader" role="banner">
+      <div class="container">
+        <nav class="navbar navbar-default scrollMenu" role="navigation">
+          <div class="navbar-header"> 
+            <!-- responsive navigation -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <!-- Logo --> 
+            <a class="navbar-brand" href="../index.php"><img src="../images/home/main-logo.png" alt="photobook logo"/></a> </div>
+          <div class="collapse navbar-collapse" id="mainMenu"> 
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav pull-right">
+              <li class="primary"> <a href="../index.php" class="firstLevel" >首頁</a> </li>
+              <li class="primary"> <a href="../products.php" class="firstLevel" >產品</a> </li>
+              <?if($isLogin == true):?>
+              <li class="primary"><a id="php_member_order_history" href="./memberindex.php">
+                <?=$lang_member_zone?>
+                </a></li>
+              <li class="primary"><a id="php_member_logout" href="javascript:bye();">
+                <?=$lang_logout?>
+                </a></li>
+              <?else:?>
+              <li class="primary"><a id="php_member_login" href="./memberlogin.php">
+                <?=$lang_member_login?>
+                </a></li>
+              <li class="primary"><a id="php_member_join" href="./memberregisterrule.php">
+                <?=$lang_member_register?>
+                </a></li>
+              <?endif;?>
+              <li class="primary"><a href="../helps.php">新手上路</a></li>
+            </ul>
+            <!-- End main navigation --> 
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- header --> 
+  <!-- ======================================= content ======================================= -->
+  <section id="page">
+    <header class="page-header margin-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>&nbsp;</h1>
+          </div>
+          <div class="col-sm-6 hidden-xs">
+            <ul id="navTrail">
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="margin-top none"> <!-- TemplateBeginEditable name="main content" --> 內頁主內容 <!-- TemplateEndEditable --> </div>
+  </section>
+  <!-- content --> 
+  <!-- footer -->
+  <footer id="footerWrapper" class="margin-top">
+    <section id="mainFooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="footerWidget"> <img src="../images/home/main-logo.png" alt="latest Little Neko news" id="footerLogo">
+              <p>永遠以『人』為出發，是我們對客戶最大的承諾，成立「客服部」是我們對承諾的具體實踐！印刷整個過程，是繁雜且多樣的，除了在客服方面，解答客戶的問題之外更定期發行月刊，教導客戶各類軟體的使用方式、商品印刷相關須知與後加工的注意事項，達到客戶「所印即所要」的目標，大大提升客戶印刷物的良率，並減少不必要的損失。</p>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="footerWidget">
+              <h3><?=$webSiteName?></h3>
+              <address>
+              <p> <i class="icon-location"></i>&nbsp;<?=$siteAddress?><br>
+                <i class="icon-phone"></i>&nbsp;<?=$sitePhone?><br>
+                <i class="icon-mail-alt"></i>&nbsp;<?=$siteEmail?><br>
+              </p>
+              </address>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="footerWidget">
+              <h3>Latest news</h3>
+              <ul class="list-unstyled iconList borderList">
+                <li><a href="service.php">服務使用條款</a></li>
+                <li><a href="privacy.php"> 隱私權條款</a></li>
+                <li><a href="commission.php">託製作契約</a></li>
+                <li><a href="sendback.php">退換貨政策</a></li>
+                <li><a href="transportation.php">運方式與計價</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section  id="footerRights">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>©
+              <?=$copyrightyear?>
+              <?=$siteCompany?>
+              Copyright All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+  <!-- End footer --> 
+</div>
+<!-- global wrapper --> 
+<!-- End Document 
+	================================================== -->
+</body>
+<script type="text/javascript" src="../vjs/respond/respond.min.js"></script>
+<script type="text/javascript" src="../vjs/jquery-ui/jquery-ui-1.8.23.custom.min.js"></script>
+<!-- third party plugins  -->
+<script type="text/javascript" src="../vjs/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../vjs/easing/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../vjs/isotope/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="../vjs/isotope/jquery.isotope.sloppy-masonry.min.js"></script>
+<!-- sharrre -->
+<script type="text/javascript" src="../vjs/jquery.sharrre-1.3.4/jquery.sharrre-1.3.4.min.js"></script>
+<!-- toucheeffect -->
+<script type="text/javascript" src="../vjs/toucheeffect/toucheffects.js"></script>
+<!-- Custom  -->
+<script type="text/javascript" src="../vjs/custom.js"></script>
+<!-- TemplateBeginEditable name="afterjs" -->
+<!-- TemplateEndEditable -->
+</html>
