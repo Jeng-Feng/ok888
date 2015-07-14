@@ -487,6 +487,17 @@ $webPara = $_POST["webPara"]; //超商取貨判斷參數
 										<?endif;?>
 									</div>
 								</div>
+								
+									<?
+									// 如果物流配送選擇超商取貨，以session將超商資訊、收件人資訊儲存傳遞	
+									if ($stName != ""){
+										$_SESSION["stName"] = $stName;
+										$_SESSION["stAddr"] = $stAddr;
+										$_SESSION["deliName"] = $data["delveryname"];
+										$_SESSION["deliTel"] = $data["delverytel"];
+									}	
+									?>								
+								
 							<? endforeach; ?>
 						<?else:?>
 							<div class="bg-danger text-center col-xs-12 col-md-12">

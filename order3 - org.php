@@ -330,43 +330,8 @@
 						<?=$shipment["name"]?>（我們約需個 <?=$shipment["day"]?> 工作天後為您出貨）
 					</div>
 					<div class="panel-body">
-						<?if($shipment["value"] == 99)://超商取貨?>
-						    <div class="row">
-								<div class="sm-title col-xs-12  col-lg-2 text-right">
-									取件超商門市
-								</div>
-								<div class="pi-context col-xs-12  col-lg-10">
-									<?=$_SESSION["stName"]?>
-								</div>
-							</div>
-							<div class="row">
-								<div class="sm-title col-xs-12  col-lg-2 text-right">
-									取件超商地址
-								</div>
-								<div class="pi-context col-xs-12  col-lg-10">
-									<?=$_SESSION["stAddr"]?>
-								</div>
-							</div>							
-							<div class="row">
-								<div class="sm-title col-xs-12  col-lg-2 text-right">
-									收件人姓名
-								</div>
-								<div class="pi-context col-xs-12  col-lg-10">
-									<?=$_SESSION["deliName"]?>
-								</div>
-							</div>
-							<div class="row">
-								<div class="sm-title col-xs-12  col-lg-2 text-right">
-									收件人電話
-								</div>
-								<div class="pi-context col-xs-12  col-lg-10">
-									<?=$_SESSION["deliTel"]?>
-								</div>
-							</div>
-						<?elseif($shipment["value"] == 10)://貨運宅配到府?>
+						<?if(!empty($shipment["path"]) && file_exists($shipment["path"])):?>
 							<?require_once($shipment["path"]);?>
-						<?elseif($shipment["value"] == 11)://台中總公司自取免運費?>
-							<?require_once($shipment["path"]);?>	
 						<?elseif($shipment["value"] < 0)://自訂物流?>
 							<div class="row">
 								<div class="sm-title col-xs-12  col-lg-2 text-right">
