@@ -209,6 +209,14 @@
 					訂購產品、數量與價格
 				</h5>
 				<div class="text-left" id="php_orderitemarea">
+<?
+	$aryBookname = array();// 產品品名陣列
+	$aryQty = array();// 數量
+	$aryPrice = array();// 價格
+	$aryPoption = array();// 商品規格
+	$aryOrdermemo = array();// 商品備註
+?>					
+					
 					<? foreach($orderlist_data as $data): ?>
 						<div class="panel panel-primary sublist ol<?=$data["index"]?>">
 							<div class="panel-heading">
@@ -216,6 +224,7 @@
 									<?=$data["pdname"]?>
 									<?if(!empty($data["bookname"])):?>
 										<span class="subtitle"><?=$data["bookname"]?></span>
+										<? array_push($aryBookname,$data["bookname"]);	// 加入產品品名陣列，用於後續傳送訂單是台灣便利配購物網站 ?>
 									<?endif;?>
 								</h6>
 							</div>
@@ -231,6 +240,7 @@
 											</div>
 											<div class="pi-context col-xs-9 col-md-10">
 												<?=$data["qty"]?>
+												<? array_push($aryQty,$data["qty"]);	// 加入數量陣列，用於後續傳送訂單是台灣便利配購物網站 ?>
 											</div>
 										</div>
 										<div class="row">
@@ -242,6 +252,7 @@
 													<?=$order["symbol_left"]?>
 													<span id="php_price<?=$data["index"]?>">
 														<?=$data["price"]?>
+														<? array_push($aryPrice,$data["price"]);	// 加入價格陣列，用於後續傳送訂單是台灣便利配購物網站 ?>
 													</span>
 													<?=$order["symbol_right"]?>
 												</div>
@@ -269,6 +280,7 @@
 												</div>
 												<div class="pi-context col-xs-9 col-md-10">
 													<?=$data["poption"]?>
+													<? array_push($aryPoption,$data["poption"]);	// 加入商品規格陣列，用於後續傳送訂單是台灣便利配購物網站 ?>
 												</div>
 											</div>
 										<?endif;?>
@@ -279,6 +291,7 @@
 												</div>
 												<div class="pi-context col-xs-9 col-md-10">
 													<?=$data["ordermemo"]?>
+													<? array_push($aryOrdermemo,$data["ordermemo"]);	// 加入商品備註陣列，用於後續傳送訂單是台灣便利配購物網站 ?>
 												</div>
 											</div>
 										<?endif;?>
@@ -348,30 +361,65 @@
 						<?=$shipment["name"]?>（我們約需個 <?=$shipment["day"]?> 工作天後為您出貨）
 					</div>
 					<div class="panel-body">
-						<?if(!empty($shipment["path"]) && file_exists($shipment["path"])):?>
-							<?require_once($shipment["path"]);?>
-						<?elseif($shipment["value"] < 0)://自訂物流?>
+						<?if($shipment["value"] == 99)://超商取貨?>
+						    <div class="row">
+								<div class="sm-title col-xs-12  col-lg-2 text-right">
+									取件超商門市
+								</div>
+								<div class="pi-context col-xs-12  col-lg-10">
+									<?=$_SESSION["stName"]?>
+								</div>
+							</div>
 							<div class="row">
-								<div class="sm-title col-xs-3 col-md-2 text-right">
+								<div class="sm-title col-xs-12  col-lg-2 text-right">
+									取件超商地址
+								</div>
+								<div class="pi-context col-xs-12  col-lg-10">
+									<?=$_SESSION["stAddr"]?>
+								</div>
+							</div>							
+							<div class="row">
+								<div class="sm-title col-xs-12  col-lg-2 text-right">
 									收件人姓名
 								</div>
-								<div class="pi-context col-xs-9 col-md-10">
+								<div class="pi-context col-xs-12  col-lg-10">
+									<?=$_SESSION["deliName"]?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="sm-title col-xs-12  col-lg-2 text-right">
+									收件人電話
+								</div>
+								<div class="pi-context col-xs-12  col-lg-10">
+									<?=$_SESSION["deliTel"]?>
+								</div>
+							</div>
+						<?elseif($shipment["value"] == 10)://貨運宅配到府?>
+							<?require_once($shipment["path"]);?>
+						<?elseif($shipment["value"] == 11)://台中總公司自取免運費?>
+							<?require_once($shipment["path"]);?>	
+						<?elseif($shipment["value"] < 0)://自訂物流?>
+							<div class="row">
+								<div class="sm-title col-xs-12  col-lg-2 text-right">
+									收件人姓名
+								</div>
+								<div class="pi-context col-xs-12  col-lg-10">
 									<?=$shipment["membername"]?>
 								</div>
 							</div>
 							<div class="row">
-								<div class="sm-title col-xs-3 col-md-2 text-right">
+								<div class="sm-title col-xs-12  col-lg-2 text-right">
 									收件人電話
 								</div>
-								<div class="pi-context col-xs-9 col-md-10">
+								<div class="pi-context col-xs-12  col-lg-10">
 									<?=$shipment["membertel"]?>
 								</div>
 							</div>
 							<div class="row">
-								<div class="sm-title col-xs-3 col-md-2 text-right">
+								<div class="sm-title col-xs-12  col-lg-2 text-right">
 									輸入資訊
 								</div>
-								<div class="pi-context col-xs-9 col-md-10">
+								<div class="pi-context col-xs-12  col-lg-10">
 									<?=$shipment["memberkeyin"]?>
 								</div>
 							</div>
@@ -488,6 +536,42 @@
 <!-- global wrapper --> 
 <!-- End Document 
 	================================================== -->
+<!-- 傳送訂單至台灣便利配購物網站-超商取貨  -->	
+<form method="post" name="simulation_from" action="https://www.ezship.com.tw/emap/ezship_xml_order_api.jsp">	
+      <center>
+		<textarea cols="120" rows="30" style="display:none;" name="web_map_xml">
+		                  <ORDER>
+		                   <suID><?=$twnDeliverAccount?></suID>
+		                   <orderID><?=$order["orderid"]?></orderID>
+		                   <orderStatus>A02</orderStatus> <!-- 超商取貨新訂單，需在ezShip上確認訂單 -->
+		                   <orderType>3</orderType>  <!-- 取貨不付款 -->
+		                   <orderAmount><?=$order["totalfee"]?></orderAmount> <!-- 總金額 -->
+		                   <rvName><?=$_SESSION["deliName"]?></rvName> <!-- 收件人 --> 
+		                   <rvEmail>garyy@mail2000.com.tw</rvEmail> <!-- 收件人Email,用以發送取件通知 --> 
+		                   <rvMobile><?=$_SESSION["deliTel"]?></rvMobile>
+		                   <stCode><?=$_SESSION["stCode"]?></stCode>
+		                   <rtURL>http://test.lifebooks.com.tw/order4.php</rtURL>
+		                   <webPara>20150707001-xxx</webPara>
+						   <? $len = count($aryBookname); // 取得陣列長度 ?>
+						   <? for($i=0; $i<$len; $i++): ?>
+		                   <Detail>
+		                      <prodItem><?=i+1?></prodItem> <!-- 購買商品流水號 -->
+		                      <prodNo>A2769-1</prodNo> <!-- 商品編號 -->
+		                      <prodName><?=$aryBookname[$i]?></prodName> <!-- 商品品名 -->
+		                      <prodPrice><?=$aryPrice[$i]?></prodPrice> <!-- 商品價格 -->
+		                      <prodQty><?=$aryQty[$i]?></prodQty> <!-- 商品數量 -->
+		                      <prodSpec><?=$aryPoption[$i]?></prodSpec> <!-- 商品規格 -->
+		                   </Detail>
+						   <? endfor; ?>
+						   
+		                </ORDER>
+		</textarea><!-- 訂單xml內容 --><br>
+    <input type="submit" id="OrderSubmit" style="display:none;" value="送出訂單">
+    </center>
+</form>
+	
+	
+	
 </body>
 <script type="text/javascript" src="vjs/respond/respond.min.js"></script>
 <script type="text/javascript" src="vjs/jquery-ui/jquery-ui-1.8.23.custom.min.js"></script>

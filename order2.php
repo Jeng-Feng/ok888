@@ -9,6 +9,15 @@ $stName = $_POST["stName"]; //取件門市名稱
 $stAddr = $_POST["stAddr"]; //取件門市地址
 $stTel = $_POST["stTel"]; //取件門市電話
 $webPara = $_POST["webPara"]; //超商取貨判斷參數
+
+// 如果物流配送選擇超商取貨，以session將超商資訊儲存傳遞	
+$_SESSION["processID"] = $processID; //處理processID, 以亂數產生唯一值
+$_SESSION["stName"] = $stName; //取件門市名稱
+$_SESSION["stAddr"] = $stAddr; //取件門市地址
+$_SESSION["stCode"] = $stCode; //取件門市代號
+$_SESSION["stTel"] = $stTel; //取件門市電話
+$_SESSION["stCate"] = $stCate; //取件超商通路代號: TFM-全家超商；TLF-萊爾富超商；TOK-OK超商
+
 ?>
 <!DOCTYPE html>
 <html lang="en"><!-- InstanceBegin template="/Templates/normal_template.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -489,12 +498,10 @@ $webPara = $_POST["webPara"]; //超商取貨判斷參數
 								</div>
 								
 									<?
-									// 如果物流配送選擇超商取貨，以session將超商資訊、收件人資訊儲存傳遞	
+									// 如果物流配送選擇超商取貨，以session將收件人資訊儲存傳遞	
 									if ($stName != ""){
-										$_SESSION["stName"] = $stName;
-										$_SESSION["stAddr"] = $stAddr;
-										$_SESSION["deliName"] = $data["delveryname"];
-										$_SESSION["deliTel"] = $data["delverytel"];
+										$_SESSION["deliName"] = $data["delveryname"]; //收件人姓名
+										$_SESSION["deliTel"] = $data["delverytel"]; //收件人電話
 									}	
 									?>								
 								
