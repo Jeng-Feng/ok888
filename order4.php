@@ -1,5 +1,14 @@
 <? require_once('init.php'); ?>
 <? require_once($config['global_library'].'/_top_order4.php'); ?>
+<?
+//接回訂單設定回傳參數	
+//$sn_id = $_GET['sn_id'];
+//$order_id = $_GET['order_id'];
+$order_status = $_GET['order_status'];
+//$webPara = $_GET['webPara'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en"><!-- InstanceBegin template="/Templates/normal_template.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <!--<![endif]-->
@@ -537,40 +546,46 @@
 <!-- End Document 
 	================================================== -->
 <!-- 傳送訂單至台灣便利配購物網站-超商取貨  -->	
-<form method="post" name="simulation_from" action="https://www.ezship.com.tw/emap/ezship_xml_order_api.jsp">	
+<form method="post" name="orderFrm" id="frmPostFrm" action="https://www.ezship.com.tw/emap/ezship_xml_order_api.jsp">	
       <center>
-		<textarea cols="120" rows="30" style="display:none;" name="web_map_xml">
+		<textarea cols="120" rows="30" style="display:none;" id="order_textarea" name="web_map_xml">
 		                  <ORDER>
 		                   <suID><?=$twnDeliverAccount?></suID>
 		                   <orderID><?=$order["orderid"]?></orderID>
-		                   <orderStatus>A02</orderStatus> <!-- 超商取貨新訂單，需在ezShip上確認訂單 -->
-		                   <orderType>3</orderType>  <!-- 取貨不付款 -->
-		                   <orderAmount><?=$order["totalfee"]?></orderAmount> <!-- 總金額 -->
-		                   <rvName><?=$_SESSION["deliName"]?></rvName> <!-- 收件人 --> 
-		                   <rvEmail>garyy@mail2000.com.tw</rvEmail> <!-- 收件人Email,用以發送取件通知 --> 
+		                   <orderStatus>A02</orderStatus> 
+		                   <orderType>3</orderType> 
+		                   <orderAmount><?=$order["totalfee"]?></orderAmount> 
+		                   <rvName><?=$_SESSION["deliName"]?></rvName>
+		                   <rvEmail>garyy@mail2000.com.tw</rvEmail> 
 		                   <rvMobile><?=$_SESSION["deliTel"]?></rvMobile>
 		                   <stCode><?=$_SESSION["stCode"]?></stCode>
-		                   <rtURL>http://test.lifebooks.com.tw/order4.php</rtURL>
-		                   <webPara>20150707001-xxx</webPara>
-						   <? $len = count($aryBookname); // 取得陣列長度 ?>
-						   <? for($i=0; $i<$len; $i++): ?>
+		                   <rtURL>http://test.lifebooks.com.tw/orderhistory.php</rtURL>
+		                   <webPara></webPara>
+						   <? for($i=0; $i<count($aryBookname); $i++): ?>
 		                   <Detail>
-		                      <prodItem><?=i+1?></prodItem> <!-- 購買商品流水號 -->
-		                      <prodNo>A2769-1</prodNo> <!-- 商品編號 -->
-		                      <prodName><?=$aryBookname[$i]?></prodName> <!-- 商品品名 -->
-		                      <prodPrice><?=$aryPrice[$i]?></prodPrice> <!-- 商品價格 -->
-		                      <prodQty><?=$aryQty[$i]?></prodQty> <!-- 商品數量 -->
-		                      <prodSpec><?=$aryPoption[$i]?></prodSpec> <!-- 商品規格 -->
+		                      <prodItem><?=$i+1?></prodItem> 
+		                      <prodNo>A2769-1<?=$i?></prodNo> 
+		                      <prodName><?=$aryBookname[$i]?></prodName>
+		                      <prodPrice><?=$aryPrice[$i]?></prodPrice>
+		                      <prodQty><?=$aryQty[$i]?></prodQty> 
+		                      <prodSpec><?=$aryPoption[$i]?></prodSpec> 
 		                   </Detail>
 						   <? endfor; ?>
-						   
 		                </ORDER>
 		</textarea><!-- 訂單xml內容 --><br>
-    <input type="submit" id="OrderSubmit" style="display:none;" value="送出訂單">
     </center>
 </form>
 	
+<script type="text/javascript">
+$(document).ready( function () {
 	
+<? if ($order_status == ""): ?>	
+  $order_status = "";
+  $("#frmPostFrm").submit();
+<? endif; ?>
+  
+});
+</script>	
 	
 </body>
 <script type="text/javascript" src="vjs/respond/respond.min.js"></script>

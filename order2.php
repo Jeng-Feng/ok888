@@ -11,12 +11,12 @@ $stTel = $_POST["stTel"]; //取件門市電話
 $webPara = $_POST["webPara"]; //超商取貨判斷參數
 
 // 如果物流配送選擇超商取貨，以session將超商資訊儲存傳遞	
-$_SESSION["processID"] = $processID; //處理processID, 以亂數產生唯一值
+//$_SESSION["processID"] = $processID; //處理processID, 以亂數產生唯一值 (保留未使用)
 $_SESSION["stName"] = $stName; //取件門市名稱
 $_SESSION["stAddr"] = $stAddr; //取件門市地址
-$_SESSION["stCode"] = $stCode; //取件門市代號
+//$_SESSION["stCate"] = $stCate; //取件超商通路代號: TFM-全家超商；TLF-萊爾富超商；TOK-OK超商 (保留未使用)
+$_SESSION["stCode"] = $stCate.$stCode ; //設定訂單門市代號須為「超商通路代號」+「門市代號」
 $_SESSION["stTel"] = $stTel; //取件門市電話
-$_SESSION["stCate"] = $stCate; //取件超商通路代號: TFM-全家超商；TLF-萊爾富超商；TOK-OK超商
 
 ?>
 <!DOCTYPE html>
