@@ -17,7 +17,6 @@ $_SESSION["stAddr"] = $stAddr; //取件門市地址
 //$_SESSION["stCate"] = $stCate; //取件超商通路代號: TFM-全家超商；TLF-萊爾富超商；TOK-OK超商 (保留未使用)
 $_SESSION["stCode"] = $stCate.$stCode ; //設定訂單門市代號須為「超商通路代號」+「門市代號」
 $_SESSION["stTel"] = $stTel; //取件門市電話
-
 ?>
 <!DOCTYPE html>
 <html lang="en"><!-- InstanceBegin template="/Templates/normal_template.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -214,6 +213,7 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
 			</div>
 			<div class="text-left">
 				<form name="FileHeaderForm" class="form-horizontal" method="post" id="christest" action="./order2.php" >
+				    <input type="hidden" name="hAryProductID" id="hAryProductID" value="">
 					<h5 class="order2-title">
 						<span class="glyphicon glyphicon-shopping-cart"></span>
 						訂購產品、數量與價格
@@ -724,6 +724,8 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
 <script>
 $(document).ready( function () {
   $("#shoppingcar").hide();
+
+ $("#hAryProductID").val(spid); //post 產品ID陣列至./post.php
 
   if ($("#hidden_WebPara").val() == "getGoodsByStore"){ //配送方式為超商自取
 		var $radios = $('input:radio[name="php_delverytype"]');

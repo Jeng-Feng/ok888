@@ -218,8 +218,14 @@ $order_status = $_GET['order_status'];
 					訂購產品、數量與價格
 				</h5>
 				<div class="text-left" id="php_orderitemarea">
+
+									<?  $_SESSION["pdname"] = $data["pdname"]; //產品版型規格 ?>	
 <?
-	$aryBookname = array();// 產品品名陣列
+	$aryProductID = array(); //產品ID陣列
+	//由post.php 取得產品ID字串: pid1,pid2,...，再利用php的explode切割字串函示將字串切割並放入Array陣列中
+	$aryProductID = explode(",", $_SESSION["aryProductID"]); 
+	$aryProductname = array(); //產品版型陣列
+	$aryBookname = array();// 產品命名陣列
 	$aryQty = array();// 數量
 	$aryPrice = array();// 價格
 	$aryPoption = array();// 商品規格
@@ -231,6 +237,7 @@ $order_status = $_GET['order_status'];
 							<div class="panel-heading">
 								<h6 class="order-title">
 									<?=$data["pdname"]?>
+									<? array_push($aryProductname,$data["pdname"]);	// 加入產品版型陣列，用於後續傳送訂單是台灣便利配購物網站 ?>
 									<?if(!empty($data["bookname"])):?>
 										<span class="subtitle"><?=$data["bookname"]?></span>
 										<? array_push($aryBookname,$data["bookname"]);	// 加入產品品名陣列，用於後續傳送訂單是台灣便利配購物網站 ?>
@@ -564,8 +571,8 @@ $order_status = $_GET['order_status'];
 						   <? for($i=0; $i<count($aryBookname); $i++): ?>
 		                   <Detail>
 		                      <prodItem><?=$i+1?></prodItem> 
-		                      <prodNo>A2769-1<?=$i?></prodNo> 
-		                      <prodName><?=$aryBookname[$i]?></prodName>
+		                      <prodNo><?=$aryProductID[$i]?></prodNo> 
+		                      <prodName><?=$aryProductname[$i]." ".$aryBookname[$i]?></prodName>
 		                      <prodPrice><?=$aryPrice[$i]?></prodPrice>
 		                      <prodQty><?=$aryQty[$i]?></prodQty> 
 		                      <prodSpec><?=$aryPoption[$i]?></prodSpec> 
