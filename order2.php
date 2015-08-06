@@ -81,7 +81,9 @@ $(function(){
 	});
 	$('.removeFromCart').click(function() {
 		setTimeout(function(){
-			$('#CartQty').html($('#shoppingcart_qty').html());
+			var qty=$('#shoppingcart_qty').html();
+			qty = (qty > 0) ? qty: '';  //假如購物車清單數量為0，購物車清單數量顯示空白
+			$('#CartQty').html(qty);
 		},300);
 	});
 	
@@ -466,8 +468,8 @@ $(function(){
 									</div>
                                     <div class="panel-body" id="shipInfoByStore">
                                     <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">取件門市名稱<input type="text" id="store_name" value="<?=$stName?>" class="form-control" placeholder="取件門市名稱"></div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">取件門市地址<input type="text" id="store_addr" value="<?=$stAddr?>" class="form-control" placeholder="取件門市地址"></div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">取件門市名稱<input type="text" disabled id="store_name" value="<?=$stName?>" class="form-control" placeholder="請點選「選擇門市」，設定取件門市名稱"></div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">取件門市地址<input type="text" disabled id="store_addr" value="<?=$stAddr?>" class="form-control" placeholder="請點選「選擇門市」，設定取件門市地址"></div>
                                     <input type="hidden" id="hidden_WebPara" value="<?=$webPara?>" >
 									</div>
                                     </div>

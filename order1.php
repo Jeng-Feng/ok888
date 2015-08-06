@@ -336,4 +336,24 @@ input[type=checkbox]{
 <script type="text/javascript" src="vjs/custom.js"></script>
 <!-- InstanceBeginEditable name="afterjs" -->
 <!-- InstanceEndEditable -->
+
+<script type="text/javascript">
+
+$(function(){
+	if($('#cancel').length!=1){
+    alert('error id:cancel');
+  }else{
+    $('#cancel').bind('click',cancel_order); // 覆蓋原函式cancel()，改為呼叫函式cancel_order()
+  } 
+});
+
+function cancel_order(){
+  history.back();
+  // 需後續處理取消購物時要返回上一頁，並刪除所有購物車清單
+}
+
+</script>
+
+
+
 <!-- InstanceEnd --></html>
