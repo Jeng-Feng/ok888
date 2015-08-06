@@ -66,13 +66,55 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
 <script src="js/_city.js"></script>
 <script type="text/javascript" src="js/blockUI.js"></script>
 <!-- InstanceEndEditable -->
+
+<!-- DEMO 區 start
+	加入購物車按紐請加一個 addToCart 的 class name
+	移出購物車按紐請加一個 removeFromCart 的 class name
+-->
+<script type="text/javascript" language="javascript">
+$(function(){
+	if($('#shoppingcart_qty').length > 0) $('#CartQty').html($('#shoppingcart_qty').html());
+	$('.addToCart').click(function() {
+		setTimeout(function(){
+			$('#CartQty').html($('#shoppingcart_qty').html());
+		},300);
+	});
+	$('.removeFromCart').click(function() {
+		setTimeout(function(){
+			$('#CartQty').html($('#shoppingcart_qty').html());
+		},300);
+	});
+	
+	$('#all_my_shoppingcart').hover(
+		function(){
+			var clistli = '';
+			for(i=0; i<clist_car.length; i++){
+				clistli += '<li id="'+cplist_car[i]+'">'+clist_car[i]+'</li>';
+			}
+			$('#CartQty').append("<br>" + clistli);
+		}, // end mouseover
+		function(){
+			$('#CartQty').find('li').remove();
+			$('#CartQty').find('br').remove();
+		} // end mouseout
+	); // end hover
+	
+});
+</script>
+<style>
+#shoppingcar {
+	opacity:0;
+}
+</style>
+<!-- DEMO 區 end -->
+
 </head>
 <body>
-<!-- Primary Page Layout
-	================================================== -->
+<!-- Primary Page Layout 
+	================================================== --> 
 <!-- globalWrapper -->
 <div id="globalWrapper">
-  <header class="navbar-fixed-top">
+  <header class="navbar-fixed-top"> 
     <!-- pre header -->
     <div id="preHeader" class="hidden-xs">
       <div class="container">
@@ -86,7 +128,7 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
             </ul>
           </div>
           <div class="col-xs-6">
-            <div id="contactBloc" class="clearfix">
+            <div id="contactBloc" class="clearfix"> 
               <!-- social icons -->
               <ul class="socialNetwork">
                 <li><a href="#" class="tips" title="follow me on Facebook"> <i class="icon-facebook-1"></i></a></li>
@@ -96,35 +138,37 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
                 <li> <a href="#" class="tips" title="follow me on Dribble"> <i class="icon-dribbble"></i> </a> </li>
                 <!-- social icons -->
               </ul>
-              <!-- phone -->
+              <!-- phone --> 
               <span class="contactPhone"><i class="icon-mobile"></i>615.987.1234</span> </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- pre header -->
+    <!-- pre header --> 
     <!-- header -->
     <div id="mainHeader" role="banner">
       <div class="container">
         <nav class="navbar navbar-default scrollMenu" role="navigation">
-          <div class="navbar-header">
+          <div class="navbar-header"> 
             <!-- responsive navigation -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <!-- Logo -->
-            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a>
-
-            <?if($isLogin == true):?>
-            <a class="navbar-brand" href="#" onclick="gotocounter();"><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span></a>
+            <!-- Logo --> 
+            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> 
+            
+           <?if($isLogin == true):?>
+            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick="gotocounter();"><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
             <?endif;?>
-
+           
+            
             </div>
-          <div class="collapse navbar-collapse" id="mainMenu">
+          <div class="collapse navbar-collapse" id="mainMenu"> 
             <!-- Main navigation -->
             <ul class="nav navbar-nav pull-right">
               <li class="primary"> <a href="index.php" class="firstLevel" >首頁</a> </li>
-
+              
               <li class="primary"> <a href="products.php" class="firstLevel hasSubMenu" >產品</a>
                 <ul class="subMenu">
+                  <li><a href="products.php">產品</a></li>
                   <li><a href="products.calendar.php">桌月曆</a></li>
                   <li><a href="products.photobook.php">相片書</a></li>
                   <li><a href="products.sticker.php">大頭貼</a></li>
@@ -157,7 +201,7 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
                   <li><a href="faq04.php">訂購與付款</a></li>
                   <li><a href="faq05.php">出貨與售服</a></li>
                 </ul>
-
+              
               </li>
               <li class="primary"><a href="about.php"  class="firstLevel hasSubMenu" >關於我們</a>
               <ul class="subMenu">
@@ -169,7 +213,7 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
                   <li><a href="#">水晶相片相本介紹</a></li>
                 </ul>
               </li>
-
+              
               <li class="primary"><a href="news.php">優惠訊息</a></li>
               <li class="primary"><a href="contact.php" class="firstLevel hasSubMenu" >聯絡我們</a>
                <ul class="subMenu">
@@ -177,16 +221,16 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
                   <li><a href="online-service.php">線上客服</a></li>
                   <li><a href="service-cooperation.php">行銷合作</a></li>
                 </ul>
-
+              
               </li>
             </ul>
-            <!-- End main navigation -->
+            <!-- End main navigation --> 
           </div>
         </nav>
       </div>
     </div>
   </header>
-  <!-- header -->
+  <!-- header --> 
   <!-- ======================================= content ======================================= -->
   <section id="page">
     <header class="page-header margin-bottom">
@@ -642,7 +686,7 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
 	</div>
 	<!-- InstanceEndEditable --> </div>
   </section>
-  <!-- content -->
+  <!-- content --> 
   <!-- footer -->
   <footer id="footerWrapper" class="margin-top">
     <section id="mainFooter">
@@ -653,34 +697,26 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
               <p>永遠以『人』為出發，是我們對客戶最大的承諾，成立「客服部」是我們對承諾的具體實踐！印刷整個過程，是繁雜且多樣的，除了在客服方面，解答客戶的問題之外更定期發行月刊，教導客戶各類軟體的使用方式、商品印刷相關須知與後加工的注意事項，達到客戶「所印即所要」的目標，大大提升客戶印刷物的良率，並減少不必要的損失。</p>
             </div>
           </div>
-          <div class="col-sm-3">
-            <div class="footerWidget">
-              <h3>
-                <?=$webSiteName?>
-              </h3>
-              <address>
-              <p> <i class="icon-location"></i>&nbsp;
-                <?=$siteAddress?>
-                <br>
-                <i class="icon-phone"></i>&nbsp;
-                <?=$sitePhone?>
-                <br>
-                <i class="icon-mail-alt"></i>&nbsp;
-                <?=$siteEmail?>
-                <br>
-              </p>
+          <div class="col-md-3 col-sm-6">
+              <div class="footerWidget">
+                <h3>PHOTOBOOK</h3>
+                <address>
+                  <p> &nbsp;<a href="https://www.google.com.tw/maps/place/404%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%8D%80%E5%BF%A0%E6%98%8E%E8%B7%AF298%E8%99%9F/@24.1626,120.665874,17z/data=!3m1!4b1!4m2!3m1!1s0x34693d81dfb9c8c5:0x16fc4ea0ee7dbd9c" target="_blank">臺中市北區忠明路298號</a><br>
+                  <i class="icon-phone"></i>&nbsp;(04)2207-3819#82<br>
+                  <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:101@mail.ok888.com.tw ">101@mail.ok888.com.tw </a> <br>
+                </p>
               </address>
             </div>
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="footerWidget">
-              <h3>Latest news</h3>
+              <h3>Quick Menu</h3>
               <ul class="list-unstyled iconList borderList">
                 <li><a href="service.php">服務使用條款</a></li>
-                <li><a href="privacy.php"> 隱私權條款</a></li>
-                <li><a href="commission.php">託製作契約</a></li>
+                <li><a href="privacy.php">隱私權條款</a></li>
+                <li><a href="commission.php">委託製作契約</a></li>
                 <li><a href="sendback.php">退換貨政策</a></li>
-                <li><a href="transportation.php">運方式與計價</a></li>
+                <li><a href="transportation.php">貨運方式與計價</a></li>
               </ul>
             </div>
           </div>
@@ -694,16 +730,16 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
             <p>©
               <?=$copyrightyear?>
               <?=$siteCompany?>
-              Copyright All Rights Reserved.</p>
+              Copyright All Rights Reserved.</p> 
           </div>
         </div>
       </div>
     </section>
   </footer>
-  <!-- End footer -->
+  <!-- End footer --> 
 </div>
-<!-- global wrapper -->
-<!-- End Document
+<!-- global wrapper --> 
+<!-- End Document 
 	================================================== -->
 </body>
 <script type="text/javascript" src="vjs/respond/respond.min.js"></script>
@@ -722,6 +758,7 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
 <!-- InstanceBeginEditable name="afterjs" -->
 <!-- InstanceEndEditable -->
 <script>
+
 $(document).ready( function () {
   $("#shoppingcar").hide();
 
