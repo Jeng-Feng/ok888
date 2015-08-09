@@ -1,24 +1,6 @@
 <?php
-if(isset($_POST['Submit2']))
-{
-  header("Content-Type:text/html; charset=Big5");
 
-  echo("<form method='post' id='formsubmitout' name='simulation_to' action='https://www.ezship.com.tw/emap/rv_request_web.jsp'> ");
-  echo("  <input type='hidden' name='rv_name' value='" .iconv("UTF-8", "Big5",$_POST['rv_name']). "'> ");
-  echo("  <input type='hidden' name='rv_email' value='" .iconv("UTF-8", "Big5",$_POST['rv_email']). "'> ");
-  echo("  <input type='hidden' name='rv_mobil' value='" .iconv("UTF-8", "Big5",$_POST['rv_mobil']). "'> ");
-  echo("  <input type='hidden' name='order_id' value='" .iconv("UTF-8", "Big5",$_POST['order_id']). "'> ");
-  echo("  <input type='hidden' name='su_id' value='" .iconv("UTF-8", "Big5",$_POST['su_id']). "'> ");
-  echo("  <input type='hidden' name='rv_amount' value='" .iconv("UTF-8", "Big5",$_POST['rv_amount']). "'> ");
-  echo("  <input type='hidden' name='webtemp' value='" .iconv("UTF-8", "Big5",$_POST['webtemp']). "'> ");
-  echo("  <input type='hidden' name='rturl' value='" .iconv("UTF-8", "Big5",$_POST['rturl']). "'> ");
-  echo("</form> ");
-  echo(" <script>document.getElementById('formsubmitout').submit();</script> ");
-
-  return;
-}
-
-header("Content-Type:text/html; charset=utf-8");
+  echo $_POST['test.lifebooks.com.tw/test/getStore.php'];
 ?>
 
 <html>
@@ -27,6 +9,7 @@ header("Content-Type:text/html; charset=utf-8");
     <title>eShop 模擬購物網站超商取貨</title>
   </head>
   <body>
+    
 <form method="post" name="simulation_from" action="https://www.ezship.com.tw/emap/ezship_xml_order_api.jsp">
       <center>
       <textarea cols="120" rows="30" name="web_map_xml">

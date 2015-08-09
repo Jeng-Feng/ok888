@@ -14,8 +14,8 @@
 <meta name="description" content="<?=$getmetadescription?>">
 <meta name="keywords" content="<?=$getmetakeyword?>">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>生活相片書-關於我們</title>
-<!-- InstanceEndEditable -->
+  <title>生活相片書-關於我們</title>
+  <!-- InstanceEndEditable -->
 <meta name="author" content="Little NEKO">
 <!-- Mobile Specific Metas================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -46,7 +46,74 @@
 <link rel="stylesheet" href="css/yours.css">
 <!-- END MAXM -->
 <!-- InstanceBeginEditable name="custom javascript" -->
-<!-- InstanceEndEditable -->
+  <!-- InstanceEndEditable -->
+
+<!-- DEMO 區 start
+	加入購物車按紐請加一個 addToCart 的 class name
+	移出購物車按紐請加一個 removeFromCart 的 class name
+-->
+<script type="text/javascript" language="javascript">
+
+
+$(function(){
+	if($('#shoppingcart_qty').length > 0) $('#CartQty').html($('#shoppingcart_qty').html());
+	
+	var iQty = parseInt($('#shoppingcart_qty').html());
+	if (iQty == 0){
+		 $('#shoppingcart_qty').html('');
+		 $('#CartQty').html($('#shoppingcart_qty').html());
+		 $('#all_my_shoppingcart').unbind("click"); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+	} 
+		
+	$('.addToCart').click(function() {
+		setTimeout(function(){
+			$('#CartQty').html($('#shoppingcart_qty').html());
+			$('#all_my_shoppingcart').unbind("click"); // 避免bind()失效，所以bind()之前先unbind();
+						
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			//動態加入結帳函式gotocounter();
+			$('#all_my_shoppingcart').click(function(){
+				gotocounter();
+			});
+		},500);
+	});
+	
+	$('.removeFromCart').click(function() {
+		setTimeout(function(){
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			if (iQty == 0){
+				$('#all_my_shoppingcart').unbind('click'); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+			} 
+		},500);
+	});
+	
+	$('#all_my_shoppingcart').hover(
+		function(){
+			var clistli = '';
+			for(i=0; i<clist_car.length; i++){
+				clistli += '<li id="'+cplist_car[i]+'">'+clist_car[i]+'</li>';
+			}
+			$('#CartQty').append("<br>" + clistli);
+		}, // end mouseover
+		function(){
+			$('#CartQty').find('li').remove();
+			$('#CartQty').find('br').remove();
+		} // end mouseout
+	); // end hover
+	
+});
+</script>
+<style>
+#shoppingcar {
+	opacity:0;
+}
+</style>
+<!-- DEMO 區 end -->
+
 </head>
 <body>
 <!-- Primary Page Layout 
@@ -92,7 +159,14 @@
             <!-- responsive navigation -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             <!-- Logo --> 
-            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> </div>
+            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> 
+            
+           <?if($isLogin == true):?>
+            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick="gotocounter();"><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
+            <?endif;?>
+           
+            
+            </div>
           <div class="collapse navbar-collapse" id="mainMenu"> 
             <!-- Main navigation -->
             <ul class="nav navbar-nav pull-right">
@@ -100,6 +174,7 @@
               
               <li class="primary"> <a href="products.php" class="firstLevel hasSubMenu" >產品</a>
                 <ul class="subMenu">
+                  <li><a href="products.php">產品</a></li>
                   <li><a href="products.calendar.php">桌月曆</a></li>
                   <li><a href="products.photobook.php">相片書</a></li>
                   <li><a href="products.sticker.php">大頭貼</a></li>
@@ -123,7 +198,17 @@
                 <?=$lang_member_register?>
                 </a></li>
               <?endif;?>
-              <li class="primary"><a href="helps.php">新手上路</a></li>
+              <li class="primary"><a href="helps.php"  class="firstLevel hasSubMenu">新手上路</a>
+              <ul class="subMenu">
+                  <li><a href="helps.php">新手操作手冊</a></li>
+                  <li><a href="faq01.php">第一次接觸</a></li>
+                  <li><a href="faq02.php">照片的準備</a></li>
+                  <li><a href="faq03.php">編輯與印製</a></li>
+                  <li><a href="faq04.php">訂購與付款</a></li>
+                  <li><a href="faq05.php">出貨與售服</a></li>
+                </ul>
+              
+              </li>
               <li class="primary"><a href="about.php"  class="firstLevel hasSubMenu" >關於我們</a>
               <ul class="subMenu">
                   <li><a href="about.php">關於我們</a></li>
@@ -135,10 +220,9 @@
                 </ul>
               </li>
               
-              <li class="primary"><a id="php_member_login" href="memberlogin.php">購物車</a></li>
-              <li class="primary"><a href="#" class="firstLevel hasSubMenu" >聯絡我們</a>
+              <li class="primary"><a href="news.php">優惠訊息</a></li>
+              <li class="primary"><a href="contact.php" class="firstLevel hasSubMenu" >聯絡我們</a>
                <ul class="subMenu">
-                  <li><a href="news.php">優惠訊息</a></li>
                   <li><a href="contact.php">線上E-mail</a></li>
                   <li><a href="online-service.php">線上客服</a></li>
                   <li><a href="service-cooperation.php">行銷合作</a></li>
@@ -172,121 +256,122 @@
       </div>
     </header>
     <div class="margin-top none"> <!-- InstanceBeginEditable name="main content" -->
-      <section id="content" class="mt30 pb30">
-        <div class="container">
-          <div class="row"> 
-            <!-- sidebar -->
-            <aside id="sidebar" class="col-md-3">
-              <nav id="subnav">
-                <ul>
-                  <li><a class="active" href="about.php">關於我們<i class=" icon-right-open-mini"></i></a></li>
-                  <li><a href="#">相片書介紹<i class=" icon-right-open-mini"></i></a></li>
-                  <li><a href="#">大頭貼介紹<i class=" icon-right-open-mini"></i></a></li>
-                  <li><a href="#">無框裝飾畫介紹<i class=" icon-right-open-mini"></i></a></li>
-                  <li><a href="#">拍照背景牆介紹<i class=" icon-right-open-mini"></i></a></li>
-                  <li><a href="#">水晶相片相本介紹<i class=" icon-right-open-mini"></i></a></li>
-                </ul>
-              </nav>
-            </aside>
-            <!-- end sidebar --> 
-            <!-- page content-->
-            <section class="col-md-9">
-            <!--
-              <div class="row mb30">
-                <div class="col-md-12">
-                  <div class="imgBorder"><img src="images/theme-pics/fullwidth.jpg" alt="HIDEO website template" class="img-responsive" /> </div>
-                </div>
-              </div>-->
-              
-              <div class="row mb15">
-                <div class="col-md-4">
-                  <div class="boxFocus color1">
-                    <ul class="iconList list-unstyled">
-                      <li>30年的印刷經驗</li>
-                      <li>第七屆 台灣金印獎</li>
-                      <li>品質與服務</li>
-                      <li>物超所值</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-8">
-                  <h3>趕緊來做一本屬於自己的書吧！</h3>
-                  <p> Life Books運用雲端數位化技術搭配數位印刷設備，讓您可以不限時間、不限地點、不限電腦，透過網路隨手編輯您的相片書，直覺、友善、簡單人性化的操作介面，只要會上網就會操作，不僅如此我們更提供大量的各類版型、各種設計風格，讓您不用會設計也能製作一本超專業的個人相片書，Life Books也會不定期更新新版型，並因應各種節慶新增插圖，所以Life Books不只是相片書，還可以是本型錄、畢冊、作品集、畫冊等等多方面應用的少量印刷書冊，所以不管是送人或自用皆適用。 </p>
-                </div>
-              </div>
-              <div id="taichung">
-              <div class="row mb15">
-                <div class="col-md-12">
-                  <h2>建明美術印刷臺中總公司 營業資訊</h2>
-                  <p> 地址：(40466)臺中市北區忠明路298號<br>
-                    電話：(04)2207-3819#82<br>
-                    傳真：(04)2208-1039<br>
-                    營業時間：W1~5 09:00~22:00／W6 09:00~18:00</p>
-                </div>
-                <div class="col-md-12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.2603642672952!2d120.66587399999999!3d24.162600000000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d81dfb9c8c5%3A0x16fc4ea0ee7dbd9c!2zNDA05Y-w5Lit5biC5YyX5Y2A5b-g5piO6LevMjk46Jmf!5e0!3m2!1szh-TW!2stw!4v1436262189135" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-              </div>
-              </div>
-              
-              <div id="taipei">
-              <div class="row mb15">
-                <div class="col-md-12">
-                  <h2>新北取件點－孟勛廣告</h2>
-                  <p> 地址：(220)新北市板橋區漢生東路279巷28號<br>
-                    電話：(02)2961-9705<br>
-                    傳真：(02)2961-9643<br>
-                    營業時間：W1~5 09:00~18:00</p>
-                </div>
-                <div class="col-md-12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.730803686781!2d121.4723779!3d25.009261600000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a821138fd761%3A0x39c1ce09a9feebff!2zMjIw5paw5YyX5biC5p2_5qmL5Y2A5ryi55Sf5p2x6LevMjc55be3MjjomZ8!5e0!3m2!1szh-TW!2stw!4v1436262632948" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-              </div>
-              </div>
-              
-              
-              <div id="Hsinchu">
-              <div class="row mb15">
-                <div class="col-md-12">
-                  <h2>新竹取件點－服務處</h2>
-                  <p> 地址：(300)新竹市西大路559-30號（棒球場正後方）<br>
-                    電話：(03)522-0768<br>
-                    傳真：(03)522-0936<br>
-                    營業時間：W1~5 09:00~18:00</p>
-                </div>
-                <div class="col-md-12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.647089616671!2d120.96109589999999!3d24.807535200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835bef789f56d%3A0x692f2681e3e62d1b!2zMzAw5paw56u55biC5YyX5Y2A6KW_5aSn6LevNTU56Jmf!5e0!3m2!1szh-TW!2stw!4v1436262596863" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-              </div>
-              </div>
-              
-              
-              
-              <div id="Chiayi">
-              <div class="row mb15">
-                <div class="col-md-12">
-                  <h2>嘉義取件點－彩印佳</h2>
-                  <p> 地址：(600)嘉義市大同路463號<br>
-                    電話：(05)286-2386<br>
-                    傳真：(05)286-2390<br>
-                    營業時間：W1~5 09:00~19:00</p>
-                </div>
-                <div class="col-md-12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.5659371750003!2d120.4228875!3d23.476116700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e9690cf6aaa01%3A0x7799ff19d44a1c5f!2zNjAw5ZiJ576p5biC6KW_5Y2A5aSn5ZCM6LevNDYz6Jmf!5e0!3m2!1szh-TW!2stw!4v1436262556642" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-              </div>
-              </div>
-              
-              
-              
-              
-              
-            </section>
-            <!--end page content right--> 
+<section id="content" class="mt30 pb30">
+  <div class="container">
+    <div class="row">
+      <!-- sidebar -->
+      <aside id="sidebar" class="col-md-3">
+        <nav id="subnav">
+          <ul>
+            <li><a class="active" href="about.php">關於我們<i class=" icon-right-open-mini"></i></a></li>
+            <li><a href="#">相片書介紹<i class=" icon-right-open-mini"></i></a></li>
+            <li><a href="#">桌曆介紹<i class=" icon-right-open-mini"></i></a></li>
+            <li><a href="#">大頭貼介紹<i class=" icon-right-open-mini"></i></a></li>
+            <li><a href="#">無框裝飾畫介紹<i class=" icon-right-open-mini"></i></a></li>
+            <li><a href="#">拍照背景牆介紹<i class=" icon-right-open-mini"></i></a></li>
+            <li><a href="#">水晶相片相本介紹<i class=" icon-right-open-mini"></i></a></li>
+          </ul>
+        </nav>
+      </aside>
+      <!-- end sidebar -->
+      <!-- page content-->
+      <section class="col-md-9">
+        <!--
+        <div class="row mb30">
+          <div class="col-md-12">
+            <div class="imgBorder"><img src="images/theme-pics/fullwidth.jpg" alt="HIDEO website template" class="img-responsive" /> </div>
+          </div>
+        </div>-->
+        
+        <div class="row mb15">
+          <div class="col-md-4">
+            <div class="boxFocus color1">
+              <ul class="iconList list-unstyled">
+                <li>30年的印刷經驗</li>
+                <li>第七屆 台灣金印獎</li>
+                <li>品質與服務</li>
+                <li>物超所值</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <h3>趕緊來做一本屬於自己的書吧！</h3>
+            <p> Life Books運用雲端數位化技術搭配數位印刷設備，讓您可以不限時間、不限地點、不限電腦，透過網路隨手編輯您的相片書，直覺、友善、簡單人性化的操作介面，只要會上網就會操作，不僅如此我們更提供大量的各類版型、各種設計風格，讓您不用會設計也能製作一本超專業的個人相片書，Life Books也會不定期更新新版型，並因應各種節慶新增插圖，所以Life Books不只是相片書，還可以是本型錄、畢冊、作品集、畫冊等等多方面應用的少量印刷書冊，所以不管是送人或自用皆適用。 </p>
           </div>
         </div>
+        <div id="taichung">
+          <div class="row mb15">
+            <div class="col-md-12">
+              <h2>建明美術印刷臺中總公司 營業資訊</h2>
+              <p> 地址：(40466)臺中市北區忠明路298號<br>
+                電話：(04)2207-3819#82<br>
+                傳真：(04)2208-1039<br>
+              營業時間：W1~5 09:00~22:00／W6 09:00~18:00</p>
+            </div>
+            <div class="col-md-12">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.2603642672952!2d120.66587399999999!3d24.162600000000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d81dfb9c8c5%3A0x16fc4ea0ee7dbd9c!2zNDA05Y-w5Lit5biC5YyX5Y2A5b-g5piO6LevMjk46Jmf!5e0!3m2!1szh-TW!2stw!4v1436262189135" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        
+        <div id="taipei">
+          <div class="row mb15">
+            <div class="col-md-12">
+              <h2>新北取件點－孟勛廣告</h2>
+              <p> 地址：(220)新北市板橋區漢生東路279巷28號<br>
+                電話：(02)2961-9705<br>
+                傳真：(02)2961-9643<br>
+              營業時間：W1~5 09:00~18:00</p>
+            </div>
+            <div class="col-md-12">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.730803686781!2d121.4723779!3d25.009261600000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a821138fd761%3A0x39c1ce09a9feebff!2zMjIw5paw5YyX5biC5p2_5qmL5Y2A5ryi55Sf5p2x6LevMjc55be3MjjomZ8!5e0!3m2!1szh-TW!2stw!4v1436262632948" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div id="Hsinchu">
+          <div class="row mb15">
+            <div class="col-md-12">
+              <h2>新竹取件點－服務處</h2>
+              <p> 地址：(300)新竹市西大路559-30號（棒球場正後方）<br>
+                電話：(03)522-0768<br>
+                傳真：(03)522-0936<br>
+              營業時間：W1~5 09:00~18:00</p>
+            </div>
+            <div class="col-md-12">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.647089616671!2d120.96109589999999!3d24.807535200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835bef789f56d%3A0x692f2681e3e62d1b!2zMzAw5paw56u55biC5YyX5Y2A6KW_5aSn6LevNTU56Jmf!5e0!3m2!1szh-TW!2stw!4v1436262596863" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div id="Chiayi">
+          <div class="row mb15">
+            <div class="col-md-12">
+              <h2>嘉義取件點－彩印佳</h2>
+              <p> 地址：(600)嘉義市大同路463號<br>
+                電話：(05)286-2386<br>
+                傳真：(05)286-2390<br>
+              營業時間：W1~5 09:00~19:00</p>
+            </div>
+            <div class="col-md-12">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.5659371750003!2d120.4228875!3d23.476116700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e9690cf6aaa01%3A0x7799ff19d44a1c5f!2zNjAw5ZiJ576p5biC6KW_5Y2A5aSn5ZCM6LevNDYz6Jmf!5e0!3m2!1szh-TW!2stw!4v1436262556642" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        
+        
       </section>
-      <!-- InstanceEndEditable --> </div>
+      <!--end page content right-->
+    </div>
+  </div>
+</section>
+<!-- InstanceEndEditable --> </div>
   </section>
   <!-- content --> 
   <!-- footer -->
@@ -299,26 +384,26 @@
               <p>永遠以『人』為出發，是我們對客戶最大的承諾，成立「客服部」是我們對承諾的具體實踐！印刷整個過程，是繁雜且多樣的，除了在客服方面，解答客戶的問題之外更定期發行月刊，教導客戶各類軟體的使用方式、商品印刷相關須知與後加工的注意事項，達到客戶「所印即所要」的目標，大大提升客戶印刷物的良率，並減少不必要的損失。</p>
             </div>
           </div>
-          <div class="col-sm-3">
-            <div class="footerWidget">
-              <h3><?=$webSiteName?></h3>
-              <address>
-              <p> <i class="icon-location"></i>&nbsp;<?=$siteAddress?><br>
-                <i class="icon-phone"></i>&nbsp;<?=$sitePhone?><br>
-                <i class="icon-mail-alt"></i>&nbsp;<?=$siteEmail?><br>
-              </p>
+          <div class="col-md-3 col-sm-6">
+              <div class="footerWidget">
+                <h3>PHOTOBOOK</h3>
+                <address>
+                  <p> &nbsp;<a href="https://www.google.com.tw/maps/place/404%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%8D%80%E5%BF%A0%E6%98%8E%E8%B7%AF298%E8%99%9F/@24.1626,120.665874,17z/data=!3m1!4b1!4m2!3m1!1s0x34693d81dfb9c8c5:0x16fc4ea0ee7dbd9c" target="_blank">臺中市北區忠明路298號</a><br>
+                  <i class="icon-phone"></i>&nbsp;(04)2207-3819#82<br>
+                  <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:101@mail.ok888.com.tw ">101@mail.ok888.com.tw </a> <br>
+                </p>
               </address>
             </div>
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="footerWidget">
-              <h3>Latest news</h3>
+              <h3>Quick Menu</h3>
               <ul class="list-unstyled iconList borderList">
                 <li><a href="service.php">服務使用條款</a></li>
-                <li><a href="privacy.php"> 隱私權條款</a></li>
-                <li><a href="commission.php">託製作契約</a></li>
+                <li><a href="privacy.php">隱私權條款</a></li>
+                <li><a href="commission.php">委託製作契約</a></li>
                 <li><a href="sendback.php">退換貨政策</a></li>
-                <li><a href="transportation.php">運方式與計價</a></li>
+                <li><a href="transportation.php">貨運方式與計價</a></li>
               </ul>
             </div>
           </div>
@@ -332,7 +417,7 @@
             <p>©
               <?=$copyrightyear?>
               <?=$siteCompany?>
-              Copyright All Rights Reserved.</p>
+              Copyright All Rights Reserved.</p> 
           </div>
         </div>
       </div>
@@ -359,4 +444,9 @@
 <script type="text/javascript" src="vjs/custom.js"></script>
 <!-- InstanceBeginEditable name="afterjs" -->
 <!-- InstanceEndEditable -->
+<script>
+$(document).ready( function () {
+  $("#shoppingcar").hide();
+});
+</script>
 <!-- InstanceEnd --></html>

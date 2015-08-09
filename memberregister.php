@@ -1,6 +1,6 @@
-<?php 
-	require_once(dirname(__FILE__).'/init.php');
-	require_once($config['global_library'].'/_top_memberregister.php');
+<?php
+  require_once(dirname(__FILE__).'/init.php');
+  require_once($config['global_library'].'/_top_memberregister.php');
 ?>
 <!DOCTYPE html>
 <html lang="en"><!-- InstanceBegin template="/Templates/normal_template.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -12,8 +12,8 @@
 <meta name="description" content="<?=$getmetadescription?>">
 <meta name="keywords" content="<?=$getmetakeyword?>">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>加入會員</title>
-<!-- InstanceEndEditable -->
+  <title>加入會員</title>
+  <!-- InstanceEndEditable -->
 <meta name="author" content="Little NEKO">
 <!-- Mobile Specific Metas================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -44,13 +44,80 @@
 <link rel="stylesheet" href="css/yours.css">
 <!-- END MAXM -->
 <!-- InstanceBeginEditable name="custom javascript" -->
-<?require_once($config['global_library'].'/_memberregister.php');?>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script type="text/javascript" src="js/jquery.ui.core.js"></script>
-<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="js/datepicker/jquery.ui.datepicker.js"></script>
-<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.18.custom.css" />
-<!-- InstanceEndEditable -->
+  <?require_once($config['global_library'].'/_memberregister.php');?>
+  <script src="js/jquery.prettyPhoto.js"></script>
+  <script type="text/javascript" src="js/jquery.ui.core.js"></script>
+  <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+  <script type="text/javascript" src="js/datepicker/jquery.ui.datepicker.js"></script>
+  <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.18.custom.css" />
+  <!-- InstanceEndEditable -->
+
+<!-- DEMO 區 start
+	加入購物車按紐請加一個 addToCart 的 class name
+	移出購物車按紐請加一個 removeFromCart 的 class name
+-->
+<script type="text/javascript" language="javascript">
+
+
+$(function(){
+	if($('#shoppingcart_qty').length > 0) $('#CartQty').html($('#shoppingcart_qty').html());
+	
+	var iQty = parseInt($('#shoppingcart_qty').html());
+	if (iQty == 0){
+		 $('#shoppingcart_qty').html('');
+		 $('#CartQty').html($('#shoppingcart_qty').html());
+		 $('#all_my_shoppingcart').unbind("click"); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+	} 
+		
+	$('.addToCart').click(function() {
+		setTimeout(function(){
+			$('#CartQty').html($('#shoppingcart_qty').html());
+			$('#all_my_shoppingcart').unbind("click"); // 避免bind()失效，所以bind()之前先unbind();
+						
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			//動態加入結帳函式gotocounter();
+			$('#all_my_shoppingcart').click(function(){
+				gotocounter();
+			});
+		},500);
+	});
+	
+	$('.removeFromCart').click(function() {
+		setTimeout(function(){
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			if (iQty == 0){
+				$('#all_my_shoppingcart').unbind('click'); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+			} 
+		},500);
+	});
+	
+	$('#all_my_shoppingcart').hover(
+		function(){
+			var clistli = '';
+			for(i=0; i<clist_car.length; i++){
+				clistli += '<li id="'+cplist_car[i]+'">'+clist_car[i]+'</li>';
+			}
+			$('#CartQty').append("<br>" + clistli);
+		}, // end mouseover
+		function(){
+			$('#CartQty').find('li').remove();
+			$('#CartQty').find('br').remove();
+		} // end mouseout
+	); // end hover
+	
+});
+</script>
+<style>
+#shoppingcar {
+	opacity:0;
+}
+</style>
+<!-- DEMO 區 end -->
+
 </head>
 <body>
 <!-- Primary Page Layout 
@@ -96,7 +163,14 @@
             <!-- responsive navigation -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             <!-- Logo --> 
-            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> </div>
+            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> 
+            
+           <?if($isLogin == true):?>
+            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick="gotocounter();"><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
+            <?endif;?>
+           
+            
+            </div>
           <div class="collapse navbar-collapse" id="mainMenu"> 
             <!-- Main navigation -->
             <ul class="nav navbar-nav pull-right">
@@ -104,6 +178,7 @@
               
               <li class="primary"> <a href="products.php" class="firstLevel hasSubMenu" >產品</a>
                 <ul class="subMenu">
+                  <li><a href="products.php">產品</a></li>
                   <li><a href="products.calendar.php">桌月曆</a></li>
                   <li><a href="products.photobook.php">相片書</a></li>
                   <li><a href="products.sticker.php">大頭貼</a></li>
@@ -127,7 +202,17 @@
                 <?=$lang_member_register?>
                 </a></li>
               <?endif;?>
-              <li class="primary"><a href="helps.php">新手上路</a></li>
+              <li class="primary"><a href="helps.php"  class="firstLevel hasSubMenu">新手上路</a>
+              <ul class="subMenu">
+                  <li><a href="helps.php">新手操作手冊</a></li>
+                  <li><a href="faq01.php">第一次接觸</a></li>
+                  <li><a href="faq02.php">照片的準備</a></li>
+                  <li><a href="faq03.php">編輯與印製</a></li>
+                  <li><a href="faq04.php">訂購與付款</a></li>
+                  <li><a href="faq05.php">出貨與售服</a></li>
+                </ul>
+              
+              </li>
               <li class="primary"><a href="about.php"  class="firstLevel hasSubMenu" >關於我們</a>
               <ul class="subMenu">
                   <li><a href="about.php">關於我們</a></li>
@@ -139,10 +224,9 @@
                 </ul>
               </li>
               
-              <li class="primary"><a id="php_member_login" href="memberlogin.php">購物車</a></li>
-              <li class="primary"><a href="#" class="firstLevel hasSubMenu" >聯絡我們</a>
+              <li class="primary"><a href="news.php">優惠訊息</a></li>
+              <li class="primary"><a href="contact.php" class="firstLevel hasSubMenu" >聯絡我們</a>
                <ul class="subMenu">
-                  <li><a href="news.php">優惠訊息</a></li>
                   <li><a href="contact.php">線上E-mail</a></li>
                   <li><a href="online-service.php">線上客服</a></li>
                   <li><a href="service-cooperation.php">行銷合作</a></li>
@@ -176,143 +260,143 @@
       </div>
     </header>
     <div class="margin-top none"> <!-- InstanceBeginEditable name="main content" -->
- 
-		<?//require_once($config['global_library'].'/_albumView.php');?>
-			<div id="bootstrap_content">
-				<div class="container" align="center">
-					
-					<div class="php-memberregister">
-						<h3 class="text-center">加入會員</h3>
-						<form class="form-horizontal" action="new_member_do.php" method="post" name="FileHeaderForm" id="FileHeaderForm">
-							<input type="hidden" name="actok" id="actok" value="1" />
-							<input type="hidden" name="Action" id="Action" value="reg" />
-							<div class="form-group php-memeberregister-account-row">
-								<label for="gainaccount" class="col-sm-2 control-label">
-									<img src="./images/im/flag.gif" />
-									帳號 <span style="color:red;">*</span>：
-								</label>
-								<div class="col-sm-10">
-								  <input type="text" class="form-control" id="gainaccount" name="gainaccount" placeholder="由英文字母 a-z,數字0-9,以及_組成" onchange="verifyAccount(1,this.value);" tabindex="1" />
-								  <span class="help-block">
-									<span id="check1msg">
-										<a href="javascript:void(0);" style="text-decoration:none;" onclick="if($('#gainaccount').val()==''){alert('請先輸入您的帳號!');}else{verifyAccount(1,$('#gainaccount').val());} return false;">
-											<img src="./images/im/question.gif" border="0" />
-											檢查帳號
-										</a>
-									</span>&nbsp;
-									or
-									社群註冊
-									<span class="communityarea"></span>
-									<img id="loading1" src="./images/im/loading.gif" />
-								  </span>
-								</div>
-						  </div>
-						  <div class="form-group">
-								<label for="gainpassword" class="col-sm-2 control-label">
-									<img src="./images/im/flag.gif" />
-									密碼 <span style="color:red;">*</span>：
-								</label>
-								<div class="col-sm-10">
-								  <input type="password" class="form-control" id="gainpassword" name="gainpassword" placeholder="密碼" tabindex="2" />
-								</div>
-						  </div>
-						  <div class="form-group">
-								<label for="gainrepassword" class="col-sm-2 control-label">
-									<img src="./images/im/flag.gif" />
-									確認密碼 <span style="color:red;">*</span>：
-								</label>
-								<div class="col-sm-10">
-								  <input type="password" class="form-control" id="gainrepassword" name="gainrepassword" placeholder="確認密碼" tabindex="3" />
-								</div>
-						  </div>
-						  <div class="form-group">
-								<label for="name1" class="col-sm-2 control-label">
-									<img src="./images/im/flag.gif" />
-									姓名 <span style="color:red;">*</span>：
-								</label>
-								<div class="col-sm-10">
-								  <input type="text" class="form-control" id="name1" name="gainrepassword" placeholder="姓名" tabindex="4" />
-								</div>
-						  </div>
-						  <div class="form-group">
-								<label for="mobile" class="col-sm-2 control-label">
-									<img src="./images/im/flag.gif" />
-									行動電話：
-								</label>
-								<div class="col-sm-10">
-								  <input type="text" class="form-control" id="mobile" name="mobile" placeholder="行動電話" tabindex="5" />
-								  <span class="help-block">建議填入，以利日後使用者查詢密碼</span>
-								</div>
-						  </div>
-						  <div class="form-group">
-								<label for="email" class="col-sm-2 control-label">
-									<img src="./images/im/flag.gif" />
-									EMAIL：
-								</label>
-								<div class="col-sm-10">
-								  <input type="text" class="form-control" id="email" name="email" placeholder="EMAIL" tabindex="6" />
-								  <span class="help-block">建議填入，以利日後使用者查詢密碼</span>
-								</div>
-						  </div>
-						  <div class="form-group">
-								<label for="city" class="col-sm-2 control-label">
-									<img src="./images/im/flag.gif" />
-									地址：
-								</label>
-                                <?if($address_data['country'] == 'CN'):?>
-                                    <div class="col-sm-9 col-md-10">
-                                        <div class="col-sm-3 col-md-3">
-                                            <select name="city" class="addr" id="citysel"></select>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3">
-                                            <select name="cityarea" class="addr cityaasel"></select>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3">
-                                            <select name="cityarea2" class="addr cityaasel2" onchange="get_zip_code()"></select>
-                                        </div>
-                                        <div class="col-sm-3 col-md-3">
-                                            <input class="form-control" name="Zipcode" id="Zipcode" type="text" value="" readonly />
-                                        </div>
-                                            <input class="form-control col-xs-12" name="memberAdd3" id="memberAdd3" type="text" tabindex="9" />
-                                    </div>
-                                <?else:?>
-                                    <div class="col-sm-3">
-                                        <select name="city" id="city" onchange="javascript:citychange();putzip();" class="form-control select col-md-4" tabindex="7" style="margin-bottom:5px;">
-                                            <?foreach($address_data['city_area'] as $key => $value):?>
-                                                <option value="<?=$key?>"><?=$value?></option>
-                                            <?endforeach?>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <select name="cityarea" id="cityarea" size="1" class="form-control select" onchange="javascript:putzip();" tabindex="8">
-                                                <option value="">請選擇區域</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <input class="form-control" placeholder="郵遞區號" name="Zipcode" id="Zipcode" type="text" size="5" style="margin-bottom:5px;" />
-                                    </div>
-                                    <div class="col-sm-10 col-sm-offset-2">
-                                        <input class="form-control col-xs-12" name="memberAdd3" id="memberAdd3" type="text" tabindex="9" />
-                                      </div>
-                                    <div class="col-lg-12"></div>
-                                <?endif?>
-						  </div>
-						  <div class="form-group col-lg-12">
-							<center>
-								<a class="btn btn-primary btn-small" href="javascript:void(0);" onclick="btnSave(); return false;"><span>&nbsp;&nbsp;確定加入會員&nbsp;&nbsp;</span></a>
-								<a class="btn btn-primary btn-small" href="javascript:void(0);" onclick="if(confirm('確定清除重填!?')){document.FileHeaderForm.reset();$('#actok').val('0');} return false;"><span>&nbsp;清除&nbsp;</span></a>
-							</center>
-						  </div>
-						  <div class="form-group">
-							<div class="col-sm-12" id="member_message"></div>
-						  </div>
-						</form>
-						
-					</div>
-					
-				</div>
-			</div>
-	<!-- InstanceEndEditable --> </div>
+
+<?//require_once($config['global_library'].'/_albumView.php');?>
+<div id="bootstrap_content">
+  <div class="container" align="center">
+    
+    <div class="php-memberregister">
+      <h3 class="text-center">加入會員</h3>
+      <form class="form-horizontal" action="new_member_do.php" method="post" name="FileHeaderForm" id="FileHeaderForm">
+        <input type="hidden" name="actok" id="actok" value="1" />
+        <input type="hidden" name="Action" id="Action" value="reg" />
+        <div class="form-group php-memeberregister-account-row">
+          <label for="gainaccount" class="col-sm-2 control-label">
+            <img src="./images/im/flag.gif" />
+            帳號 <span style="color:red;">*</span>：
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="gainaccount" name="gainaccount" placeholder="由英文字母 a-z,數字0-9,以及_組成" onchange="verifyAccount(1,this.value);" tabindex="1" />
+            <span class="help-block">
+              <span id="check1msg">
+                <a href="javascript:void(0);" style="text-decoration:none;" onclick="if($('#gainaccount').val()==''){alert('請先輸入您的帳號!');}else{verifyAccount(1,$('#gainaccount').val());} return false;">
+                  <img src="./images/im/question.gif" border="0" />
+                  檢查帳號
+                </a>
+              </span>&nbsp;
+              or
+              社群註冊
+              <span class="communityarea"></span>
+              <img id="loading1" src="./images/im/loading.gif" />
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gainpassword" class="col-sm-2 control-label">
+            <img src="./images/im/flag.gif" />
+            密碼 <span style="color:red;">*</span>：
+          </label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="gainpassword" name="gainpassword" placeholder="密碼" tabindex="2" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gainrepassword" class="col-sm-2 control-label">
+            <img src="./images/im/flag.gif" />
+            確認密碼 <span style="color:red;">*</span>：
+          </label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="gainrepassword" name="gainrepassword" placeholder="確認密碼" tabindex="3" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name1" class="col-sm-2 control-label">
+            <img src="./images/im/flag.gif" />
+            姓名 <span style="color:red;">*</span>：
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="name1" name="gainrepassword" placeholder="姓名" tabindex="4" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="mobile" class="col-sm-2 control-label">
+            <img src="./images/im/flag.gif" />
+            行動電話：
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="行動電話" tabindex="5" />
+            <span class="help-block">建議填入，以利日後使用者查詢密碼</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="col-sm-2 control-label">
+            <img src="./images/im/flag.gif" />
+            EMAIL：
+          </label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="email" name="email" placeholder="EMAIL" tabindex="6" />
+            <span class="help-block">建議填入，以利日後使用者查詢密碼</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="city" class="col-sm-2 control-label">
+            <img src="./images/im/flag.gif" />
+            地址：
+          </label>
+          <?if($address_data['country'] == 'CN'):?>
+          <div class="col-sm-9 col-md-10">
+            <div class="col-sm-3 col-md-3">
+            <select name="city" class="addr" id="citysel"></select>
+          </div>
+          <div class="col-sm-3 col-md-3">
+          <select name="cityarea" class="addr cityaasel"></select>
+        </div>
+        <div class="col-sm-3 col-md-3">
+        <select name="cityarea2" class="addr cityaasel2" onchange="get_zip_code()"></select>
+      </div>
+      <div class="col-sm-3 col-md-3">
+        <input class="form-control" name="Zipcode" id="Zipcode" type="text" value="" readonly />
+      </div>
+      <input class="form-control col-xs-12" name="memberAdd3" id="memberAdd3" type="text" tabindex="9" />
+    </div>
+    <?else:?>
+    <div class="col-sm-3">
+      <select name="city" id="city" onchange="javascript:citychange();putzip();" class="form-control select col-md-4" tabindex="7" style="margin-bottom:5px;">
+        <?foreach($address_data['city_area'] as $key => $value):?>
+        <option value="<?=$key?>"><?=$value?></option>
+        <?endforeach?>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <select name="cityarea" id="cityarea" size="1" class="form-control select" onchange="javascript:putzip();" tabindex="8">
+        <option value="">請選擇區域</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <input class="form-control" placeholder="郵遞區號" name="Zipcode" id="Zipcode" type="text" size="5" style="margin-bottom:5px;" />
+    </div>
+    <div class="col-sm-10 col-sm-offset-2">
+      <input class="form-control col-xs-12" name="memberAdd3" id="memberAdd3" type="text" tabindex="9" />
+    </div>
+    <div class="col-lg-12"></div>
+    <?endif?>
+  </div>
+  <div class="form-group col-lg-12">
+    <center>
+    <a class="btn btn-primary btn-small" href="javascript:void(0);" onclick="btnSave(); return false;"><span>&nbsp;&nbsp;確定加入會員&nbsp;&nbsp;</span></a>
+    <a class="btn btn-primary btn-small" href="javascript:void(0);" onclick="if(confirm('確定清除重填!?')){document.FileHeaderForm.reset();$('#actok').val('0');} return false;"><span>&nbsp;清除&nbsp;</span></a>
+    </center>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12" id="member_message"></div>
+  </div>
+</form>
+
+</div>
+
+</div>
+</div>
+<!-- InstanceEndEditable --> </div>
   </section>
   <!-- content --> 
   <!-- footer -->
@@ -325,26 +409,26 @@
               <p>永遠以『人』為出發，是我們對客戶最大的承諾，成立「客服部」是我們對承諾的具體實踐！印刷整個過程，是繁雜且多樣的，除了在客服方面，解答客戶的問題之外更定期發行月刊，教導客戶各類軟體的使用方式、商品印刷相關須知與後加工的注意事項，達到客戶「所印即所要」的目標，大大提升客戶印刷物的良率，並減少不必要的損失。</p>
             </div>
           </div>
-          <div class="col-sm-3">
-            <div class="footerWidget">
-              <h3><?=$webSiteName?></h3>
-              <address>
-              <p> <i class="icon-location"></i>&nbsp;<?=$siteAddress?><br>
-                <i class="icon-phone"></i>&nbsp;<?=$sitePhone?><br>
-                <i class="icon-mail-alt"></i>&nbsp;<?=$siteEmail?><br>
-              </p>
+          <div class="col-md-3 col-sm-6">
+              <div class="footerWidget">
+                <h3>PHOTOBOOK</h3>
+                <address>
+                  <p> &nbsp;<a href="https://www.google.com.tw/maps/place/404%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%8D%80%E5%BF%A0%E6%98%8E%E8%B7%AF298%E8%99%9F/@24.1626,120.665874,17z/data=!3m1!4b1!4m2!3m1!1s0x34693d81dfb9c8c5:0x16fc4ea0ee7dbd9c" target="_blank">臺中市北區忠明路298號</a><br>
+                  <i class="icon-phone"></i>&nbsp;(04)2207-3819#82<br>
+                  <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:101@mail.ok888.com.tw ">101@mail.ok888.com.tw </a> <br>
+                </p>
               </address>
             </div>
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="footerWidget">
-              <h3>Latest news</h3>
+              <h3>Quick Menu</h3>
               <ul class="list-unstyled iconList borderList">
                 <li><a href="service.php">服務使用條款</a></li>
-                <li><a href="privacy.php"> 隱私權條款</a></li>
-                <li><a href="commission.php">託製作契約</a></li>
+                <li><a href="privacy.php">隱私權條款</a></li>
+                <li><a href="commission.php">委託製作契約</a></li>
                 <li><a href="sendback.php">退換貨政策</a></li>
-                <li><a href="transportation.php">運方式與計價</a></li>
+                <li><a href="transportation.php">貨運方式與計價</a></li>
               </ul>
             </div>
           </div>
@@ -358,7 +442,7 @@
             <p>©
               <?=$copyrightyear?>
               <?=$siteCompany?>
-              Copyright All Rights Reserved.</p>
+              Copyright All Rights Reserved.</p> 
           </div>
         </div>
       </div>
@@ -386,14 +470,19 @@
 <!-- InstanceBeginEditable name="afterjs" -->
 <script type="text/javascript">
 function MM_goToURL(){ //v3.0
-	if (document.getElementById('igotit').checked) {
-	  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
-	  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
-	}
-	else {
-		alert("請先閱讀相關權益，並同意加入會員。");
-	}
+  if (document.getElementById('igotit').checked) {
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+  }
+  else {
+    alert("請先閱讀相關權益，並同意加入會員。");
+  }
 }
 </script>
 <!-- InstanceEndEditable -->
+<script>
+$(document).ready( function () {
+  $("#shoppingcar").hide();
+});
+</script>
 <!-- InstanceEnd --></html>

@@ -65,6 +65,56 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
 <? require_once($config['global_library'].'/_order2.php'); ?>
 <script src="js/_city.js"></script>
 <script type="text/javascript" src="js/blockUI.js"></script>
+
+<script>
+
+$(document).ready( function () {
+
+ $("#hAryProductID").val(spid); //post 產品ID陣列至./post.php
+
+  if ($("#hidden_WebPara").val() == "getGoodsByStore"){ //配送方式為超商自取
+		var $radios = $('input:radio[name="php_delverytype"]');
+        $radios.filter('[value=99]').prop('checked', true); //取回回傳值後，再次設定配送方式為超商自取
+		$("#ship_id_a").hide();
+		$("#shipInfoByStore").show();	
+  }
+  
+});
+
+function setInvoiceAreaVisible(){
+	if ( $('input:radio:checked[name="php_invoicetype"]').val() == 3){ //三聯式發票
+		$("#php_invoicearea").show();
+	}else{
+		$("#php_invoicearea").hide();		
+	}
+}
+
+function setDeliverytypeVisible(){
+	if ( $('input:radio:checked[name="php_delverytype"]').val() == 10){ //貨運宅配到府
+		$("#ship_id_a").show();
+		$("#shipInfoByStore").hide();	
+	}else if ( $('input:radio:checked[name="php_delverytype"]').val() == 99){ //超商取貨
+		$("#ship_id_a").hide();
+		$("#shipInfoByStore").show();	
+	}else{
+		$("#ship_id_a").hide();
+		$("#shipInfoByStore").hide();
+	}	
+}
+
+function getProcessID() {  //產生唯一值guid，來作為process_id
+    function S4() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    }
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+
+function selectStore(){ //設定收貨超商門市
+  location.href="http://map.ezship.com.tw/ezship_map_web.jsp?suID=hsu6028@gmail.com&processID=" + getProcessID() + "&rtURL=http://test.lifebooks.com.tw/order2.php&webPara=getGoodsByStore";
+}
+
+</script>
+
 <!-- InstanceEndEditable -->
 
 <!-- DEMO 區 start
@@ -72,19 +122,42 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
 	移出購物車按紐請加一個 removeFromCart 的 class name
 -->
 <script type="text/javascript" language="javascript">
+
+
 $(function(){
 	if($('#shoppingcart_qty').length > 0) $('#CartQty').html($('#shoppingcart_qty').html());
+	
+	var iQty = parseInt($('#shoppingcart_qty').html());
+	if (iQty == 0){
+		 $('#shoppingcart_qty').html('');
+		 $('#CartQty').html($('#shoppingcart_qty').html());
+		 $('#all_my_shoppingcart').unbind("click"); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+	} 
+		
 	$('.addToCart').click(function() {
 		setTimeout(function(){
 			$('#CartQty').html($('#shoppingcart_qty').html());
-		},300);
+			$('#all_my_shoppingcart').unbind("click"); // 避免bind()失效，所以bind()之前先unbind();
+						
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			//動態加入結帳函式gotocounter();
+			$('#all_my_shoppingcart').click(function(){
+				gotocounter();
+			});
+		},500);
 	});
+	
 	$('.removeFromCart').click(function() {
 		setTimeout(function(){
-			var qty=$('#shoppingcart_qty').html();
-			qty = (qty > 0) ? qty: '';  //假如購物車清單數量為0，購物車清單數量顯示空白
-			$('#CartQty').html(qty);
-		},300);
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			if (iQty == 0){
+				$('#all_my_shoppingcart').unbind('click'); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+			} 
+		},500);
 	});
 	
 	$('#all_my_shoppingcart').hover(
@@ -760,52 +833,8 @@ $(function(){
 <!-- InstanceBeginEditable name="afterjs" -->
 <!-- InstanceEndEditable -->
 <script>
-
 $(document).ready( function () {
   $("#shoppingcar").hide();
-
- $("#hAryProductID").val(spid); //post 產品ID陣列至./post.php
-
-  if ($("#hidden_WebPara").val() == "getGoodsByStore"){ //配送方式為超商自取
-		var $radios = $('input:radio[name="php_delverytype"]');
-        $radios.filter('[value=99]').prop('checked', true); //取回回傳值後，再次設定配送方式為超商自取
-		$("#ship_id_a").hide();
-		$("#shipInfoByStore").show();	
-  }
-  
 });
-
-function setInvoiceAreaVisible(){
-	if ( $('input:radio:checked[name="php_invoicetype"]').val() == 3){ //三聯式發票
-		$("#php_invoicearea").show();
-	}else{
-		$("#php_invoicearea").hide();		
-	}
-}
-
-function setDeliverytypeVisible(){
-	if ( $('input:radio:checked[name="php_delverytype"]').val() == 10){ //貨運宅配到府
-		$("#ship_id_a").show();
-		$("#shipInfoByStore").hide();	
-	}else if ( $('input:radio:checked[name="php_delverytype"]').val() == 99){ //超商取貨
-		$("#ship_id_a").hide();
-		$("#shipInfoByStore").show();	
-	}else{
-		$("#ship_id_a").hide();
-		$("#shipInfoByStore").hide();
-	}	
-}
-
-function getProcessID() {  //產生唯一值guid，來作為process_id
-    function S4() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    }
-    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
-}
-
-function selectStore(){ //設定收貨超商門市
-  location.href="http://map.ezship.com.tw/ezship_map_web.jsp?suID=<?=$twnDeliverAccount?>&processID=" + getProcessID() + "&rtURL=http://test.lifebooks.com.tw/order2.php&webPara=getGoodsByStore";
-}
-
 </script>
 <!-- InstanceEnd --></html>

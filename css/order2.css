@@ -1,0 +1,21 @@
+#title{
+	padding-top: 15px;
+	color:#FFFFFF;
+}
+
+#title1{
+	padding-top: 6px;
+}
+
+#donate,a:hover {
+	color: #FF7E00;
+}
+
+#info > a{
+	color: #31708f;
+}
+
+#info > a:hover{
+	color: #FF7E00;
+	text-decoration: none;
+}

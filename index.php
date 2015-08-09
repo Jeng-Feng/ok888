@@ -56,7 +56,10 @@
 <script src="Scripts/jquery-migrate-1.1.0.min.js"></script>
 <link rel="stylesheet" href="css/jquery-fallr-1.0.css" type="text/css" />
 <script src="Scripts/mylibs/jquery-fallr-1.2.js"></script>
+ 
 <link rel="stylesheet" href="css/shoppingcart.css">
+
+
 <? require_once($config['global_library'].'/shoppingcart.php'); ?>
 <? require_once($config['global_library']."/js_common.php"); ?>
 <link rel="stylesheet" href="css/vsite.css">
@@ -65,6 +68,73 @@
 <? require_once($config['global_library'].'/_index.php'); ?>
 <!-- InstanceBeginEditable name="custom javascript" -->
     <!-- InstanceEndEditable -->
+
+<!-- DEMO 區 start
+	加入購物車按紐請加一個 addToCart 的 class name
+	移出購物車按紐請加一個 removeFromCart 的 class name
+-->
+<script type="text/javascript" language="javascript">
+
+$(function(){
+	if($('#shoppingcart_qty').length > 0) $('#CartQty').html($('#shoppingcart_qty').html());
+	
+	var iQty = parseInt($('#shoppingcart_qty').html());
+	if (iQty == 0){
+		 $('#shoppingcart_qty').html('');
+		 $('#CartQty').html($('#shoppingcart_qty').html());
+		 $('#all_my_shoppingcart').unbind("click"); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+	} 
+		
+	$('.addToCart').click(function() {
+		setTimeout(function(){
+			$('#CartQty').html($('#shoppingcart_qty').html());
+			$('#all_my_shoppingcart').unbind("click"); // 避免bind()失效，所以bind()之前先unbind();
+						
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			//動態加入結帳函式gotocounter();
+			$('#all_my_shoppingcart').click(function(){
+				gotocounter();
+			});
+		},500);
+	});
+	
+	$('.removeFromCart').click(function() {
+		setTimeout(function(){
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			if (iQty == 0){
+				$('#all_my_shoppingcart').unbind('click'); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+			} 
+		},500);
+	});
+	
+	$('#all_my_shoppingcart').hover(
+		function(){
+			var clistli = '';
+			for(i=0; i<clist_car.length; i++){
+				clistli += '<li id="'+cplist_car[i]+'">'+clist_car[i]+'</li>';
+			}
+			$('#CartQty').append("<br>" + clistli);
+		}, // end mouseover
+		function(){
+			$('#CartQty').find('li').remove();
+			$('#CartQty').find('br').remove();
+		} // end mouseout
+	); // end hover
+	
+});
+</script>
+<style>
+#shoppingcar {
+	opacity:0;
+}
+</style>
+<!-- DEMO 區 end -->
+
+
 </head>
 <body class="activateAppearAnimation">
 <!-- Primary Page Layout 
@@ -106,11 +176,17 @@
     <div id="mainHeader" role="banner">
       <div class="container">
         <nav class="navbar navbar-default scrollMenu" role="navigation">
-          <div class="navbar-header"> 
+          <div class="navbar-header">  
             <!-- responsive navigation -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             <!-- Logo --> 
-            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> </div>
+            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> 
+            
+            <?if($isLogin == true):?>
+            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick="gotocounter();"><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
+            <?endif;?>
+            
+            </div>
           <div class="collapse navbar-collapse" id="mainMenu"> 
             <!-- Main navigation -->
             <ul class="nav navbar-nav pull-right">
@@ -118,6 +194,7 @@
               
               <li class="primary"> <a href="products.php" class="firstLevel hasSubMenu" >產品</a>
                 <ul class="subMenu">
+                  <li><a href="products.php">產品</a></li>
                   <li><a href="products.calendar.php">桌月曆</a></li>
                   <li><a href="products.photobook.php">相片書</a></li>
                   <li><a href="products.sticker.php">大頭貼</a></li>
@@ -141,10 +218,20 @@
                 <?=$lang_member_register?>
                 </a></li>
               <?endif;?>
-              <li class="primary"><a href="helps.php">新手上路</a></li>
-              <li class="primary"><a href="#"  class="firstLevel hasSubMenu" >關於我們</a>
+              <li class="primary"><a href="helps.php"  class="firstLevel hasSubMenu">新手上路</a>
               <ul class="subMenu">
-                  <li><a href="#">關於我們</a></li>
+                  <li><a href="helps.php">新手操作手冊</a></li>
+                  <li><a href="faq01.php">第一次接觸</a></li>
+                  <li><a href="faq02.php">照片的準備</a></li>
+                  <li><a href="faq03.php">編輯與印製</a></li>
+                  <li><a href="faq04.php">訂購與付款</a></li>
+                  <li><a href="faq05.php">出貨與售服</a></li>
+                </ul>
+              
+              </li>
+              <li class="primary"><a href="about.php"  class="firstLevel hasSubMenu" >關於我們</a>
+              <ul class="subMenu">
+                  <li><a href="about.php">關於我們</a></li>
                   <li><a href="#">相片書介紹</a></li>
                   <li><a href="#">大頭貼介紹</a></li>
                   <li><a href="#">無框裝飾畫介紹</a></li>
@@ -153,10 +240,9 @@
                 </ul>
               </li>
               
-              <li class="primary"><a id="php_member_login" href="memberlogin.php">購物車</a></li>
-              <li class="primary"><a href="#" class="firstLevel hasSubMenu" >聯絡我們</a>
+              <li class="primary"><a href="news.php">優惠訊息</a></li>
+              <li class="primary"><a href="contact.php" class="firstLevel hasSubMenu" >聯絡我們</a>
                <ul class="subMenu">
-                   <li><a href="news.php">優惠訊息</a></li>
                   <li><a href="contact.php">線上E-mail</a></li>
                   <li><a href="online-service.php">線上客服</a></li>
                   <li><a href="service-cooperation.php">行銷合作</a></li>
@@ -626,5 +712,6 @@
 <!-- Custom  --> 
 <script type="text/javascript" src="vjs/custom.js"></script> 
 <!-- InstanceBeginEditable name="afterjs" --> <!-- InstanceEndEditable -->
+
 </body>
 <!-- InstanceEnd --></html>

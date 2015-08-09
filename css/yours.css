@@ -1,23 +1,56 @@
-#shoppingcar{
+@media (min-width:1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+#shoppingcar {
 	top: 90px;
 }
+.php_showallproduct {
+	color: rgba(255,255,255,1.00);
+}
+.box_heigh {
+	min-height: 380px;
+}
+.php-custom-prod-grid {
+	text-shadow: none;
+}
+.margin20 {
+	margin-bottom: 20px;
+}
+.form-control {
+	height: 34px;
+}
+.label {
+	font-size: 20px;
+	margin-right: 5px
+}
+.my_shopping_cart{
 	
-.php_showallproduct{
-	color:rgba(255,255,255,1.00);
+	margin-left:17px;
 	
 	}
-	
-	
-.box_heigh{
-	min-height:380px;
-	}
+	.iconMedium {
+		margin-top:5px;
+	font-size: 28px;
+}
+.price{
+	color: #FF0000;
+}
+#pricefont{
+	font-size: 2em;
+}
+#button1{
+	margin-top: 30px;
+}
 
-.php-custom-prod-grid{
-	text-shadow:none;
-	}
-	
-.margin20{
-	
-	margin-bottom:20px;
-	
-	}
+/* 購物車 */
+#CartQty li{
+	background-color: rgba(220,220,220,0.7);
+	list-style: none;
+	padding: 10px 8px 10px 8px;
+	border-bottom: solid 1px rgba(230,230,230,0.7);
+	font-size: 17px;
+}
+/* 購物車End */

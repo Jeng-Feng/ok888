@@ -1,6 +1,6 @@
-<?php 
-	require_once(dirname(__FILE__).'/init.php');
-	require_once($config['global_library'].'/_top_orderhistory.php');
+<?php
+  require_once(dirname(__FILE__).'/init.php');
+  require_once($config['global_library'].'/_top_orderhistory.php');
 ?>
 <!DOCTYPE html>
 <html lang="en"><!-- InstanceBegin template="/Templates/normal_template.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -12,8 +12,8 @@
 <meta name="description" content="<?=$getmetadescription?>">
 <meta name="keywords" content="<?=$getmetakeyword?>">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>訂購紀錄</title>
-<!-- InstanceEndEditable -->
+  <title>訂購紀錄</title>
+  <!-- InstanceEndEditable -->
 <meta name="author" content="Little NEKO">
 <!-- Mobile Specific Metas================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -44,13 +44,80 @@
 <link rel="stylesheet" href="css/yours.css">
 <!-- END MAXM -->
 <!-- InstanceBeginEditable name="custom javascript" -->
-<?require_once($config['global_library'].'/_orderhistory.php');?>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script type="text/javascript" src="js/jquery.ui.core.js"></script>
-<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="js/datepicker/jquery.ui.datepicker.js"></script>
-<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.18.custom.css" />
-<!-- InstanceEndEditable -->
+  <?require_once($config['global_library'].'/_orderhistory.php');?>
+  <script src="js/jquery.prettyPhoto.js"></script>
+  <script type="text/javascript" src="js/jquery.ui.core.js"></script>
+  <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+  <script type="text/javascript" src="js/datepicker/jquery.ui.datepicker.js"></script>
+  <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.18.custom.css" />
+  <!-- InstanceEndEditable -->
+
+<!-- DEMO 區 start
+	加入購物車按紐請加一個 addToCart 的 class name
+	移出購物車按紐請加一個 removeFromCart 的 class name
+-->
+<script type="text/javascript" language="javascript">
+
+
+$(function(){
+	if($('#shoppingcart_qty').length > 0) $('#CartQty').html($('#shoppingcart_qty').html());
+	
+	var iQty = parseInt($('#shoppingcart_qty').html());
+	if (iQty == 0){
+		 $('#shoppingcart_qty').html('');
+		 $('#CartQty').html($('#shoppingcart_qty').html());
+		 $('#all_my_shoppingcart').unbind("click"); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+	} 
+		
+	$('.addToCart').click(function() {
+		setTimeout(function(){
+			$('#CartQty').html($('#shoppingcart_qty').html());
+			$('#all_my_shoppingcart').unbind("click"); // 避免bind()失效，所以bind()之前先unbind();
+						
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			//動態加入結帳函式gotocounter();
+			$('#all_my_shoppingcart').click(function(){
+				gotocounter();
+			});
+		},500);
+	});
+	
+	$('.removeFromCart').click(function() {
+		setTimeout(function(){
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			if (iQty == 0){
+				$('#all_my_shoppingcart').unbind('click'); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+			} 
+		},500);
+	});
+	
+	$('#all_my_shoppingcart').hover(
+		function(){
+			var clistli = '';
+			for(i=0; i<clist_car.length; i++){
+				clistli += '<li id="'+cplist_car[i]+'">'+clist_car[i]+'</li>';
+			}
+			$('#CartQty').append("<br>" + clistli);
+		}, // end mouseover
+		function(){
+			$('#CartQty').find('li').remove();
+			$('#CartQty').find('br').remove();
+		} // end mouseout
+	); // end hover
+	
+});
+</script>
+<style>
+#shoppingcar {
+	opacity:0;
+}
+</style>
+<!-- DEMO 區 end -->
+
 </head>
 <body>
 <!-- Primary Page Layout 
@@ -96,7 +163,14 @@
             <!-- responsive navigation -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             <!-- Logo --> 
-            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> </div>
+            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> 
+            
+           <?if($isLogin == true):?>
+            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick="gotocounter();"><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
+            <?endif;?>
+           
+            
+            </div>
           <div class="collapse navbar-collapse" id="mainMenu"> 
             <!-- Main navigation -->
             <ul class="nav navbar-nav pull-right">
@@ -104,6 +178,7 @@
               
               <li class="primary"> <a href="products.php" class="firstLevel hasSubMenu" >產品</a>
                 <ul class="subMenu">
+                  <li><a href="products.php">產品</a></li>
                   <li><a href="products.calendar.php">桌月曆</a></li>
                   <li><a href="products.photobook.php">相片書</a></li>
                   <li><a href="products.sticker.php">大頭貼</a></li>
@@ -127,7 +202,17 @@
                 <?=$lang_member_register?>
                 </a></li>
               <?endif;?>
-              <li class="primary"><a href="helps.php">新手上路</a></li>
+              <li class="primary"><a href="helps.php"  class="firstLevel hasSubMenu">新手上路</a>
+              <ul class="subMenu">
+                  <li><a href="helps.php">新手操作手冊</a></li>
+                  <li><a href="faq01.php">第一次接觸</a></li>
+                  <li><a href="faq02.php">照片的準備</a></li>
+                  <li><a href="faq03.php">編輯與印製</a></li>
+                  <li><a href="faq04.php">訂購與付款</a></li>
+                  <li><a href="faq05.php">出貨與售服</a></li>
+                </ul>
+              
+              </li>
               <li class="primary"><a href="about.php"  class="firstLevel hasSubMenu" >關於我們</a>
               <ul class="subMenu">
                   <li><a href="about.php">關於我們</a></li>
@@ -139,10 +224,9 @@
                 </ul>
               </li>
               
-              <li class="primary"><a id="php_member_login" href="memberlogin.php">購物車</a></li>
-              <li class="primary"><a href="#" class="firstLevel hasSubMenu" >聯絡我們</a>
+              <li class="primary"><a href="news.php">優惠訊息</a></li>
+              <li class="primary"><a href="contact.php" class="firstLevel hasSubMenu" >聯絡我們</a>
                <ul class="subMenu">
-                  <li><a href="news.php">優惠訊息</a></li>
                   <li><a href="contact.php">線上E-mail</a></li>
                   <li><a href="online-service.php">線上客服</a></li>
                   <li><a href="service-cooperation.php">行銷合作</a></li>
@@ -176,73 +260,73 @@
       </div>
     </header>
     <div class="margin-top none"> <!-- InstanceBeginEditable name="main content" -->
- 
-		<?//require_once($config['global_library'].'/_albumView.php');?>
-			<div id="bootstrap_content">
-				<div class="container" align="center">
-					
-					<div class="php-orderhistory">
-						
-						<div class="row">
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div>查詢期間：</div>
-								<input id="startdate" name="startdate" type="text" readonly="readonly" value="<?=$startdate?>">
-								<span>～</span>
-								<input id="enddate" name="enddate" type="text" readonly="readonly" value="<?=$enddate?>">
-							</div>
-							<div class="col-md-6 col-sm-6 col-xs-12 php-orderhistory-search-btnbox">
-								<input type="button" class="btn btn-primary btn-small sendsearch" value="送出查詢" onclick="checkorder();" />
-								<input type="button" class="btn btn-primary btn-small cleardate" value="清除日期" onclick="document.location.href='orderhistory.php';" />
-							</div>
-						</div>
-						
-						<div class="table-responsive">
-							<table class="table table-bordered">
-								<tr class="php-orderhistory-title">
-									<th>訂單流水號</th>
-									<th>下訂日期</th>
-									<th>產品</th>
-									<th>規格</th>
-									<th>數量</th>
-									<th>狀態</th>
-									<th>訊息</th>
-								</tr>
-								<?if($orderhistories==0){?>
-									<tr class="noorder">
-										<td colspan="7" align="center">無訂單</td>
-									</tr>
-								<?}else{?>
-									<?foreach($data as $k=>$v){?>
-										<tr class="content <?=$v['ordercss']?>">
-											<?=$v['orderID']?>
-											<?=$v['orderDatetime']?>
-											<td class="ol3">
-												<?=$v['productName']?>
-												<?=$v['snapshothtmlcode']?>
-											</td>
-											<td class="ol4">
-												<?=$v['new_bookname']?>
-											</td>
-											<td class="ol5">
-												<?=$v['qty']?>
-											</td>
-											<td class="ol6">
-												<?=$v['ls_str']?>
-											</td>
-											<?=$v['message']?>
-										</tr>
-									<?}?>
-								<?}?>
-							</table>
-						</div>
-						<!-- 分頁器 -->
-						<?=pagelinkfunc($page,$totalorder,$pagelink,$perpagecount,$totalpage)?>
-						<!-- 分頁器 -->
-					</div>
-					
-				</div>
-			</div>
-	<!-- InstanceEndEditable --> </div>
+
+<?//require_once($config['global_library'].'/_albumView.php');?>
+<div id="bootstrap_content">
+  <div class="container" align="center">
+    
+    <div class="php-orderhistory">
+      
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div>查詢期間：</div>
+          <input id="startdate" name="startdate" type="text" readonly="readonly" value="<?=$startdate?>">
+          <span>～</span>
+          <input id="enddate" name="enddate" type="text" readonly="readonly" value="<?=$enddate?>">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 php-orderhistory-search-btnbox">
+          <input type="button" class="btn btn-primary btn-small sendsearch" value="送出查詢" onclick="checkorder();" />
+          <input type="button" class="btn btn-primary btn-small cleardate" value="清除日期" onclick="document.location.href='orderhistory.php';" />
+        </div>
+      </div>
+      
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr class="php-orderhistory-title">
+            <th>訂單流水號</th>
+            <th>下訂日期</th>
+            <th>產品</th>
+            <th>規格</th>
+            <th>數量</th>
+            <th>狀態</th>
+            <th>訊息</th>
+          </tr>
+          <?if($orderhistories==0){?>
+          <tr class="noorder">
+            <td colspan="7" align="center">無訂單</td>
+          </tr>
+          <?}else{?>
+          <?foreach($data as $k=>$v){?>
+          <tr class="content <?=$v['ordercss']?>">
+            <?=$v['orderID']?>
+            <?=$v['orderDatetime']?>
+            <td class="ol3">
+              <?=$v['productName']?>
+              <?=$v['snapshothtmlcode']?>
+            </td>
+            <td class="ol4">
+              <?=$v['new_bookname']?>
+            </td>
+            <td class="ol5">
+              <?=$v['qty']?>
+            </td>
+            <td class="ol6">
+              <?=$v['ls_str']?>
+            </td>
+            <?=$v['message']?>
+          </tr>
+          <?}?>
+          <?}?>
+        </table>
+      </div>
+      <!-- 分頁器 -->
+      <?=pagelinkfunc($page,$totalorder,$pagelink,$perpagecount,$totalpage)?>
+      <!-- 分頁器 -->
+    </div>
+    
+  </div>
+</div>
+<!-- InstanceEndEditable --> </div>
   </section>
   <!-- content --> 
   <!-- footer -->
@@ -255,26 +339,26 @@
               <p>永遠以『人』為出發，是我們對客戶最大的承諾，成立「客服部」是我們對承諾的具體實踐！印刷整個過程，是繁雜且多樣的，除了在客服方面，解答客戶的問題之外更定期發行月刊，教導客戶各類軟體的使用方式、商品印刷相關須知與後加工的注意事項，達到客戶「所印即所要」的目標，大大提升客戶印刷物的良率，並減少不必要的損失。</p>
             </div>
           </div>
-          <div class="col-sm-3">
-            <div class="footerWidget">
-              <h3><?=$webSiteName?></h3>
-              <address>
-              <p> <i class="icon-location"></i>&nbsp;<?=$siteAddress?><br>
-                <i class="icon-phone"></i>&nbsp;<?=$sitePhone?><br>
-                <i class="icon-mail-alt"></i>&nbsp;<?=$siteEmail?><br>
-              </p>
+          <div class="col-md-3 col-sm-6">
+              <div class="footerWidget">
+                <h3>PHOTOBOOK</h3>
+                <address>
+                  <p> &nbsp;<a href="https://www.google.com.tw/maps/place/404%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%8D%80%E5%BF%A0%E6%98%8E%E8%B7%AF298%E8%99%9F/@24.1626,120.665874,17z/data=!3m1!4b1!4m2!3m1!1s0x34693d81dfb9c8c5:0x16fc4ea0ee7dbd9c" target="_blank">臺中市北區忠明路298號</a><br>
+                  <i class="icon-phone"></i>&nbsp;(04)2207-3819#82<br>
+                  <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:101@mail.ok888.com.tw ">101@mail.ok888.com.tw </a> <br>
+                </p>
               </address>
             </div>
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="footerWidget">
-              <h3>Latest news</h3>
+              <h3>Quick Menu</h3>
               <ul class="list-unstyled iconList borderList">
                 <li><a href="service.php">服務使用條款</a></li>
-                <li><a href="privacy.php"> 隱私權條款</a></li>
-                <li><a href="commission.php">託製作契約</a></li>
+                <li><a href="privacy.php">隱私權條款</a></li>
+                <li><a href="commission.php">委託製作契約</a></li>
                 <li><a href="sendback.php">退換貨政策</a></li>
-                <li><a href="transportation.php">運方式與計價</a></li>
+                <li><a href="transportation.php">貨運方式與計價</a></li>
               </ul>
             </div>
           </div>
@@ -288,7 +372,7 @@
             <p>©
               <?=$copyrightyear?>
               <?=$siteCompany?>
-              Copyright All Rights Reserved.</p>
+              Copyright All Rights Reserved.</p> 
           </div>
         </div>
       </div>
@@ -316,14 +400,19 @@
 <!-- InstanceBeginEditable name="afterjs" -->
 <script type="text/javascript">
 function MM_goToURL(){ //v3.0
-	if (document.getElementById('igotit').checked) {
-	  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
-	  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
-	}
-	else {
-		alert("請先閱讀相關權益，並同意加入會員。");
-	}
+  if (document.getElementById('igotit').checked) {
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+  }
+  else {
+    alert("請先閱讀相關權益，並同意加入會員。");
+  }
 }
 </script>
 <!-- InstanceEndEditable -->
+<script>
+$(document).ready( function () {
+  $("#shoppingcar").hide();
+});
+</script>
 <!-- InstanceEnd --></html>

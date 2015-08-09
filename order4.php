@@ -62,17 +62,42 @@ $order_status = $_GET['order_status'];
 	移出購物車按紐請加一個 removeFromCart 的 class name
 -->
 <script type="text/javascript" language="javascript">
+
+
 $(function(){
 	if($('#shoppingcart_qty').length > 0) $('#CartQty').html($('#shoppingcart_qty').html());
+	
+	var iQty = parseInt($('#shoppingcart_qty').html());
+	if (iQty == 0){
+		 $('#shoppingcart_qty').html('');
+		 $('#CartQty').html($('#shoppingcart_qty').html());
+		 $('#all_my_shoppingcart').unbind("click"); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+	} 
+		
 	$('.addToCart').click(function() {
 		setTimeout(function(){
 			$('#CartQty').html($('#shoppingcart_qty').html());
-		},300);
+			$('#all_my_shoppingcart').unbind("click"); // 避免bind()失效，所以bind()之前先unbind();
+						
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			//動態加入結帳函式gotocounter();
+			$('#all_my_shoppingcart').click(function(){
+				gotocounter();
+			});
+		},500);
 	});
+	
 	$('.removeFromCart').click(function() {
 		setTimeout(function(){
-			$('#CartQty').html($('#shoppingcart_qty').html());
-		},300);
+			iQty = parseInt($('#shoppingcart_qty').html());
+			$('#CartQty').html( (iQty == 0) ? '': $('#shoppingcart_qty').html() ); //假如購物車清單數量為0，購物車清單數量顯示空白
+			
+			if (iQty == 0){
+				$('#all_my_shoppingcart').unbind('click'); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
+			} 
+		},500);
 	});
 	
 	$('#all_my_shoppingcart').hover(
@@ -554,6 +579,49 @@ $(function(){
 			</div>
 		</div>
 	</div>	
+    
+<!-- 傳送訂單至台灣便利配購物網站-超商取貨  -->	
+<form method="post" name="orderFrm" id="frmPostFrm" action="https://www.ezship.com.tw/emap/ezship_xml_order_api.jsp">	
+      <center>
+		<textarea cols="120" rows="30" style="display:none;" id="order_textarea" name="web_map_xml">
+		                  <ORDER>
+		                   <suID><?=$twnDeliverAccount?></suID>
+		                   <orderID><?=$order["orderid"]?></orderID>
+		                   <orderStatus>A02</orderStatus> 
+		                   <orderType>3</orderType> 
+		                   <orderAmount><?=$order["totalfee"]?></orderAmount> 
+		                   <rvName><?=$_SESSION["deliName"]?></rvName>
+		                   <rvEmail>garyy@mail2000.com.tw</rvEmail> 
+		                   <rvMobile><?=$_SESSION["deliTel"]?></rvMobile>
+		                   <stCode><?=$_SESSION["stCode"]?></stCode>
+		                   <rtURL>http://test.lifebooks.com.tw/orderhistory.php</rtURL>
+		                   <webPara></webPara>
+						   <? for($i=0; $i<count($aryBookname); $i++): ?>
+		                   <Detail>
+		                      <prodItem><?=$i+1?></prodItem> 
+		                      <prodNo><?=$aryProductID[$i]?></prodNo> 
+		                      <prodName><?=$aryProductname[$i]." ".$aryBookname[$i]?></prodName>
+		                      <prodPrice><?=$aryPrice[$i]?></prodPrice>
+		                      <prodQty><?=$aryQty[$i]?></prodQty> 
+		                      <prodSpec><?=$aryPoption[$i]?></prodSpec> 
+		                   </Detail>
+						   <? endfor; ?>
+		                </ORDER>
+		</textarea><!-- 訂單xml內容 --><br>
+    </center>
+</form>
+	
+<script type="text/javascript">
+$(document).ready( function () {
+	
+<? if ($order_status == ""): ?>	
+  $order_status = "";
+  $("#frmPostFrm").submit();
+<? endif; ?>
+  
+});
+</script>    
+    
 	<!-- InstanceEndEditable --> </div>
   </section>
   <!-- content --> 
@@ -609,51 +677,6 @@ $(function(){
   <!-- End footer --> 
 </div>
 <!-- global wrapper --> 
-
-	================================================== -->
-<!-- 傳送訂單至台灣便利配購物網站-超商取貨  -->	
-<form method="post" name="orderFrm" id="frmPostFrm" action="https://www.ezship.com.tw/emap/ezship_xml_order_api.jsp">	
-      <center>
-		<textarea cols="120" rows="30" style="display:none;" id="order_textarea" name="web_map_xml">
-		                  <ORDER>
-		                   <suID><?=$twnDeliverAccount?></suID>
-		                   <orderID><?=$order["orderid"]?></orderID>
-		                   <orderStatus>A02</orderStatus> 
-		                   <orderType>3</orderType> 
-		                   <orderAmount><?=$order["totalfee"]?></orderAmount> 
-		                   <rvName><?=$_SESSION["deliName"]?></rvName>
-		                   <rvEmail>garyy@mail2000.com.tw</rvEmail> 
-		                   <rvMobile><?=$_SESSION["deliTel"]?></rvMobile>
-		                   <stCode><?=$_SESSION["stCode"]?></stCode>
-		                   <rtURL>http://test.lifebooks.com.tw/orderhistory.php</rtURL>
-		                   <webPara></webPara>
-						   <? for($i=0; $i<count($aryBookname); $i++): ?>
-		                   <Detail>
-		                      <prodItem><?=$i+1?></prodItem> 
-		                      <prodNo><?=$aryProductID[$i]?></prodNo> 
-		                      <prodName><?=$aryProductname[$i]." ".$aryBookname[$i]?></prodName>
-		                      <prodPrice><?=$aryPrice[$i]?></prodPrice>
-		                      <prodQty><?=$aryQty[$i]?></prodQty> 
-		                      <prodSpec><?=$aryPoption[$i]?></prodSpec> 
-		                   </Detail>
-						   <? endfor; ?>
-		                </ORDER>
-		</textarea><!-- 訂單xml內容 --><br>
-    </center>
-</form>
-	
-<script type="text/javascript">
-$(document).ready( function () {
-	
-<? if ($order_status == ""): ?>	
-  $order_status = "";
-  $("#frmPostFrm").submit();
-<? endif; ?>
-  
-});
-</script>	
-
-
 <!-- End Document 
 	================================================== -->
 </body>
