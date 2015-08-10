@@ -72,7 +72,9 @@ $(function(){
 		 $('#shoppingcart_qty').html('');
 		 $('#CartQty').html($('#shoppingcart_qty').html());
 		 $('#all_my_shoppingcart').unbind("click"); //當購物車清單數量=0時，動態移除結帳函式gotocounter();
-	} 
+	}else{
+		 $('#all_my_shoppingcart').click(function(){ gotocounter(); });
+	}
 		
 	$('.addToCart').click(function() {
 		setTimeout(function(){
@@ -708,8 +710,6 @@ $(function(){
 <script>
 $(document).ready( function () {
   $("#shoppingcar").hide();
-  $("#paymentAccount").paymentAccount.html($("#php_order4message").html());
-  $("#frmToOrder3").submit();
 });
 </script>
 <!-- InstanceEnd --></html>
