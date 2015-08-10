@@ -171,7 +171,7 @@ $(function(){
             <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> 
             
            <?if($isLogin == true):?>
-            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick="gotocounter();"><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
+            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick=""><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
             <?endif;?>
            
             
@@ -579,9 +579,15 @@ $(function(){
 			</div>
 		</div>
 	</div>	
-    
+	
+<form method="post" name="frmToOrder3" id="frmToOrder3" action="order3.php">
+	<textarea cols="120" rows="30" style="display:none;" id="paymentAccount" name="paymentAccount">
+    </textarea>	
+</form>	
+
+<? if ($_SESSION["stCode"] != ""): ?>    
 <!-- 傳送訂單至台灣便利配購物網站-超商取貨  -->	
-<form method="post" name="orderFrm" id="frmPostFrm" action="https://www.ezship.com.tw/emap/ezship_xml_order_api.jsp">	
+<form method="post" name="orderFrm" id="frmPostFrm" action="http://www.yifeng.com.tw/backstage/ok888/SendSMS.ashx">	
       <center>
 		<textarea cols="120" rows="30" style="display:none;" id="order_textarea" name="web_map_xml">
 		                  <ORDER>
@@ -608,20 +614,24 @@ $(function(){
 						   <? endfor; ?>
 		                </ORDER>
 		</textarea><!-- 訂單xml內容 --><br>
+		<input type="hidden" id="mo" name="mo" value="<?=$_SESSION["deliTel"]?>">
+		<input type="hidden" id="msg" name="msg" value="已收到您的訂單:<?=$order["orderid"]?>，訂購金額:<?=$order["totalfee"]?>">
     </center>
 </form>
-	
-<script type="text/javascript">
-$(document).ready( function () {
-	
-<? if ($order_status == ""): ?>	
-  $order_status = "";
-  $("#frmPostFrm").submit();
-<? endif; ?>
   
-});
-</script>    
-    
+  <script type="text/javascript">
+    $(document).ready( function () {
+	  
+	    <? if ($order_status == ""): ?>	
+	      $order_status = "";
+		  $("#frmPostFrm").submit();
+	    <? endif; ?>
+      
+    });
+  </script>    
+
+<? endif; ?>    
+
 	<!-- InstanceEndEditable --> </div>
   </section>
   <!-- content --> 
@@ -698,6 +708,8 @@ $(document).ready( function () {
 <script>
 $(document).ready( function () {
   $("#shoppingcar").hide();
+  $("#paymentAccount").paymentAccount.html($("#php_order4message").html());
+  $("#frmToOrder3").submit();
 });
 </script>
 <!-- InstanceEnd --></html>

@@ -160,7 +160,7 @@ $(function(){
             <a class="navbar-brand" href="../index.php"><img src="../images/home/main-logo.png" alt="photobook logo"/></a> 
             
            <?if($isLogin == true):?>
-            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick="gotocounter();"><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
+            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick=""><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
             <?endif;?>
            
             
