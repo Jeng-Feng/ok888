@@ -19,7 +19,8 @@ $_SESSION["stCode"] = $stCate.$stCode ; //設定訂單門市代號須為「超�
 $_SESSION["stTel"] = $stTel; //取件門市電話
 ?>
 <!DOCTYPE html>
-<html lang="en"><!-- InstanceBegin template="/Templates/normal_template.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<html lang="en">
+<!-- InstanceBegin template="/Templates/normal_template.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <!--<![endif]-->
 <head>
 <!-- Basic Page Needs
@@ -65,7 +66,6 @@ $_SESSION["stTel"] = $stTel; //取件門市電話
 <? require_once($config['global_library'].'/_order2.php'); ?>
 <script src="js/_city.js"></script>
 <script type="text/javascript" src="js/blockUI.js"></script>
-
 <script>
 
 $(document).ready( function () {
@@ -114,7 +114,6 @@ function selectStore(){ //設定收貨超商門市
 }
 
 </script>
-
 <!-- InstanceEndEditable -->
 
 <!-- DEMO 區 start
@@ -180,7 +179,7 @@ $(function(){
 </script>
 <style>
 #shoppingcar {
-	opacity:0;
+	opacity: 0;
 }
 </style>
 <!-- DEMO 區 end -->
@@ -191,629 +190,723 @@ $(function(){
 	================================================== --> 
 <!-- globalWrapper -->
 <div id="globalWrapper">
-  <header class="navbar-fixed-top"> 
-    <!-- pre header -->
-    <div id="preHeader" class="hidden-xs">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-6">
-            <ul class="quickMenu">
-              <li><a href="template-site-map.html" class="linkLeft">Site map</a></li>
-              <li><a href="template-about.html">About us</a></li>
-              <li><a href="template-team.html">Our team</a></li>
-              <li><a href="template-contact.html">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-xs-6">
-            <div id="contactBloc" class="clearfix"> 
+<header class="navbar-fixed-top"> 
+  <!-- pre header -->
+  <div id="preHeader" class="hidden-xs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <ul class="quickMenu">
+            <li><a href="template-site-map.html" class="linkLeft">Site map</a></li>
+            <li><a href="template-about.html">About us</a></li>
+            <li><a href="template-team.html">Our team</a></li>
+            <li><a href="template-contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-6">
+          <div id="contactBloc" class="clearfix"> 
+            <!-- social icons -->
+            <ul class="socialNetwork">
+              <li><a href="#" class="tips" title="follow me on Facebook"> <i class="icon-facebook-1"></i></a></li>
+              <li> <a href="#" class="tips" title="follow me on Twitter"> <i class="icon-twitter-bird"></i> </a> </li>
+              <li> <a href="#" class="tips" title="follow me on Google+"> <i class="icon-gplus-1"></i> </a> </li>
+              <li> <a href="#" class="tips" title="follow me on Linkedin"> <i class="icon-linkedin-1"></i> </a> </li>
+              <li> <a href="#" class="tips" title="follow me on Dribble"> <i class="icon-dribbble"></i> </a> </li>
               <!-- social icons -->
-              <ul class="socialNetwork">
-                <li><a href="#" class="tips" title="follow me on Facebook"> <i class="icon-facebook-1"></i></a></li>
-                <li> <a href="#" class="tips" title="follow me on Twitter"> <i class="icon-twitter-bird"></i> </a> </li>
-                <li> <a href="#" class="tips" title="follow me on Google+"> <i class="icon-gplus-1"></i> </a> </li>
-                <li> <a href="#" class="tips" title="follow me on Linkedin"> <i class="icon-linkedin-1"></i> </a> </li>
-                <li> <a href="#" class="tips" title="follow me on Dribble"> <i class="icon-dribbble"></i> </a> </li>
-                <!-- social icons -->
-              </ul>
-              <!-- phone --> 
-              <span class="contactPhone"><i class="icon-mobile"></i>615.987.1234</span> </div>
-          </div>
+            </ul>
+            <!-- phone --> 
+            <span class="contactPhone"><i class="icon-mobile"></i>615.987.1234</span> </div>
         </div>
       </div>
     </div>
-    <!-- pre header --> 
-    <!-- header -->
-    <div id="mainHeader" role="banner">
-      <div class="container">
-        <nav class="navbar navbar-default scrollMenu" role="navigation">
-          <div class="navbar-header"> 
-            <!-- responsive navigation -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-            <!-- Logo --> 
-            <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a> 
-            
-           <?if($isLogin == true):?>
-            <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick=""><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a> 
+  </div>
+  <!-- pre header --> 
+  <!-- header -->
+  <div id="mainHeader" role="banner">
+    <div class="container">
+      <nav class="navbar navbar-default scrollMenu" role="navigation">
+        <div class="navbar-header"> 
+          <!-- responsive navigation -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <!-- Logo --> 
+          <a class="navbar-brand" href="index.php"><img src="images/home/main-logo.png" alt="photobook logo"/></a>
+          <?if($isLogin == true):?>
+          <a class="navbar-brand" id="all_my_shoppingcart" href="#" onclick=""><span class="glyphicon glyphicon-shopping-cart iconMedium my_shopping_cart" aria-hidden="true"></span><span id="CartQty">0</span><span id="CartItemList"></span></a>
+          <?endif;?>
+        </div>
+        <div class="collapse navbar-collapse" id="mainMenu"> 
+          <!-- Main navigation -->
+          <ul class="nav navbar-nav pull-right">
+            <li class="primary"> <a href="index.php" class="firstLevel" >首頁</a> </li>
+            <li class="primary"> <a href="products.php" class="firstLevel hasSubMenu" >產品</a>
+              <ul class="subMenu">
+                <li><a href="products.php">產品</a></li>
+                <li><a href="products.calendar.php">桌月曆</a></li>
+                <li><a href="products.photobook.php">相片書</a></li>
+                <li><a href="products.sticker.php">大頭貼</a></li>
+                <li><a href="customprods.php?c=c_cate_1">無框裝飾畫</a></li>
+                <li><a href="customprods.php?c=c_cate_6">拍照背景牆</a></li>
+                <li><a href="#">水晶相片相本</a></li>
+              </ul>
+            </li>
+            <?if($isLogin == true):?>
+            <li class="primary"><a id="php_member_order_history" href="./memberindex.php">
+              <?=$lang_member_zone?>
+              </a></li>
+            <li class="primary"><a id="php_member_logout" href="javascript:bye();">
+              <?=$lang_logout?>
+              </a></li>
+            <?else:?>
+            <li class="primary"><a id="php_member_login" href="./memberlogin.php">
+              <?=$lang_member_login?>
+              </a></li>
+            <li class="primary"><a id="php_member_join" href="./memberregisterrule.php">
+              <?=$lang_member_register?>
+              </a></li>
             <?endif;?>
-           
-            
-            </div>
-          <div class="collapse navbar-collapse" id="mainMenu"> 
-            <!-- Main navigation -->
-            <ul class="nav navbar-nav pull-right">
-              <li class="primary"> <a href="index.php" class="firstLevel" >首頁</a> </li>
-              
-              <li class="primary"> <a href="products.php" class="firstLevel hasSubMenu" >產品</a>
-                <ul class="subMenu">
-                  <li><a href="products.php">產品</a></li>
-                  <li><a href="products.calendar.php">桌月曆</a></li>
-                  <li><a href="products.photobook.php">相片書</a></li>
-                  <li><a href="products.sticker.php">大頭貼</a></li>
-                  <li><a href="customprods.php?c=c_cate_1">無框裝飾畫</a></li>
-                  <li><a href="customprods.php?c=c_cate_6">拍照背景牆</a></li>
-                  <li><a href="#">水晶相片相本</a></li>
-                </ul>
-              </li>
-              <?if($isLogin == true):?>
-              <li class="primary"><a id="php_member_order_history" href="./memberindex.php">
-                <?=$lang_member_zone?>
-                </a></li>
-              <li class="primary"><a id="php_member_logout" href="javascript:bye();">
-                <?=$lang_logout?>
-                </a></li>
-              <?else:?>
-              <li class="primary"><a id="php_member_login" href="./memberlogin.php">
-                <?=$lang_member_login?>
-                </a></li>
-              <li class="primary"><a id="php_member_join" href="./memberregisterrule.php">
-                <?=$lang_member_register?>
-                </a></li>
-              <?endif;?>
-              <li class="primary"><a href="helps.php"  class="firstLevel hasSubMenu">新手上路</a>
+            <li class="primary"><a href="helps.php"  class="firstLevel hasSubMenu">新手上路</a>
               <ul class="subMenu">
-                  <li><a href="helps.php">新手操作手冊</a></li>
-                  <li><a href="faq01.php">第一次接觸</a></li>
-                  <li><a href="faq02.php">照片的準備</a></li>
-                  <li><a href="faq03.php">編輯與印製</a></li>
-                  <li><a href="faq04.php">訂購與付款</a></li>
-                  <li><a href="faq05.php">出貨與售服</a></li>
-                </ul>
-              
-              </li>
-              <li class="primary"><a href="about.php"  class="firstLevel hasSubMenu" >關於我們</a>
+                <li><a href="helps.php">新手操作手冊</a></li>
+                <li><a href="faq01.php">第一次接觸</a></li>
+                <li><a href="faq02.php">照片的準備</a></li>
+                <li><a href="faq03.php">編輯與印製</a></li>
+                <li><a href="faq04.php">訂購與付款</a></li>
+                <li><a href="faq05.php">出貨與售服</a></li>
+              </ul>
+            </li>
+            <li class="primary"><a href="about.php"  class="firstLevel hasSubMenu" >關於我們</a>
               <ul class="subMenu">
-                  <li><a href="about.php">關於我們</a></li>
-                  <li><a href="#">相片書介紹</a></li>
-                  <li><a href="#">大頭貼介紹</a></li>
-                  <li><a href="#">無框裝飾畫介紹</a></li>
-                  <li><a href="#">拍照背景牆介紹</a></li>
-                  <li><a href="#">水晶相片相本介紹</a></li>
-                </ul>
-              </li>
-              
-              <li class="primary"><a href="news.php">優惠訊息</a></li>
-              <li class="primary"><a href="contact.php" class="firstLevel hasSubMenu" >聯絡我們</a>
-               <ul class="subMenu">
-                  <li><a href="contact.php">線上E-mail</a></li>
-                  <li><a href="online-service.php">線上客服</a></li>
-                  <li><a href="service-cooperation.php">行銷合作</a></li>
-                </ul>
-              
-              </li>
-            </ul>
-            <!-- End main navigation --> 
-          </div>
-        </nav>
+                <li><a href="about.php">關於我們</a></li>
+                <li><a href="#">相片書介紹</a></li>
+                <li><a href="#">大頭貼介紹</a></li>
+                <li><a href="#">無框裝飾畫介紹</a></li>
+                <li><a href="#">拍照背景牆介紹</a></li>
+                <li><a href="#">水晶相片相本介紹</a></li>
+              </ul>
+            </li>
+            <li class="primary"><a href="news.php">優惠訊息</a></li>
+            <li class="primary"><a href="contact.php" class="firstLevel hasSubMenu" >聯絡我們</a>
+              <ul class="subMenu">
+                <li><a href="contact.php">線上E-mail</a></li>
+                <li><a href="online-service.php">線上客服</a></li>
+                <li><a href="service-cooperation.php">行銷合作</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- End main navigation --> 
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<!-- header --> 
+<!-- ======================================= content ======================================= -->
+<section id="page">
+  <header class="page-header margin-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1>&nbsp;</h1>
+        </div>
+        <div class="col-sm-6 hidden-xs">
+          <ul id="navTrail">
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
-  <!-- header --> 
-  <!-- ======================================= content ======================================= -->
-  <section id="page">
-    <header class="page-header margin-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <h1>&nbsp;</h1>
+  <div class="margin-top none">
+  <!-- InstanceBeginEditable name="main content" -->
+  <div id="bootstrap_content">
+    <div class="container">
+      <div class="step-title"> <img class="img-responsive center-block" src="/images/orders/order_02.gif"> </div>
+      <!--news-->
+      <div class="row">
+      <div class="col-sm-12" id="new_news"> 
+      <blockquote style="text-align:center"> <p>下個月將會有許多活動，敬請期待 </p> </blockquote>
+      </div>
+      </div>
+      <!--news end-->
+      <div class="text-left">
+      <form name="FileHeaderForm" class="form-horizontal" method="post" id="christest" action="./order2.php" >
+        <input type="hidden" name="hAryProductID" id="hAryProductID" value="">
+        <h5 class="order2-title"> <span class="glyphicon glyphicon-shopping-cart"></span> 訂購產品、數量與價格 <span class="badge ">
+          <?=count($orderlist_data)?>
+          </span> </h5>
+        <div class="text-left" id="php_orderitemarea">
+          <? foreach($orderlist_data as $data): ?>
+          <div class="panel panel-primary sublist ol<?=$data["index"]?>">
+            <div class="panel-heading">
+              <h5 class="order-title" id="title">
+                <?=$data["pdname"]?>
+                <?if(!empty($data["bookname"])):?>
+                <span class="subtitle">
+                <?=$data["bookname"]?>
+                </span>
+                <?endif;?>
+                <?if(!isset($data["cpid"])):?>
+                <span class="delorder glyphicon glyphicon-remove  canClick" title="取消訂購" onclick="deloitem(<?=$data["index"]?>,this,'<?=$data["bookid"]?>');"></span>
+                <?else:?>
+                <span class="delorder glyphicon glyphicon-remove  canClick" title="取消訂購" onclick="deloitem(<?=$data["index"]?>,this,'<?=$data["cpid"]?>');"></span>
+                <?endif;?>
+              </h5>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-4 col-xs-12"> <img src="<?=$data["thumb"]?>" class="sl-imgarea img-responsive" alt="<?=$data["pdname"]?>" /> </div>
+                <div class="sl-productinfor col-sm-8 col-xs-12">
+                  <?if(empty($data["warningmessage"])):?>
+                  <div class="row order2-form-row">
+                    <div class="col-xs-12 col-lg-3 col-md-3" id="title1">
+                      <label class="pi-title text-right"> 數量 </label>
+                    </div>
+                    <div class="pi-context col-xs-12 col-lg-2 col-md-2">
+                      <?if($data["allowchangeunit"]):?>
+                      <?if(!isset($data["cpid"])):?>
+                      <select class="amountchoose input-sm" name="amountchoose[]" onchange="modoitem(<?=$data["index"]?>,this);">
+                        <?else:?>
+                        <select class="customProd-qty cpq<?=$data["index"]?> input-sm" name="amountchoose[]" onchange="changeCustomProdShopQty(<?=$data["index"]?>,this);">
+                        <?endif;?>
+                        <? foreach($data["qtySelector"] as $qtySelector): ?>
+                        <?if($data["qty"] == $qtySelector):?>
+                        <option value="<?=$qtySelector?>" selected="selected">
+                        <?=$qtySelector?>
+                        </option>
+                        <?else:?>
+                        <option value="<?=$qtySelector?>">
+                        <?=$qtySelector?>
+                        </option>
+                        <?endif;?>
+                        <? endforeach; ?>
+                      </select>
+                      <?else:?>
+                      <?=$data["qty"]?>
+                      （若要修改數量，請點選「修改訂購細節」）
+                      <?endif;?>
+                    </div>
+                  </div>
+                  <div class="row order2-form-row">
+                    <div class="col-xs-12 col-lg-3 col-md-3">
+                      <label class="pi-title text-right"> 單價 </label>
+                    </div>
+                    <div class="pi-context col-xs-12 col-lg-9 col-md-9">
+                      <div class="pisprice">
+                        <?=$order["symbol_left"]?>
+                        <span id="php_price<?=$data["index"]?>">
+                        <?=$data["price"]?>
+                        </span>
+                        <?=$order["symbol_right"]?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row discount order2-form-row">
+                    <div class="col-xs-12 col-lg-2">
+                      <label class="pi-titletext-right"> 折扣金額 </label>
+                    </div>
+                    <div class="pi-context col-xs-12 col-lg-10">
+                      <div> -
+                        <?=$order["symbol_left"]?>
+                        <span class="pidiscount" id="php_discount<?=$data["index"]?>"></span>
+                        <?=$order["symbol_right"]?>
+                      </div>
+                    </div>
+                  </div>
+                  <?if(!empty($data["poption"])):?>
+                  <div class="row spec order2-form-row">
+                    <div class="col-xs-12 col-lg-3 col-md-3">
+                      <label class="pi-title text-right"> 商品規格 </label>
+                    </div>
+                    <div class="pi-context col-xs-12 col-lg-9 col-md-9"> <span>
+                      <?=$data["poption"]?>
+                      </span> </div>
+                  </div>
+                  <?endif;?>
+                  <?if(!empty($data["cpoption"])):?>
+                  <div class="row cspec order2-form-row">
+                    <div class="col-xs-3 col-md-2">
+                      <label class="pi-title text-right"> 商品選項 </label>
+                    </div>
+                    <div class="pi-context col-xs-4 col-md-5">
+                      <select class="cpoption form-control input-sm" onchange="changecpoption('<?=$data["cpid"]?>','<?=$data["index"]?>',this)">
+                        <? foreach($data["cpoption"]["option"] as $cpokey => $cpovalue): ?>
+                        <?if($data["cpoption"]["optionselected"] == $cpokey):?>
+                        <option value="<?=$cpokey?>" selected="selected">
+                        <?=$cpovalue?>
+                        </option>
+                        <?else:?>
+                        <option value="<?=$cpokey?>">
+                        <?=$cpovalue?>
+                        </option>
+                        <?endif;?>
+                        <? endforeach; ?>
+                      </select>
+                    </div>
+                  </div>
+                  <?endif;?>
+                  <?if(!empty($data["ordermemo"])):?>
+                  <div class="row note order2-form-row">
+                    <div class="col-xs-3 col-md-2">
+                      <label class="control-label pi-title text-right"> 商品備註 </label>
+                    </div>
+                    <div class="pi-context col-xs-9 col-md-10">
+                      <?=$data["ordermemo"]?>
+                    </div>
+                  </div>
+                  <?endif;?>
+                  <div class="row">
+                    <?if($data["bookid"] != "customerproduct"):?>
+                    <div class="col-lg-4 text-right col-xs-6">
+                      <button class="btn btn-primary btn-sm" onclick="reedit('<?=$data["bookid"]?>','<?=$data["editorclass"]?>');" >繼續編輯該產品</button>
+                    </div>
+                    <?endif;?>
+                    <?if(!isset($data["cpid"])):?>
+                    <div class="col-lg-3">
+                      <button class="btn btn-primary btn-sm" onclick="detaitem(<?=$data["index"]?>);">修改訂購細節</button>
+                    </div>
+                    <?endif;?>
+                  </div>
+                  <?else:?>
+                  <div class="ol-warning bg-danger">
+                    <?=$data["warningmessage"]?>
+                  </div>
+                  <?endif;?>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer text-right">
+              <?if(empty($data["warningmessage"])):?>
+              小計：
+              <?=$order["symbol_left"]?>
+              <span class="php_sprice" id="php_sprice<?=$data["index"]?>">
+              <?=$data["total"]?>
+              </span>
+              <?=$order["symbol_right"]?>
+              <?else:?>
+              <?if(!isset($data["cpid"])):?>
+              <div title="取消訂購" class="delorder" onclick="deloitem(<?=$data["index"]?>,this,'<?=$data["bookid"]?>');"> 該商品無法訂購，請移除 <span class="delorder glyphicon glyphicon-remove"></span> </div>
+              <?else:?>
+              <div title="取消訂購" class="delorder" onclick="deloitem(<?=$data["index"]?>,this,'<?=$data["cpid"]?>');>"> 該商品無法訂購，請移除 <span class="delorder glyphicon glyphicon-remove"></span> </div>
+              <?endif;?>
+              <?endif;?>
+            </div>
           </div>
-          <div class="col-sm-6 hidden-xs">
-            <ul id="navTrail">
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-            </ul>
+          <? endforeach; ?>
+          <div class="panel sublist">
+            <div class="panel-heading-blue">加購區</div>
+            <div class="row">
+              <div class="col-sm-4 col-md-3">
+                <div class="thumbnail"> <img src="images/products/addproducts.png" alt="product" >
+                  <div class="caption">
+                    <h5>相片書錦盒</h5>
+                    <span>數量</span><span>
+                    <input type="text" class="form-control margin_bottom1" placeholder="數量0" style="width:100px">
+                    </span> </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-3">
+                <div class="thumbnail"> <img src="images/products/addproducts.png" alt="product" >
+                  <div class="caption">
+                    <h5>相片書錦盒</h5>
+                    <span>數量</span><span>
+                    <input type="text" class="form-control margin_bottom1" placeholder="數量0" style="width:100px">
+                    </span> </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-3">
+                <div class="thumbnail"> <img src="images/products/addproducts.png" alt="product" >
+                  <div class="caption">
+                    <h5>相片書錦盒</h5>
+                    <span>數量</span><span>
+                    <input type="text" class="form-control margin_bottom1" placeholder="數量0" style="width:100px">
+                    </span> </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-3">
+                <div class="thumbnail"> <img src="images/products/addproducts.png" alt="product" >
+                  <div class="caption">
+                    <h5>相片書錦盒</h5>
+                    <span>數量</span><span>
+                    <input type="text" class="form-control margin_bottom1" placeholder="數量0" style="width:100px">
+                    </span> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-info">
+            <div class="row">
+              <div class="text-center col-xs-12 col-sm-12 col-md-6">
+                <?=count($orderlist_data)?>
+                筆產品 <span class="fororderpromofee"> 小計
+                <?=$order["symbol_left"]?>
+                <span class="productionfee">0</span>
+                <?=$order["symbol_right"]?>
+                ，<span class="promotefeearea">折扣
+                <?=$order["symbol_left"]?>
+                <span class="promotefee">0</span>
+                <?=$order["symbol_right"]?>
+                </span>， </span> 共
+                <?=$order["symbol_left"]?>
+                <span class="orderlist_total">0</span>
+                <?=$order["symbol_right"]?>
+              </div>
+             
+              <div class="text-center col-xs-12 col-sm-12 col-md-6" id="info"> <a href="./booklists.php" class=""> <span class="glyphicon glyphicon-shopping-cart"></span>購物車&mdash;加購其他製作項目 </a> </div>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
-    <div class="margin-top none"> <!-- InstanceBeginEditable name="main content" -->
-	<div id="bootstrap_content">
-		<div class="container">
-			<div class="step-title">
-				<img class="img-responsive center-block" src="/images/orders/order_02.gif">
-			</div>
-			<div class="text-left">
-				<form name="FileHeaderForm" class="form-horizontal" method="post" id="christest" action="./order2.php" >
-				    <input type="hidden" name="hAryProductID" id="hAryProductID" value="">
-					<h5 class="order2-title">
-						<span class="glyphicon glyphicon-shopping-cart"></span>
-						訂購產品、數量與價格
-						<span class="badge "><?=count($orderlist_data)?></span>
-					</h5>
-					<div class="text-left" id="php_orderitemarea">
-						<? foreach($orderlist_data as $data): ?>
-							<div class="panel panel-primary sublist ol<?=$data["index"]?>">
-								<div class="panel-heading">
-									<h5 class="order-title" id="title">
-										<?=$data["pdname"]?>
-										<?if(!empty($data["bookname"])):?>
-											<span class="subtitle"><?=$data["bookname"]?></span>
-										<?endif;?>
-										<?if(!isset($data["cpid"])):?>
-											<span class="delorder glyphicon glyphicon-remove  canClick" title="取消訂購" onclick="deloitem(<?=$data["index"]?>,this,'<?=$data["bookid"]?>');"></span>
-										<?else:?>
-											<span class="delorder glyphicon glyphicon-remove  canClick" title="取消訂購" onclick="deloitem(<?=$data["index"]?>,this,'<?=$data["cpid"]?>');"></span>
-										<?endif;?>
-									</h5>
-								</div>
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-sm-4 col-xs-12">
-											<img src="<?=$data["thumb"]?>" class="sl-imgarea img-responsive" alt="<?=$data["pdname"]?>" />
-										</div>
-										<div class="sl-productinfor col-sm-8 col-xs-12">
-											<?if(empty($data["warningmessage"])):?>
-												<div class="row order2-form-row">
-													<div class="col-xs-12 col-lg-3 col-md-3" id="title1">
-														<label class="pi-title text-right">
-															數量
-														</label>
-													</div>
-													<div class="pi-context col-xs-12 col-lg-2 col-md-2">
-														<?if($data["allowchangeunit"]):?>
-															<?if(!isset($data["cpid"])):?>
-																<select class="amountchoose input-sm" name="amountchoose[]" onchange="modoitem(<?=$data["index"]?>,this);">
-															<?else:?>
-																<select class="customProd-qty cpq<?=$data["index"]?> input-sm" name="amountchoose[]" onchange="changeCustomProdShopQty(<?=$data["index"]?>,this);">
-															<?endif;?>
-																<? foreach($data["qtySelector"] as $qtySelector): ?>
-																	<?if($data["qty"] == $qtySelector):?>
-																		<option value="<?=$qtySelector?>" selected="selected"><?=$qtySelector?></option>
-																	<?else:?>
-																		<option value="<?=$qtySelector?>"><?=$qtySelector?></option>
-																	<?endif;?>
-																<? endforeach; ?>
-															</select>
-														<?else:?>
-															<?=$data["qty"]?>
-															（若要修改數量，請點選「修改訂購細節」）
-														<?endif;?>
-													</div>
-												</div>
-												<div class="row order2-form-row">
-													<div class="col-xs-12 col-lg-3 col-md-3">
-														<label class="pi-title text-right">
-															單價
-														</label>
-													</div>
-													<div class="pi-context col-xs-12 col-lg-9 col-md-9">
-														<div class="pisprice">
-															<?=$order["symbol_left"]?>
-															<span id="php_price<?=$data["index"]?>">
-																<?=$data["price"]?>
-															</span>
-															<?=$order["symbol_right"]?>
-														</div>
-													</div>
-												</div>
-												<div class="row discount order2-form-row">
-													<div class="col-xs-12 col-lg-2">
-														<label class="pi-titletext-right">
-															折扣金額
-														</label>
-													</div>
-													<div class="pi-context col-xs-12 col-lg-10">
-														<div>
-															-
-															<?=$order["symbol_left"]?>
-															<span class="pidiscount" id="php_discount<?=$data["index"]?>"></span>
-															<?=$order["symbol_right"]?>
-														</div>
-													</div>
-												</div>
-												<?if(!empty($data["poption"])):?>
-													<div class="row spec order2-form-row">
-														<div class="col-xs-12 col-lg-3 col-md-3">
-															<label class="pi-title text-right">
-																商品規格
-															</label>
-														</div>
-														<div class="pi-context col-xs-12 col-lg-9 col-md-9">
-															<span><?=$data["poption"]?></span>
-														</div>
-													</div>
-												<?endif;?>
-												<?if(!empty($data["cpoption"])):?>
-													<div class="row cspec order2-form-row">
-														<div class="col-xs-3 col-md-2">
-															<label class="pi-title text-right">
-																商品選項
-															</label>
-														</div>
-														<div class="pi-context col-xs-4 col-md-5">
-															<select class="cpoption form-control input-sm" onchange="changecpoption('<?=$data["cpid"]?>','<?=$data["index"]?>',this)">
-																<? foreach($data["cpoption"]["option"] as $cpokey => $cpovalue): ?>
-																	<?if($data["cpoption"]["optionselected"] == $cpokey):?>
-																		<option value="<?=$cpokey?>" selected="selected"><?=$cpovalue?></option>
-																	<?else:?>
-																		<option value="<?=$cpokey?>"><?=$cpovalue?></option>
-																	<?endif;?>
-																<? endforeach; ?>
-															</select>
-														</div>
-													</div>
-												<?endif;?>
-												<?if(!empty($data["ordermemo"])):?>
-													<div class="row note order2-form-row">
-														<div class="col-xs-3 col-md-2">
-															<label class="control-label pi-title text-right">
-																商品備註
-															</label>
-														</div>
-														<div class="pi-context col-xs-9 col-md-10">
-															<?=$data["ordermemo"]?>
-														</div>
-													</div>
-												<?endif;?>
-												<div class="row">
-													<?if($data["bookid"] != "customerproduct"):?>
-														<div class="col-lg-4 text-right col-xs-6">
-															<button class="btn btn-primary btn-sm" onclick="reedit('<?=$data["bookid"]?>','<?=$data["editorclass"]?>');" >繼續編輯該產品</button>
-														</div>
-													<?endif;?>
-													<?if(!isset($data["cpid"])):?>
-														<div class="col-lg-3">
-															<button class="btn btn-primary btn-sm" onclick="detaitem(<?=$data["index"]?>);">修改訂購細節</button>
-														</div>
-													<?endif;?>
-												</div>
-											<?else:?>
-												<div class="ol-warning bg-danger">
-													<?=$data["warningmessage"]?>
-												</div>
-											<?endif;?>
-										</div>
-									</div>
-								</div>
-								<div class="panel-footer text-right">
-									<?if(empty($data["warningmessage"])):?>
-										小計：
-										<?=$order["symbol_left"]?>
-										<span class="php_sprice" id="php_sprice<?=$data["index"]?>">
-											<?=$data["total"]?>
-										</span>
-										<?=$order["symbol_right"]?>
-									<?else:?>
-										<?if(!isset($data["cpid"])):?>
-											<div title="取消訂購" class="delorder" onclick="deloitem(<?=$data["index"]?>,this,'<?=$data["bookid"]?>');">
-												該商品無法訂購，請移除
-												<span class="delorder glyphicon glyphicon-remove"></span>
-											</div>
-										<?else:?>
-											<div title="取消訂購" class="delorder" onclick="deloitem(<?=$data["index"]?>,this,'<?=$data["cpid"]?>');>">
-												該商品無法訂購，請移除
-												<span class="delorder glyphicon glyphicon-remove"></span>
-											</div>
-										<?endif;?>
-
-									<?endif;?>
-								</div>
-							</div>
-						<? endforeach; ?>
-						<div class="alert alert-info">
-							<div class="row">
-								<div class="text-center col-xs-12 col-sm-12 col-md-6">
-									<?=count($orderlist_data)?> 筆產品
-									<span class="fororderpromofee">
-										小計 <?=$order["symbol_left"]?> <span class="productionfee">0</span> <?=$order["symbol_right"]?>，<span class="promotefeearea">折扣 <?=$order["symbol_left"]?> <span class="promotefee">0</span> <?=$order["symbol_right"]?></span>，
-									</span>
-									共 <?=$order["symbol_left"]?> <span class="orderlist_total">0</span>  <?=$order["symbol_right"]?>
-								</div>
-								<div class="text-center col-xs-12 col-sm-12 col-md-6" id="info">
-									<a href="./booklists.php" class="">
-										<span class="glyphicon glyphicon-shopping-cart"></span>購物車&mdash;加購其他製作項目
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<h5 class="order2-title">
-						<span class="glyphicon glyphicon-tag"></span>
-						物流配送（我們約需個 <?=$shipment["day"]?> 工作天後為您出貨）
-					</h5>
-					<div class="text-left shipmentlist" id="php_carryitem">
-					
-                        <div class="panel panel-info sublist">
-									<div class="panel-heading">
-										<label class="pdlabel">
-											<input type="radio" value="99" name="php_delverytype" onclick="setDeliverytypeVisible();"/>
-											&nbsp;超商取貨&nbsp;<img src="images/markt.png" height="30px">
-										</label>
-                                        <button type="button" class="btn btn-default navbar-btn" onClick="selectStore();">選擇門市</button>
-									</div>
-                                    <div class="panel-body" id="shipInfoByStore">
-                                    <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">取件門市名稱<input type="text" disabled id="store_name" value="<?=$stName?>" class="form-control" placeholder="請點選「選擇門市」，設定取件門市名稱"></div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">取件門市地址<input type="text" disabled id="store_addr" value="<?=$stAddr?>" class="form-control" placeholder="請點選「選擇門市」，設定取件門市地址"></div>
-                                    <input type="hidden" id="hidden_WebPara" value="<?=$webPara?>" >
-									</div>
-                                    </div>
-								</div>
-					    </div>						
-						
-						<?if(count($shipmentlist_data) > 0):?>
-							<? foreach($shipmentlist_data as $data): ?>
-								<div class="panel panel-info sublist sl<?=$data["value"]?>">
-									<div class="panel-heading">
-										<label class="pdlabel">
-											<input name="php_delverytype" type="radio" shipmentfee="<?=$data["freight"]?>" value="<?=$data["value"]?>">
-											<?=$data["name"]?>
-										</label>
-										<span class="freight">
-											<?=$order["symbol_left"]?>
-											<?=$data["freight"]?>
-											<?=$order["symbol_right"]?>
-										</span>
-										<span class="freefreight">
-											<?=$order["symbol_left"]?>
-											0
-											<?=$order["symbol_right"]?>
-										</span>
-									</div>
-									<div class="panel-body csdiv <?=$data["containerclassname"]?>" <?=$data["containeridname"]?> onclick="setDeliverytypeVisible();" >
-										<?if(!empty($data["path"]) && file_exists($data["path"])):?>
-											<?require_once($data["path"]);?>
-										<?elseif($data["value"] < 0)://自訂物流?>
-											<div class="row  order2-form-row">
-												<div class="col-lg-2 ">
-													<label class="text-right">
-														收件人姓名
-													</label>
-												</div>
-												<div class="col-lg-10">
-													<input type="text" id="delveryname<?=$data["value"]?>" name="delveryname<?=$data["value"]?>" class="form-control validate[required]" data-errormessage-value-missing="請輸入收件人姓名" value="<?=$data["delveryname"]?>" />
-												</div>
-											</div>
-											<div class="row  order2-form-row">
-												<div class="col-lg-2">
-													<label class="text-right">
-														收件人電話
-													</label>
-												</div>
-												<div class="col-lg-10">
-													<input type="text" id="delverytel<?=$data["value"]?>" name="delverytel<?=$data["value"]?>" class="form-control validate[required]" data-errormessage-value-missing="請輸入收件人電話" value="<?=$data["delverytel"]?>" />
-												</div>
-											</div>
-											<div class="row  order2-form-row">
-												<div class="col-lg-2">
-													<label class="text-right">
-														<?=$data["inputtext"]?>
-													</label>
-												</div>
-												<div class="col-lg-10">
-													<input type="text" id="cskeyin<?=$data["value"]?>" name="cskeyin<?=$data["value"]?>" class="form-control cskeyin<?=$data["value"]?> validate[required]" value="<?=$data["keyinvalue"]?>" />
-												</div>
-											</div>
-											<?if(!empty($data["descr"])):?>
-												<div class="row">
-													<div class="col-lg-2">
-														<label class="text-right"></label>
-													</div>
-													<div class="col-lg-10">
-														<?=$data["descr"]?>
-													</div>
-												</div>
-											<?endif;?>
-										<?endif;?>
-									</div>
-								</div>
-								
-									<?
+         <!--揪團start-->
+         <h5 class="order2-title  margin_top1"> <span class="glyphicon glyphicon-tag"></span>我要參加揪團 <span><a href="#">[ 什麼是揪團? ]</a></span></h5>
+         <div class="col-lg-12 margin_bottom3">
+         <button type="button" class="btn btn-default">我是揪團團長</button>
+         <button type="button" class="btn btn-primary">我要參加揪團</button>
+         </div>
+         <!--揪團end-->
+        <h5 class="order2-title"> <span class="glyphicon glyphicon-tag"></span> 物流配送（我們約需個
+          <?=$shipment["day"]?>
+          工作天後為您出貨） </h5>
+        <div class="text-left shipmentlist" id="php_carryitem">
+          <div class="panel panel-info sublist">
+            <div class="panel-heading">
+              <label class="pdlabel">
+                <input type="radio" value="99" name="php_delverytype" onclick="setDeliverytypeVisible();"/>
+                &nbsp;超商取貨&nbsp;<img src="images/markt.png" height="30px"> </label>
+              <button type="button" class="btn btn-default navbar-btn" onClick="selectStore();">選擇門市</button>
+            </div>
+            <div class="panel-body" id="shipInfoByStore">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">取件門市名稱
+                  <input type="text" disabled id="store_name" value="<?=$stName?>" class="form-control" placeholder="請點選「選擇門市」，設定取件門市名稱">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">取件門市地址
+                  <input type="text" disabled id="store_addr" value="<?=$stAddr?>" class="form-control" placeholder="請點選「選擇門市」，設定取件門市地址">
+                </div>
+                <input type="hidden" id="hidden_WebPara" value="<?=$webPara?>" >
+              </div>
+            </div>
+          </div>
+        </div>
+        <?if(count($shipmentlist_data) > 0):?>
+        <? foreach($shipmentlist_data as $data): ?>
+        <div class="panel panel-info sublist sl<?=$data["value"]?>">
+          <div class="panel-heading">
+            <label class="pdlabel">
+              <input name="php_delverytype" type="radio" shipmentfee="<?=$data["freight"]?>" value="<?=$data["value"]?>">
+              <?=$data["name"]?>
+            </label>
+            <span class="freight">
+            <?=$order["symbol_left"]?>
+            <?=$data["freight"]?>
+            <?=$order["symbol_right"]?>
+            </span> <span class="freefreight">
+            <?=$order["symbol_left"]?>
+            0
+            <?=$order["symbol_right"]?>
+            </span> </div>
+          <div class="panel-body csdiv <?=$data["containerclassname"]?>" <?=$data["containeridname"]?> onclick="setDeliverytypeVisible();" >
+            <?if(!empty($data["path"]) && file_exists($data["path"])):?>
+            <?require_once($data["path"]);?>
+            <!--發票地址start-->
+            <div class="row margin_top1">
+              <div class="col-lg-2">
+                <label class="text-right">發票地址</label>
+              </div>
+              <div class="col-lg-10">
+                <div class="col-sm-12 col-lg-10 margin_bottom1"
+                >
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                      同商品寄送地址</label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                      如果不是，請填寫以下地址(另外酌收郵票費用5元)(點選後才顯示地址選項) </label>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-lg-10">
+                  <div class="col-xs-12 col-lg-4 order2-form-row">
+                    <select name="city4InvoiceAddr" class="form-control validate[required]" data-errormessage-value-missing="請選擇收件地址-縣市" onchange="javascript:citychange4InvoiceAddr();putzip4InvoiceAddr();" id="citysel4InvoiceAddr">
+                      <option value="">請選擇縣市:</option>
+                      <option value="基隆市">基隆市</option>
+                      <option value="台北市">台北市</option>
+                      <option value="新北市">新北市</option>
+                      <option value="桃園縣">桃園縣</option>
+                      <option value="新竹市">新竹市</option>
+                      <option value="新竹縣">新竹縣</option>
+                      <option value="苗栗縣">苗栗縣</option>
+                      <option value="台中市" selected="selected">台中市</option>
+                      <option value="彰化縣">彰化縣</option>
+                      <option value="南投縣">南投縣</option>
+                      <option value="雲林縣">雲林縣</option>
+                      <option value="嘉義市">嘉義市</option>
+                      <option value="嘉義縣">嘉義縣</option>
+                      <option value="台南市">台南市</option>
+                      <option value="高雄市">高雄市</option>
+                      <option value="屏東縣">屏東縣</option>
+                      <option value="台東縣">台東縣</option>
+                      <option value="花蓮縣">花蓮縣</option>
+                      <option value="宜蘭縣">宜蘭縣</option>
+                      <option value="澎湖縣">澎湖縣</option>
+                      <option value="金門縣">金門縣</option>
+                      <option value="連江縣">連江縣</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-12 col-lg-4">
+                    <select name="cityarea4InvoiceAddr" size="1" class="form-control select" onchange="putzip4InvoiceAddr();" id="cityaasel4InvoiceAddr">
+                      <option title="中區 400" value="中區">中區</option>
+                      <option title="東區 401" value="東區">東區</option>
+                      <option title="南區 402" value="南區">南區</option>
+                      <option title="西區 403" value="西區">西區</option>
+                      <option title="北區 404" value="北區">北區</option>
+                      <option title="北屯區 406" value="北屯區">北屯區</option>
+                      <option title="西屯區 407" value="西屯區">西屯區</option>
+                      <option title="南屯區 408" value="南屯區">南屯區</option>
+                      <option title="太平區 411" value="太平區">太平區</option>
+                      <option title="大里區 412" value="大里區" selected="selected">大里區</option>
+                      <option title="霧峰區 413" value="霧峰區">霧峰區</option>
+                      <option title="烏日區 414" value="烏日區">烏日區</option>
+                      <option title="豐原區 420" value="豐原區">豐原區</option>
+                      <option title="后里區 421" value="后里區">后里區</option>
+                      <option title="石岡區 422" value="石岡區">石岡區</option>
+                      <option title="東勢區 423" value="東勢區">東勢區</option>
+                      <option title="和平區 424" value="和平區">和平區</option>
+                      <option title="新社區 426" value="新社區">新社區</option>
+                      <option title="潭子區 427" value="潭子區">潭子區</option>
+                      <option title="大雅區 428" value="大雅區">大雅區</option>
+                      <option title="神岡區 429" value="神岡區">神岡區</option>
+                      <option title="大肚區 432" value="大肚區">大肚區</option>
+                      <option title="沙鹿區 433" value="沙鹿區">沙鹿區</option>
+                      <option title="龍井區 434" value="龍井區">龍井區</option>
+                      <option title="梧棲區 435" value="梧棲區">梧棲區</option>
+                      <option title="清水區 436" value="清水區">清水區</option>
+                      <option title="大甲區 437" value="大甲區">大甲區</option>
+                      <option title="外埔區 438" value="外埔區">外埔區</option>
+                      <option title="大安區 439" value="大安區">大安區</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-12 col-lg-4">
+                    <input class="form-control" id="Zipcode4InvoiceAddr" name="Zipcode4InvoiceAddr" type="text" size="5" maxlength="5" value="412">
+                  </div>
+                  <div>
+                    <input type="text" id="InvoiceAddr" name="InvoiceAddr" class="form-control validate[required] col-lg-12" data-errormessage-value-missing="請輸入收件地址" value="益民路二段286號4樓">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--發票地址end-->
+            <?elseif($data["value"] < 0)://自訂物流?>
+            <div class="row  order2-form-row">
+              <div class="col-lg-2 ">
+                <label class="text-right"> 收件人姓名789 </label>
+              </div>
+              <div class="col-lg-10">
+                <input type="text" id="delveryname<?=$data["value"]?>" name="delveryname<?=$data["value"]?>" class="form-control validate[required]" data-errormessage-value-missing="請輸入收件人姓名" value="<?=$data["delveryname"]?>" />
+              </div>
+            </div>
+            <div class="row  order2-form-row">
+              <div class="col-lg-2">
+                <label class="text-right"> 收件人電話 </label>
+              </div>
+              <div class="col-lg-10">
+                <input type="text" id="delverytel<?=$data["value"]?>" name="delverytel<?=$data["value"]?>" class="form-control validate[required]" data-errormessage-value-missing="請輸入收件人電話" value="<?=$data["delverytel"]?>" />
+              </div>
+            </div>
+            <div class="row  order2-form-row">
+              <div class="col-lg-2">
+                <label class="text-right">
+                  <?=$data["inputtext"]?>
+                </label>
+              </div>
+              <div class="col-lg-10">
+                <input type="text" id="cskeyin<?=$data["value"]?>" name="cskeyin<?=$data["value"]?>" class="form-control cskeyin<?=$data["value"]?> validate[required]" value="<?=$data["keyinvalue"]?>" />
+              </div>
+            </div>
+            <?if(!empty($data["descr"])):?>
+            <div class="row">
+              <div class="col-lg-2">
+                <label class="text-right"></label>
+              </div>
+              <div class="col-lg-10">
+                <?=$data["descr"]?>
+              </div>
+            </div>
+            <?endif;?>
+            <?endif;?>
+          </div>
+        </div>
+        <?
 									// 如果物流配送選擇超商取貨，以session將收件人資訊儲存傳遞	
 									if ($stName != ""){
 										$_SESSION["deliName"] = $data["delveryname"]; //收件人姓名
 										$_SESSION["deliTel"] = $data["delverytel"]; //收件人電話
 									}	
-									?>								
-								
-							<? endforeach; ?>
-						<?else:?>
-							<div class="bg-danger text-center col-xs-12 col-md-12">
-								該商家未設定運費方式，請聯絡客服，謝謝。
-							</div>
-						<?endif;?>
-						<span class="hidden" id="php_sdfee">0</span>
-					</div>
-					<h5 class="order2-title">
-						<span class="glyphicon glyphicon-tag"></span>
-						折扣禮卷優惠
-					</h5>
-					<div class="promotecodearea row">
-						<div class="from-group col-xs-6 col-sm-6 col-md-6">
-							<input type="text" maxlength="12" value="" name="php_promotecode" id="php_promotecode" class="form-control text-center" placeholder="請輸入折扣優惠碼" />
-						</div>
-						<div class="from-group col-xs-6 col-sm-6 col-md-6 php_doverify">
-							<input id="php_doverify" title="按此驗證折扣禮卷優惠" type="button" onclick="verify();" class="btn btn-warning" value="按此驗證折扣禮卷優惠" />
-						</div>
-						<div class="from-group col-xs-6 col-sm-6 col-md-6 rekeyinpromotecodearea">
-							<input type="button" value="變更折扣碼" class="btn btn-warning" onclick="rekeyinpromotecode();" />
-						</div>
-						<div id="php_spromo" class="hidden"></div>
-					</div>
-					<div id="php_PromoteMsg" class="alert alert-success text-center"></div>
-					<h5 class="order2-title">
-						<span class="glyphicon glyphicon-tag"></span>
-						費用總計
-					</h5>
-					<div class="alert alert-info">
-						<div class="totalarea row">
-							<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-								<?=$order["symbol_left"]?> <span id="php_stotal"></span> <?=$order["symbol_right"]?>
-							</div>
-						</div>
-					</div>
-					<h5 class="order2-title">
-						<span class="glyphicon glyphicon-tag"></span>
-						備註資訊
-					</h5>
-					<div class="notearea row">
-						<div class="from-group col-xs-12 col-sm-12 col-md-12">
-							<input type="text" name="php_note" id="php_note" class="form-control text-center" placeholder="此處可填寫備註資訊，以供廠商得知您對於此訂單的需求" />
-						</div>
-					</div>
-					<h5 class="order2-title" id="php_invoice1">
-						<span class="glyphicon glyphicon-tag"></span>
-						發票資訊
-					</h5>
-					<div class="invoicearea row" id="php_invoice2">
-						<div class="col-xs-12 col-lg-4 col-md-4">
-							<label class="form-control">
-								<input type="radio" name="php_invoicetype" value="2" onclick="setInvoiceAreaVisible();"/>二聯發票
-							</label>
-						</div>
-						<div class="col-xs-12 col-lg-4 col-md-4">
-							<label class="form-control">
-								<input type="radio" name="php_invoicetype" value="3" onclick="setInvoiceAreaVisible();"/>三聯發票
-							</label>
-						</div>
-						<div class="col-xs-12 col-lg-4 col-md-4">
-							<label class="form-control">
-								<input type="radio" name="php_invoicetype" value="1" onclick="setInvoiceAreaVisible();"/>我要捐發票給「<a href="http://child-home.org.tw/child_home/index.php" target="new" id="donate">台中光音育幼院</a>」
-							</label>
-						</div>
-						<div id="php_invoicearea" class="col-xs-12 col-sm-8 col-md-8 list">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="text" id="php_invoicetitle" name="php_invoicetitle" class="form-control" value="" maxlength="8" title="請輸入統一編號" placeholder="請輸入統一編號" />
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="text" id="php_invoicename" name="php_invoicename" class="form-control" value="" title="請輸入發票抬頭" placeholder="請輸入發票抬頭" />
-							</div>
-						</div>
-					</div>
-					<h5 class="order2-title" id="php_paysms">
-						<span class="glyphicon glyphicon-tag"></span>
-						訂單狀態簡訊通知
-					</h5>
-					<div class="smsarea row" id="php_sms">
-						<div class="col-xs-12  col-lg-12">
-							<label class="form-control">
-								<input type="checkbox" name="smsnotify" id="smsnotify" onclick="smsnotifyjs();"><img src="./images/orders/sms.gif">我要收到簡訊通知訂單狀態(訂單確認, 出貨通知等)
-							</label>
-						</div>
-						<div id="php_smsnotifyinput" class="col-lg-12">
-							<input type="text" class="form-control col-lg-12" maxlength="10" value="" name="php_smsnotifynum" id="php_smsnotifynum" title="請輸入手機號碼"  placeholder="請輸入手機號碼" />
-						</div>
-					</div>
-					<h5 class="order2-title">
-						<span class="glyphicon glyphicon-tag"></span>
-						付款方式
-					</h5>
-					<div class="paymentlist">
-						<?if(count($paymentlist_data) > 0):?>
-							<? foreach($paymentlist_data as $data): ?>
-								<div class="panel panel-info sublist pl<?=$data["pid"]?>">
-									<div class="panel-heading">
-										<label class="pdlabel">
-											<input type="radio" name="php_paymenttype" class="validate[required]" pid="<?=$data["pid"]?>" value="<?=$data["value"]?>" />
-											&nbsp;<?=$data["name"]?>&nbsp;<img src="<?=$data["imgsrc"]?>" />
-										</label>
-									</div>
-								</div>
-							<? endforeach; ?>
-						<?else:?>
-							<div class="bg-danger text-center col-xs-12 col-md-12">
-								該商家未設定付款方式，請聯絡客服，謝謝。
-							</div>
-						<?endif;?>
-
-
-
-
-					<div class="controlorderarea row">
-						<div class=" col-xs-6 col-lg-6 text-right">
-							<input type="button" id="php_cancel" class="btn btn-default btn-lg" value="取消訂購" />
-						</div>
-						<div class=" col-xs-6 col-lg-2 text-center">
-							<input type="button" id="php_confirmed" class="btn btn-success btn-lg" value="確定訂購" />
-						</div>
-						<div class=" col-xs-6 col-sm-6 col-lg-2 text-center">
-							<input type="button" id="php_xorder" class="btn btn-danger btn-lg" value="無法訂購" />
-						</div>
-						<div id="php_btsa" class="col-xs-12 col-sm-12 col-md-12 text-center">
-							<img src="./images/im/loading.gif" border="0" />&nbsp;訂購中請稍候...
-						</div>
-						<div id="php_showmes" class="col-xs-12 col-sm-12 col-md-12 text-center"></div>
-					</div>
-				</form>
-			</div>
-			<div class="step-title">
-				<img class="img-responsive center-block" src="/images/orders/order_02.gif">
-			</div>
-		</div>
-	</div>
-	<!-- InstanceEndEditable --> </div>
+									?>
+        <? endforeach; ?>
+        <?else:?>
+        <div class="bg-danger text-center col-xs-12 col-md-12"> 該商家未設定運費方式，請聯絡客服，謝謝。 </div>
+        <?endif;?>
+        <span class="hidden" id="php_sdfee">0</span>
+        </div>
+        <h5 class="order2-title"> <span class="glyphicon glyphicon-tag"></span> 折扣禮卷優惠 </h5>
+        <div class="promotecodearea row">
+          <div class="from-group col-xs-6 col-sm-6 col-md-6">
+            <input type="text" maxlength="12" value="" name="php_promotecode" id="php_promotecode" class="form-control text-center" placeholder="請輸入折扣優惠碼" />
+          </div>
+          <div class="from-group col-xs-6 col-sm-6 col-md-6 php_doverify">
+            <input id="php_doverify" title="按此驗證折扣禮卷優惠" type="button" onclick="verify();" class="btn btn-warning" value="按此驗證折扣禮卷優惠" />
+          </div>
+          <div class="from-group col-xs-6 col-sm-6 col-md-6 rekeyinpromotecodearea">
+            <input type="button" value="變更折扣碼" class="btn btn-warning" onclick="rekeyinpromotecode();" />
+          </div>
+          <div id="php_spromo" class="hidden"></div>
+        </div>
+        <div id="php_PromoteMsg" class="alert alert-success text-center"></div>
+        <h5 class="order2-title"> <span class="glyphicon glyphicon-tag"></span> 費用總計 </h5>
+        <div class="alert alert-info">
+          <div class="totalarea row">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+              <?=$order["symbol_left"]?>
+              <span id="php_stotal"></span>
+              <?=$order["symbol_right"]?>
+            </div>
+          </div>
+        </div>
+        <h5 class="order2-title"> <span class="glyphicon glyphicon-tag"></span> 備註資訊 </h5>
+        <div class="notearea row">
+          <div class="from-group col-xs-12 col-sm-12 col-md-12">
+            <input type="text" name="php_note" id="php_note" class="form-control text-center" placeholder="此處可填寫備註資訊，以供廠商得知您對於此訂單的需求" />
+          </div>
+        </div>
+        <h5 class="order2-title" id="php_invoice1"> <span class="glyphicon glyphicon-tag"></span> 發票資訊 </h5>
+        <div class="invoicearea row" id="php_invoice2">
+          <div class="col-xs-12 col-lg-4 col-md-4">
+            <label class="form-control">
+              <input type="radio" name="php_invoicetype" value="2" onclick="setInvoiceAreaVisible();"/>
+              二聯發票 </label>
+          </div>
+          <div class="col-xs-12 col-lg-4 col-md-4">
+            <label class="form-control">
+              <input type="radio" name="php_invoicetype" value="3" onclick="setInvoiceAreaVisible();"/>
+              三聯發票 </label>
+          </div>
+          <div class="col-xs-12 col-lg-4 col-md-4">
+            <label class="form-control">
+              <input type="radio" name="php_invoicetype" value="1" onclick="setInvoiceAreaVisible();"/>
+              我要捐發票給「<a href="http://child-home.org.tw/child_home/index.php" target="new" id="donate">台中光音育幼院</a>」 </label>
+          </div>
+          <div id="php_invoicearea" class="col-xs-12 col-sm-8 col-md-8 list">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <input type="text" id="php_invoicetitle" name="php_invoicetitle" class="form-control" value="" maxlength="8" title="請輸入統一編號" placeholder="請輸入統一編號" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <input type="text" id="php_invoicename" name="php_invoicename" class="form-control" value="" title="請輸入發票抬頭" placeholder="請輸入發票抬頭" />
+            </div>
+          </div>
+        </div>
+        <h5 class="order2-title nophone" id="php_paysms"> <span class="glyphicon glyphicon-tag"></span> 訂單狀態簡訊通知 </h5>
+        <div class="smsarea row  nophone02" id="php_sms">
+          <div class="col-xs-12  col-lg-12">
+            <label class="form-control">
+              <input type="checkbox" name="smsnotify" id="smsnotify" onclick="smsnotifyjs();">
+              <img src="./images/orders/sms.gif">我要收到簡訊通知訂單狀態(訂單確認, 出貨通知等) </label>
+          </div>
+          <div id="php_smsnotifyinput" class="col-lg-12">
+            <input type="text" class="form-control col-lg-12" maxlength="10" value="" name="php_smsnotifynum" id="php_smsnotifynum" title="請輸入手機號碼"  placeholder="請輸入手機號碼" />
+          </div>
+        </div>
+        <h5 class="order2-title"> <span class="glyphicon glyphicon-tag"></span> 付款方式 </h5>
+        <div class="paymentlist">
+        <?if(count($paymentlist_data) > 0):?>
+        <? foreach($paymentlist_data as $data): ?>
+        <div class="panel panel-info sublist pl<?=$data["pid"]?>">
+          <div class="panel-heading">
+            <label class="pdlabel">
+              <input type="radio" name="php_paymenttype" class="validate[required]" pid="<?=$data["pid"]?>" value="<?=$data["value"]?>" />
+              &nbsp;
+              <?=$data["name"]?>
+              &nbsp;<img src="<?=$data["imgsrc"]?>" /> </label>
+          </div>
+        </div>
+        <? endforeach; ?>
+        <?else:?>
+        <div class="bg-danger text-center col-xs-12 col-md-12"> 該商家未設定付款方式，請聯絡客服，謝謝。 </div>
+        <?endif;?>
+        <div class="controlorderarea row">
+          <div class=" col-xs-6 col-lg-6 text-right">
+            <input type="button" id="php_cancel" class="btn btn-default btn-lg" value="取消訂購" />
+          </div>
+          <div class=" col-xs-6 col-lg-2 text-center">
+            <input type="button" id="php_confirmed" class="btn btn-success btn-lg" value="確定訂購" />
+          </div>
+          <div class=" col-xs-6 col-sm-6 col-lg-2 text-center">
+            <input type="button" id="php_xorder" class="btn btn-danger btn-lg" value="無法訂購" />
+          </div>
+          <div id="php_btsa" class="col-xs-12 col-sm-12 col-md-12 text-center"> <img src="./images/im/loading.gif" border="0" />&nbsp;訂購中請稍候... </div>
+          <div id="php_showmes" class="col-xs-12 col-sm-12 col-md-12 text-center"></div>
+        </div>
+      </form>
+    </div>
+    <div class="step-title"> <img class="img-responsive center-block" src="/images/orders/order_02.gif"> </div>
+  </div>
+  </div>
+  <!-- InstanceEndEditable -->
+  </div>
+</section>
+<!-- content --> 
+<!-- footer -->
+<footer id="footerWrapper" class="margin-top">
+  <section id="mainFooter">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="footerWidget"> <img src="images/home/main-logo.png" alt="latest Little Neko news" id="footerLogo">
+            <p>永遠以『人』為出發，是我們對客戶最大的承諾，成立「客服部」是我們對承諾的具體實踐！印刷整個過程，是繁雜且多樣的，除了在客服方面，解答客戶的問題之外更定期發行月刊，教導客戶各類軟體的使用方式、商品印刷相關須知與後加工的注意事項，達到客戶「所印即所要」的目標，大大提升客戶印刷物的良率，並減少不必要的損失。</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="footerWidget">
+            <h3>PHOTOBOOK</h3>
+            <address>
+            <p> &nbsp;<a href="https://www.google.com.tw/maps/place/404%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%8D%80%E5%BF%A0%E6%98%8E%E8%B7%AF298%E8%99%9F/@24.1626,120.665874,17z/data=!3m1!4b1!4m2!3m1!1s0x34693d81dfb9c8c5:0x16fc4ea0ee7dbd9c" target="_blank">臺中市北區忠明路298號</a><br>
+              <i class="icon-phone"></i>&nbsp;(04)2207-3819#82<br>
+              <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:101@mail.ok888.com.tw ">101@mail.ok888.com.tw </a> <br>
+            </p>
+            </address>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="footerWidget">
+            <h3>Quick Menu</h3>
+            <ul class="list-unstyled iconList borderList">
+              <li><a href="service.php">服務使用條款</a></li>
+              <li><a href="privacy.php">隱私權條款</a></li>
+              <li><a href="commission.php">委託製作契約</a></li>
+              <li><a href="sendback.php">退換貨政策</a></li>
+              <li><a href="transportation.php">貨運方式與計價</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-  <!-- content --> 
-  <!-- footer -->
-  <footer id="footerWrapper" class="margin-top">
-    <section id="mainFooter">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="footerWidget"> <img src="images/home/main-logo.png" alt="latest Little Neko news" id="footerLogo">
-              <p>永遠以『人』為出發，是我們對客戶最大的承諾，成立「客服部」是我們對承諾的具體實踐！印刷整個過程，是繁雜且多樣的，除了在客服方面，解答客戶的問題之外更定期發行月刊，教導客戶各類軟體的使用方式、商品印刷相關須知與後加工的注意事項，達到客戶「所印即所要」的目標，大大提升客戶印刷物的良率，並減少不必要的損失。</p>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-              <div class="footerWidget">
-                <h3>PHOTOBOOK</h3>
-                <address>
-                  <p> &nbsp;<a href="https://www.google.com.tw/maps/place/404%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8C%97%E5%8D%80%E5%BF%A0%E6%98%8E%E8%B7%AF298%E8%99%9F/@24.1626,120.665874,17z/data=!3m1!4b1!4m2!3m1!1s0x34693d81dfb9c8c5:0x16fc4ea0ee7dbd9c" target="_blank">臺中市北區忠明路298號</a><br>
-                  <i class="icon-phone"></i>&nbsp;(04)2207-3819#82<br>
-                  <i class="icon-mail-alt"></i>&nbsp;<a href="mailto:101@mail.ok888.com.tw ">101@mail.ok888.com.tw </a> <br>
-                </p>
-              </address>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="footerWidget">
-              <h3>Quick Menu</h3>
-              <ul class="list-unstyled iconList borderList">
-                <li><a href="service.php">服務使用條款</a></li>
-                <li><a href="privacy.php">隱私權條款</a></li>
-                <li><a href="commission.php">委託製作契約</a></li>
-                <li><a href="sendback.php">退換貨政策</a></li>
-                <li><a href="transportation.php">貨運方式與計價</a></li>
-              </ul>
-            </div>
-          </div>
+  <section  id="footerRights">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>©
+            <?=$copyrightyear?>
+            <?=$siteCompany?>
+            Copyright All Rights Reserved.</p>
         </div>
       </div>
-    </section>
-    <section  id="footerRights">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <p>©
-              <?=$copyrightyear?>
-              <?=$siteCompany?>
-              Copyright All Rights Reserved.</p> 
-          </div>
-        </div>
-      </div>
-    </section>
-  </footer>
-  <!-- End footer --> 
+    </div>
+  </section>
+</footer>
+<!-- End footer -->
 </div>
 <!-- global wrapper --> 
 <!-- End Document 
@@ -833,10 +926,42 @@ $(function(){
 <!-- Custom  -->
 <script type="text/javascript" src="vjs/custom.js"></script>
 <!-- InstanceBeginEditable name="afterjs" -->
+<script>
+$(document).ready( function () {
+  $(".nophone").hide();
+  $(".nophone02").hide();
+});
+</script>
 <!-- InstanceEndEditable -->
 <script>
 $(document).ready( function () {
   $("#shoppingcar").hide();
 });
+
+
+// 處理宅配到府流程中的發票寄送地址縣市-鄉鎮市區選單連動-- start
+function citychange4InvoiceAddr() {
+	i = $('select[name="city4InvoiceAddr"] option:selected').index();
+	$('select[name="cityarea4InvoiceAddr"] option').remove();
+  
+	if (i != 0){
+    var cityarealength = cityarea_account[i] - cityarea_account[i-1];
+		index = cityarea_account[i-1] + 1;
+		
+    for (j = 0; j < cityarealength; j ++) {
+			cn = cityarea[index + j].split(' ');
+			$('select[name="cityarea4InvoiceAddr"]').append($('<option></option>').attr("title",cityarea[index + j]).attr("value",cn[0]).text(cn[0]));
+		}
+	}
+}
+
+function putzip4InvoiceAddr(){
+	cat = $('select[name="cityarea4InvoiceAddr"] option:selected').attr("title");
+	catn = cat.split(' ');
+	$("#Zipcode4InvoiceAddr").attr("value",catn[1]);
+}
+// 處理宅配到府流程中的發票寄送地址縣市-鄉鎮市區選單連動-- end
+
 </script>
-<!-- InstanceEnd --></html>
+<!-- InstanceEnd -->
+</html>
