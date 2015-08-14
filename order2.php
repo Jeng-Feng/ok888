@@ -945,12 +945,13 @@ function citychange4InvoiceAddr() {
 	$('select[name="cityarea4InvoiceAddr"] option').remove();
   
 	if (i != 0){
-    var cityarealength = cityarea_account[i] - cityarea_account[i-1];
+    var cityarealength = cityarea_account[i] - cityarea_account[i-1]; 
 		index = cityarea_account[i-1] + 1;
 		
+    
     for (j = 0; j < cityarealength; j ++) {
-			cn = cityarea[index + j].split(' ');
-			$('select[name="cityarea4InvoiceAddr"]').append($('<option></option>').attr("title",cityarea[index + j]).attr("value",cn[0]).text(cn[0]));
+			cn = cityarea[index + j].split(' '); //取出鄉鎮市區與ZIPCODE
+			$('select[name="cityarea4InvoiceAddr"]').append($('<option></option>').attr("title",cityarea[index + j]).attr("value",cn[0]).text(cn[0])); //設定鄉鎮市區與ZIPCODE選單
 		}
 	}
 }
